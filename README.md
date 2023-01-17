@@ -244,6 +244,7 @@ In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge y
     ```
 
 4. Verify the nodes are online
+  > kubectl label node <node> node-role.kubernetes.io/worker=worker
 
     ```sh
     task cluster:nodes
