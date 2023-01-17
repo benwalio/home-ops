@@ -1,6 +1,9 @@
 ---
 ignore: |
   *.sops.*
+  .direnv/
+  .github/
+  infra/talos/*.yaml
 extends: default
 rules:
   truthy:
