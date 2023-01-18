@@ -68,7 +68,7 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: mdi:dns
         hosts:
-          - host: &host "adguard.${SECRET_DOMAIN}"
+          - host: &host "adguard.${BOOTSTRAP_CLOUDFLARE_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
