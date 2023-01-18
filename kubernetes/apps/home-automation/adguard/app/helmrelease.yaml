@@ -75,12 +75,12 @@ spec:
         tls:
           - hosts:
               - *host
-    persistence:
-      data:
-        enabled: true
-        existingClaim: *app
-        subPath:
-          - path: conf
-            mountPath: /opt/adguardhome/conf
-          - path: data
-            mountPath: /opt/adguardhome/work
+    # persistence:
+    #   data:
+    #     enabled: true
+    #     existingClaim: *app
+    #     subPath:
+    #       - path: conf
+    #         mountPath: /opt/adguardhome/conf
+    #       - path: data
+    #         mountPath: /opt/adguardhome/work
