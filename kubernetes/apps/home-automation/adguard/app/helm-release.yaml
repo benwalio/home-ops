@@ -8,12 +8,13 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: adguard-home
-      version: 5.5.2
+      chart: app-template
+      version: 1.2.1
+      interval: 10m
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
-        namespace: flux-system
+        name: bjw-s
+        namespace: apps
   install:
     createNamespace: true
     remediation:
