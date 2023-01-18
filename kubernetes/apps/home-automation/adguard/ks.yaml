@@ -4,6 +4,8 @@ kind: Kustomization
 metadata:
   name: cluster-apps-adguard
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/enabled: "true"
 spec:
   path: ./kubernetes/apps/home-automation/adguard/app
   prune: false
