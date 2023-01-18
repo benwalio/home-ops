@@ -28,7 +28,9 @@ spec:
   values:
     image:
       repository: adguard/adguardhome
-      tag: latest
+      tag: v0.107.21
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: adguard-home-config
     env:
       TZ: "${TIMEZONE}"
     args:
