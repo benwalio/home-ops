@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: adguard
+  namespace: home-automation
+spec:
+  path: ./kubernetes/apps/home-automation/adguard/app
+  prune: galse
+  sourceRef:
+    kind: HelmRepository
+    name: k8s-at-home
+  interval: 30m
+  retryInterval: 1m
+  timeout: 3m
