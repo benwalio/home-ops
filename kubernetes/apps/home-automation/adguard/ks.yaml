@@ -6,7 +6,7 @@ metadata:
   namespace: home-automation
 spec:
   path: ./kubernetes/apps/home-automation/adguard/app
-  prune: galse
+  prune: false
   sourceRef:
     kind: HelmRepository
     name: k8s-at-home
