@@ -76,7 +76,7 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-              - *host
+              - "adguard.${SECRET_DOMAIN}"
     persistence:
       data:
         enabled: true
