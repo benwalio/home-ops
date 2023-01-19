@@ -91,7 +91,12 @@ spec:
     persistence:
       data:
         enabled: true
-        existingClaim: adguard-home-pvc
+        existingClaim: adguard-home-data-pvc
+        mountPath: /opt/adguardhome/work
+      conf:
+        enabled: true
+        existingClaim: adguard-home-conf-pvc
+        mountPath: /opt/adguardhome/conf
         # subPath:
         #   - path: conf
         #     mountPath: /opt/adguardhome/conf
