@@ -22,19 +22,6 @@ spec:
         name: bjw-s
         namespace: flux-system
       interval: 15m
-  probes:
-    liveness:
-      spec:
-        initialDelaySeconds: 3
-        periodSeconds: 10
-        timeoutSeconds: 3
-        failureThreshold: 3
-    readiness:
-      spec:
-        initialDelaySeconds: 3
-        periodSeconds: 10
-        timeoutSeconds: 3
-        failureThreshold: 3
   install:
     createNamespace: true
     remediation:
@@ -64,7 +51,7 @@ spec:
         primary: true
         ports:
           http:
-            port: 3000
+            port: &app-port 3000
     dns:
       enabled: true
       type: LoadBalancer
@@ -74,14 +61,14 @@ spec:
       ports:
         dns-tcp:
           enabled: true
-          port: 53
+          port: &dns-port 53
           protocol: TCP
-          targetPort: 53
+          targetPort: &dns-target-port 53
         dns-udp:
           enabled: true
-          port: 53
+          port: *dns-port
           protocol: UDP
-          targetPort: 53
+          targetPort: *dns-target-port
     ingress:
       main:
         enabled: true
@@ -97,6 +84,19 @@ spec:
         tls:
           - hosts:
               - *host
+    probes:
+      liveness: &probes
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: /
+            port: *app-port
+          initialDelaySeconds: 3
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+      readiness: *probes
     # persistence:
     #   data:
     #     enabled: true
