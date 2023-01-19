@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: adguard
+  name: adguard-home
   namespace: networking
 spec:
   interval: 15m
@@ -29,8 +29,8 @@ spec:
     image:
       repository: adguard/adguardhome
       tag: v0.107.21
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: adguard-home-config
+    # podAnnotations:
+    #   configmap.reloader.stakater.com/reload: adguard-home-config
     env:
       TZ: "${TIMEZONE}"
     args:
