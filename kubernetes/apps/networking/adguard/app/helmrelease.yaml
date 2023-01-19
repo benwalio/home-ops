@@ -77,15 +77,15 @@ spec:
         tls:
           - hosts:
               - *host
-    persistence:
-      data:
-        enabled: true
-        existingClaim: adguard-pvc
-        subPath:
-          - path: conf
-            mountPath: /opt/adguardhome/conf
-          - path: data
-            mountPath: /opt/adguardhome/work
+    # persistence:
+    #   data:
+    #     enabled: true
+    #     existingClaim: adguard-pvc
+    #     subPath:
+    #       - path: conf
+    #         mountPath: /opt/adguardhome/conf
+    #       - path: data
+    #         mountPath: /opt/adguardhome/work
 
     config: |
       bind_host: 0.0.0.0
