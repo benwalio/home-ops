@@ -11,7 +11,6 @@ spec:
     - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/networking/adguard/app
   prune: true
-  nodeName: lv-m900-1-node
   targetNamespace: networking
   sourceRef:
     kind: GitRepository

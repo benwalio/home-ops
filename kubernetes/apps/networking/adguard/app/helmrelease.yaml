@@ -5,6 +5,7 @@ metadata:
   name: adguard-home
   namespace: networking
 spec:
+  nodeName: lv-m900-1-node
   interval: 15m
   chart:
     spec:
