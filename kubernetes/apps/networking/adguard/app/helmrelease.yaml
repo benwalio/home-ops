@@ -70,13 +70,13 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: "shield-check"
         hosts:
-          - host: "adguard.${SECRET_DOMAIN}"
+          - host: &host adguard.${SECRET_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "adguard.${SECRET_DOMAIN}"
+              - *host
     persistence:
       data:
         enabled: true
