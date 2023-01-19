@@ -7,6 +7,6 @@
 ```
 flux create source helm podinfo \
     --url=https://stefanprodan.github.io/podinfo \
-    --interval=10m \
+    --interval=1h \
     --export > ./kubernetes/flux/repositories/helm/podinfo.yaml
 ```
