@@ -11,6 +11,7 @@ spec:
     - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/networking/adguard/app
   prune: true
+  targetNamespace: networking
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
