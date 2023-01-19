@@ -84,19 +84,19 @@ spec:
         tls:
           - hosts:
               - *host
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /
-            port: *app-port
-          initialDelaySeconds: 3
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
+    # probes:
+    #   liveness: &probes
+    #     enabled: true
+    #     custom: true
+    #     spec:
+    #       httpGet:
+    #         path: /
+    #         port: *app-port
+    #       initialDelaySeconds: 3
+    #       periodSeconds: 10
+    #       timeoutSeconds: 1
+    #       failureThreshold: 3
+    #   readiness: *probes
     # persistence:
     #   data:
     #     enabled: true
