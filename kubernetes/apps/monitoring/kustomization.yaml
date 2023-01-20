@@ -5,4 +5,5 @@ resources:
   - ./namespace.yaml
   - ./kube-prometheus-stack/ks.yaml
   - ./kubernetes-dashboard/ks.yaml
+  - ./loki/ks.yaml
   - ./thanos/ks.yaml
