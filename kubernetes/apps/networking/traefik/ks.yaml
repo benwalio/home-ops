@@ -32,8 +32,8 @@ spec:
   path: ./kubernetes/apps/networking/traefik/addons
   prune: true
   dependsOn:
-    - name: cert-manager
-    - name: traefik
+    - name: cluster-apps-cert-manager-issuers
+    - name: cluster-apps-traefik
   sourceRef:
     kind: GitRepository
     name: home-kubernetes
