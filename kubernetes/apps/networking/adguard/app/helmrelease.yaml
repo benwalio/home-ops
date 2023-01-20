@@ -221,11 +221,7 @@ spec:
         url: https://adaway.org/hosts.txt
         name: AdAway Default Blocklist
         id: 2
-      whitelist_filters:
-      - enabled: true
-        url: https://git.benwal.io/benwalio/benwal-allow-list/-/raw/main/hosts/hosts
-        name: My Whitelist
-        id: 1
+      whitelist_filters: []
       user_rules: []
       dhcp:
         enabled: false
