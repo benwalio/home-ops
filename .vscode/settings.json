@@ -19,5 +19,5 @@
     "editor.guides.highlightActiveBracketPair": true,
     "editor.hover.delay": 1500,
     "files.trimTrailingWhitespace": true,
-    "sops.defaults.ageKeyFile": "",
+    "sops.defaults.ageKeyFile": "/Users/ben/.config/sops/age/keys.txt",
 }
