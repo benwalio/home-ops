@@ -11,7 +11,8 @@
         "file:///Users/ben/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
         "ansible": "ansible/*.yml",
         "Kubernetes": "kubernetes/*.yaml",
-        "https://json.schemastore.org/helmfile.json": "file:///Users/ben/local/code/home-ops/kubernetes/flux/repositories/helm/traefik.yaml"
+        "https://json.schemastore.org/helmfile.json": "file:///Users/ben/local/code/home-ops/kubernetes/flux/repositories/helm/traefik.yaml",
+        "https://json.schemastore.org/prometheus.json": "file:///Users/ben/local/code/home-ops/kubernetes/apps/monitoring/kube-prometheus-stack/app/patches/prometheus.yaml"
     },
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,

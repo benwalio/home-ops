@@ -1,0 +1,75 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 44.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    cleanPrometheusOperatorObjectNames: true
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+      sidecar:
+        dashboards:
+          multicluster:
+            etcd:
+              enabled: true
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels: ["node"]
+            targetLabel: instance
+    kube-state-metrics:
+      metricLabelsAllowlist: ["persistentvolumeclaims=[*]"]
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
+    kubeApiServer:
+      enabled: true
+    kubeControllerManager:
+      enabled: true
+      endpoints: ["10.69.10.20", "10.69.10.21", "10.69.10.22"]
+    kubeScheduler:
+      enabled: true
+      endpoints: ["10.69.10.20", "10.69.10.21", "10.69.10.22"]
+    kubeProxy:
+      enabled: false # Enable if not using eBPF
+      # endpoints: ["10.69.10.10", "10.69.10.21", "10.69.10.22"]
+    kubeEtcd:
+      enabled: true
+      endpoints: ["10.69.10.20", "10.69.10.21", "10.69.10.22"]
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
