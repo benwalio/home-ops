@@ -5,7 +5,7 @@ metadata:
   name: adguard-home
   namespace: networking
 spec:
-  nodeName: lv-m900-1-node
+  # nodeName: lv-m900-1-node
   interval: 15m
   chart:
     spec:
@@ -58,7 +58,7 @@ spec:
       type: LoadBalancer
       externalTrafficPolicy: Local
       annotations:
-        metallb.universe.tf/loadBalancerIPs: "${METALLB_DNS_ADDR}"
+        metallb.universe.tf/loadBalancerIPs: "${SVC_ADGUARD_ADDR}"
       ports:
         dns-tcp:
           enabled: true
