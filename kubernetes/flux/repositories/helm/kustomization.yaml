@@ -17,5 +17,6 @@ resources:
   - ./metrics-server.yaml
   - ./rook-ceph.yaml
   - ./stakater.yaml
+  - ./traefik.yaml
   - ./weave-gitops.yaml
   - ./podinfo.yaml

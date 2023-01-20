@@ -8,8 +8,10 @@
         "**/kubernetes/**/*.sops.toml": "plaintext"
     },
     "yaml.schemas": {
+        "file:///Users/ben/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
         "ansible": "ansible/*.yml",
-        "Kubernetes": "kubernetes/*.yaml"
+        "Kubernetes": "kubernetes/*.yaml",
+        "https://json.schemastore.org/helmfile.json": "file:///Users/ben/local/code/home-ops/kubernetes/flux/repositories/helm/traefik.yaml"
     },
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
