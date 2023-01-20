@@ -15,7 +15,7 @@ spec:
           hajimari.io/icon: simple-icons:prometheus
         pathType: Prefix
         hosts:
-          - &host prometheus.${SECRET_DOMAIN}
+          - &host prometheus.benwal.casa
         tls:
           - hosts:
               - *host
