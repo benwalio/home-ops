@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
+  - ./cloudnative-pg/ks.yaml
   - ./minio/ks.yaml
