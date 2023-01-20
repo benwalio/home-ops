@@ -68,10 +68,10 @@ spec:
         nodes:
           - name: lv-m900-1-node
             devices:
-              - name: /dev/sda
+              - name: sda
           - name: lv-m900-2-node
             devices:
-              - name: /dev/sda
+              - name: sda
     cephBlockPools:
       - name: ceph-blockpool
         spec:
