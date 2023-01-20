@@ -5,6 +5,7 @@ resources:
   - ./1password.yaml
   - ./bitnami.yaml
   - ./bjw-s.yaml
+  - ./cloudnative-pg.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
   - ./grafana.yaml
@@ -14,6 +15,7 @@ resources:
   - ./k8s-at-home.yaml
   - ./k8s-gateway.yaml
   - ./kubernetes-dashboard.yaml
+  - ./kyverno.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
   - ./podinfo.yaml
