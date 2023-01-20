@@ -45,7 +45,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: "false"
-        hostname: &host thanos-query.${SECRET_DOMAIN}
+        hostname: &host thanos-query.benwal.casa
         tls: true
         extraTls:
           - hosts:
@@ -59,7 +59,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: "false"
-        hostname: &host thanos-bucketweb.${SECRET_DOMAIN}
+        hostname: &host thanos-bucketweb.benwal.casa
         tls: true
         extraTls:
           - hosts:
@@ -75,7 +75,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: "false"
-        hostname: &host thanos-compactor.${SECRET_DOMAIN}
+        hostname: &host thanos-compactor.benwal.casa
         tls: true
         extraTls:
           - hosts:
@@ -93,7 +93,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: "false"
-        hostname: &host thanos-storegateway.${SECRET_DOMAIN}
+        hostname: &host thanos-storegateway.benwal.casa
         tls: true
         extraTls:
           - hosts:
@@ -123,7 +123,7 @@ spec:
         ingressClassName: nginx
         annotations:
           hajimari.io/enable: "false"
-        hostname: &host thanos-ruler.${SECRET_DOMAIN}
+        hostname: &host thanos-ruler.benwal.casa
         tls: true
         extraTls:
           - hosts:
