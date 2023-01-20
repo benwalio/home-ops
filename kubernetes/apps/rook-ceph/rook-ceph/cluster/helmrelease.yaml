@@ -72,12 +72,21 @@ spec:
           - name: lv-m900-2-node
             devices:
               - name: sda
+          - name: in-nuc-1-main
+            devices:
+              - name: sda
+          - name: in-nuc-2-main
+            devices:
+              - name: sda
+          - name: in-nuc-3-main
+            devices:
+              - name: sda
     cephBlockPools:
       - name: ceph-blockpool
         spec:
           failureDomain: host
           replicated:
-            size: 2
+            size: 3
         storageClass:
           enabled: true
           name: ceph-block
