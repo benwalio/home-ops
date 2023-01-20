@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.2.9
-    path: /volume1/kubernetes
+    path: /volume1/kubernetes/apps/minio
   mountOptions: ["nfsvers=4.1"]
 ---
 apiVersion: v1
