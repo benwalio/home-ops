@@ -10,4 +10,4 @@ resources:
   - ./k8s-gateway/ks.yaml
   - ./metallb/ks.yaml
   # - ./traefik/ks.yaml
-  # - ./adguard/ks.yaml
+  - ./adguard/ks.yaml
