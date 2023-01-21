@@ -18,6 +18,7 @@ includes:
   ansible: .taskfiles/AnsibleTasks.yml
   cluster: .taskfiles/ClusterTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
+  es: .taskfiles/ExternalSecrets.yaml
   terraform: .taskfiles/TerraformTasks.yml
 
 tasks:
