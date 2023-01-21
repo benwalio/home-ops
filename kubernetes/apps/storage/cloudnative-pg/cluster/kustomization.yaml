@@ -5,4 +5,4 @@ kind: Kustomization
 namespace: storage
 resources:
   - ./cluster.yaml
-  - ./scheduledbackup.yaml
+  # - ./scheduledbackup.yaml
