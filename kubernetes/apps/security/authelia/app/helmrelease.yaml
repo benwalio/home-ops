@@ -91,7 +91,7 @@ spec:
             add_header X-XSS-Protection "1; mode=block";
           hajimari.io/icon: mdi:shield-account
         hosts:
-          - host: &host auth.${SECRET_DOMAIN}
+          - host: &host auth.benwal.casa
             paths:
               - path: /
                 pathType: Prefix
