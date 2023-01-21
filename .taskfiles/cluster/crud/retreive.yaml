@@ -49,7 +49,7 @@ tasks:
     cmds:
       - kubectl get ingress {{.CLI_ARGS | default "-A"}}
 
-  resources:
+  res:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
       - task: nodes
@@ -60,4 +60,4 @@ tasks:
       - task: certs
       - task: ingress
       - task: pods
-      - task: svc
+      # - task: svc
