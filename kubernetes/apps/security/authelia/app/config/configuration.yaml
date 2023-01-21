@@ -19,18 +19,18 @@ access_control:
   rules:
     - domain: ["grafana.benwal.casa"]
       policy: bypass
-    - domain: ["letsblockit.benwal.casa"]
-      resources: ["^/lists.*$"]
-      policy: bypass
-    - domain: ["navidrome.benwal.casa"]
-      resources: ["^/rest.*$"]
-      policy: bypass
-    - domain: ["navidrome.benwal.casa"]
-      resources: ["^/metrics.*$"]
-      policy: deny
-    - domain: ["wizarr.benwal.casa"]
-      resources: ["^/join.*$", "^/j/.*$", "^/setup.*$", "^/static/.*$"]
-      policy: bypass
+    # - domain: ["letsblockit.benwal.casa"]
+    #   resources: ["^/lists.*$"]
+    #   policy: bypass
+    # - domain: ["navidrome.benwal.casa"]
+    #   resources: ["^/rest.*$"]
+    #   policy: bypass
+    # - domain: ["navidrome.benwal.casa"]
+    #   resources: ["^/metrics.*$"]
+    #   policy: deny
+    # - domain: ["wizarr.benwal.casa"]
+    #   resources: ["^/join.*$", "^/j/.*$", "^/setup.*$", "^/static/.*$"]
+    #   policy: bypass
 
 identity_providers:
   oidc:
