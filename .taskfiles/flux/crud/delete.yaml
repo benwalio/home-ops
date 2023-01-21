@@ -1,0 +1,8 @@
+---
+version: "3"
+
+tasks:
+  kus:
+    desc: delete kustomization
+    cmds:
+      - flux delete kustomization {{.CLI_ARGS}}
