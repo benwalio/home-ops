@@ -7,4 +7,4 @@ resources:
   - ./helmrelease.yaml
 patchesStrategicMerge:
   - ./patches/alertmanager.yaml
-  # - ./patches/prometheus.yaml
+  - ./patches/prometheus.yaml
