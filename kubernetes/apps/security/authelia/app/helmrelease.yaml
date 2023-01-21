@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app authelia
+  name: authelia
   namespace: security
 spec:
   interval: 15m
@@ -10,78 +10,49 @@ spec:
     spec:
       chart: app-template
       version: 1.2.1
+      interval: 15m
       sourceRef:
         kind: HelmRepository
-        name: bjw-s
+        name: bjw-s-charts
         namespace: flux-system
-  maxHistory: 3
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
+
   values:
-    # initContainers:
-    #   init-db:
-    #     image: ghcr.io/onedr0p/postgres-initdb:14.6
-    #     envFrom:
-    #       - secretRef:
-    #           name: authelia-secret
     controller:
       replicas: 3
       strategy: RollingUpdate
-      annotations:
-        reloader.stakater.com/auto: "true"
+      rollingUpdate:
+        surge: 1
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: authelia
+      secret.reloader.stakater.com/reload: authelia
+
     image:
       repository: ghcr.io/authelia/authelia
-      # TODO Switch to Authelia release tag on next release
-      tag: master@sha256:0127be5c3f6982df6d8a9a2a89a65255716b2256860caf8c824435676d2ed6f3
-    args: ["--config", "/config/configuration.yml", "--config.experimental.filters", "expand-env"]
+      tag: 4.37.5
+
+    enableServiceLinks: false
+
     envFrom:
       - secretRef:
           name: authelia-secret
-    enableServiceLinks: false
+
     service:
       main:
         ports:
           http:
-            port: &port 80
-          metrics:
-            enabled: true
-            port: 8080
-    probes:
-      liveness: &probes
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /api/health
-            port: *port
-          initialDelaySeconds: 0
-          periodSeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-      readiness: *probes
-      startup:
-        enabled: false
-    serviceMonitor:
-      main:
-        enabled: true
-        endpoints:
-          - port: metrics
-            scheme: http
-            path: /metrics
-            interval: 1m
-            scrapeTimeout: 10s
+            port: 9091
+
     ingress:
       main:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: "nginx"
         annotations:
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/configuration-snippet: |
@@ -89,38 +60,35 @@ spec:
             add_header Pragma "no-cache";
             add_header X-Frame-Options "SAMEORIGIN";
             add_header X-XSS-Protection "1; mode=block";
-          hajimari.io/icon: mdi:shield-account
         hosts:
-          - host: &host auth.benwal.casa
+          - host: &host "auth.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
               - *host
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+
     persistence:
       config:
         enabled: true
         type: configMap
-        name: authelia-configmap
+        name: authelia
         subPath: configuration.yml
         mountPath: /config/configuration.yml
         readOnly: false
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 50Mi
+      limits:
+        memory: 250Mi
+
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
         whenUnsatisfiable: DoNotSchedule
         labelSelector:
           matchLabels:
-            app.kubernetes.io/name: *app
-    resources:
-      requests:
-        cpu: 5m
-        memory: 10Mi
-      limits:
-        memory: 100Mi
+            app.kubernetes.io/name: authelia
