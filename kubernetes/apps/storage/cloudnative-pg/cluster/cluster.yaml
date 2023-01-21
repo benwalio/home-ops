@@ -4,8 +4,8 @@ kind: Cluster
 metadata:
   name: postgres
   namespace: storage
-  annotations:
-    kyverno.io/ignore: "true"
+  # annotations:
+  #   kyverno.io/ignore: "true"
 spec:
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:14.5
