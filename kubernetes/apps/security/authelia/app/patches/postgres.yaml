@@ -29,9 +29,9 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: authelia-secret
-                key: AUTHELIA_STORAGE_POSTGRES_USER
+                key: AUTHELIA_STORAGE_POSTGRES_USERNAME
           - name: POSTGRES_PASS
             valueFrom:
               secretKeyRef:
                 name: authelia-secret
-                key: AUTHELIA_STORAGE_POSTGRES_PASS
+                key: AUTHELIA_STORAGE_POSTGRES_PASSWORD
