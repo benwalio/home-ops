@@ -24,14 +24,14 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: authelia-secret
-                key: password
+                key: POSTGRES_SUPER_PASS
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
                 name: authelia-secret
-                key: POSTGRES_SUPER_PASS
+                key: AUTHELIA_STORAGE_POSTGRES_USER
           - name: POSTGRES_PASS
             valueFrom:
               secretKeyRef:
                 name: authelia-secret
-                key: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+                key: AUTHELIA_STORAGE_POSTGRES_PASS
