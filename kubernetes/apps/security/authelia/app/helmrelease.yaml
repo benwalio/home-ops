@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: authelia
+  name: &app authelia
   namespace: security
 spec:
   interval: 15m
@@ -30,8 +30,8 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
 
     podAnnotations:
-      configmap.reloader.stakater.com/reload: authelia
-      secret.reloader.stakater.com/reload: authelia
+      configmap.reloader.stakater.com/reload: &cm authelia-configmap
+      secret.reloader.stakater.com/reload: &es authelia-secret
 
     image:
       repository: ghcr.io/authelia/authelia
@@ -41,7 +41,7 @@ spec:
 
     envFrom:
       - secretRef:
-          name: authelia-secret
+          name: *es
 
     service:
       main:
@@ -76,7 +76,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: authelia-configmap
+        name: *cm
         subPath: configuration.yml
         mountPath: /config/configuration.yml
         readOnly: false
@@ -94,4 +94,4 @@ spec:
         whenUnsatisfiable: DoNotSchedule
         labelSelector:
           matchLabels:
-            app.kubernetes.io/name: authelia
+            app.kubernetes.io/name: *app
