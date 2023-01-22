@@ -61,7 +61,12 @@ spec:
           "duration": $request_time,"method": "$request_method", "http_referrer": "$http_referer",
           "http_user_agent": "$http_user_agent"}
       metrics:
-        enabled: false
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: networking
+          namespaceSelector:
+            any: true
       extraArgs:
         default-ssl-certificate: "networking/${SECRET_DOMAIN/./-}-production-tls"
       podAnnotations:
@@ -79,7 +84,7 @@ spec:
         tag: 2.19.0
       extraEnvs:
         - name: TEMPLATE_NAME
-          value: lost-in-space
+          value: shuffle
         - name: SHOW_DETAILS
           value: "false"
   valuesFrom:
