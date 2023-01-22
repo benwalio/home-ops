@@ -48,6 +48,9 @@ spec:
         ports:
           http:
             port: 9091
+          metrics:
+            enabled: true
+            port: 8080
 
     ingress:
       main:
