@@ -9,9 +9,12 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-redis-lb
     - name: cluster-apps-external-secrets-stores
     - name: cluster-apps-ingress-nginx
-    - name: cluster-apps-rook-ceph-cluster
+    - name: cluster-apps-authelia
+    - name: cluster-apps-minio
+    # - name: cluster-apps-rook-ceph-cluster
   path: ./kubernetes/apps/media/outline/app
   prune: true
   sourceRef:
