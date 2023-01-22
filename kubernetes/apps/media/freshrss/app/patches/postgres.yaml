@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: freshrss
+  namespace: media
+spec:
+  values:
+    initContainers:
+      init-db:
+        image: ghcr.io/onedr0p/postgres-initdb:14.6
+        env:
+          - name: POSTGRES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: freshrss-secret
+                key: FR_DATABASE_HOST
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: freshrss-secret
+                key: FR_DATABASE_NAME
+          - name: POSTGRES_SUPER_PASS
+            valueFrom:
+              secretKeyRef:
+                name: freshrss-secret
+                key: POSTGRES_SUPER_PASS
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: freshrss-secret
+                key: FR_DATABASE_USER
+          - name: POSTGRES_PASS
+            valueFrom:
+              secretKeyRef:
+                name: freshrss-secret
+                key: FR_DATABASE_PASS
