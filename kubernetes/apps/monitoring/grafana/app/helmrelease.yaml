@@ -31,38 +31,38 @@ spec:
         image: ghcr.io/onedr0p/postgres-initdb:14.6
         envFrom:
           - secretRef:
-              name: grafana-secret
+              name: op-grafana-secret
     replicas: 3
     rbac:
       pspEnabled: false
     testFramework:
       enabled: false
     # admin:
-    #   existingSecret: grafana-secret
+    #   existingSecret: op-grafana-secret
     envFromSecrets:
-      - name: grafana-secret
+      - name: op-grafana-secret
     grafana.ini:
-      # auth:
-      #   signout_redirect_url: https://auth.benwal.casa/logout
-      #   oauth_auto_login: false
-      # auth.generic_oauth:
-      #   enabled: true
-      #   name: Authelia
-      #   client_id: # Set by env vars
-      #   client_secret: # Set by env vars secret
-      #   auth_url: # Set by env vars
-      #   token_url: # Set by env vars
-      #   api_url: # Set by env vars
-      #   scopes: "openid profile email groups"
-      #   empty_scopes: false
-      #   login_attribute_path: preferred_username
-      #   groups_attribute_path: groups
-      #   name_attribute_path: name
-      #   use_pkce: true
-      # auth.generic_oauth.group_mapping:
-      #   role_attribute_path: |
-      #     contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
-      #   org_id: 1
+      auth:
+        signout_redirect_url: https://auth.${SECRET_DOMAIN}/logout
+        oauth_auto_login: false
+      auth.generic_oauth:
+        enabled: true
+        name: Authelia
+        client_id: # Set by env vars
+        client_secret: # Set by env vars secret
+        auth_url: # Set by env vars
+        token_url: # Set by env vars
+        api_url: # Set by env vars
+        scopes: "openid profile email groups"
+        empty_scopes: false
+        login_attribute_path: preferred_username
+        groups_attribute_path: groups
+        name_attribute_path: name
+        use_pkce: true
+      auth.generic_oauth.group_mapping:
+        role_attribute_path: |
+          contains(groups[*], 'admins') && 'Admin' || contains(groups[*], 'people') && 'Viewer'
+        org_id: 1
       auth.basic:
         enabled: true
         # disable_login_form: false
@@ -110,10 +110,10 @@ spec:
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/7845
-        zfs:
-          gnetId: 7845
-          revision: 4
-          datasource: Prometheus
+        # zfs:
+        #   gnetId: 7845
+        #   revision: 4
+        #   datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/13502
         minio:
           gnetId: 13502
@@ -145,7 +145,7 @@ spec:
         external-dns.home.arpa/enabled: "true"
         hajimari.io/icon: simple-icons:grafana
       hosts:
-        - &host grafana.benwal.casa
+        - &host grafana.${SECRET_DOMAIN}
       tls:
         - hosts:
             - *host
