@@ -54,6 +54,7 @@ spec:
         ingressClassName: "nginx"
         annotations:
           hajimari.io/icon: mdi:text-box-multiple
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host "wiki.${SECRET_DOMAIN}"
             paths:
