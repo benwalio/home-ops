@@ -40,7 +40,11 @@ identity_providers:
     clients:
       - id: grafana
         description: Grafana
-        secret: "${GRAFANA_OAUTH_CLIENT_SECRET}"
+        secret:
+          valueFrom:
+            secretKeyRef:
+              name: authelia-secret
+              key: GRAFANA_OAUTH_CLIENT_SECRET
         public: false
         authorization_policy: two_factor
         pre_configured_consent_duration: 1y
@@ -49,7 +53,11 @@ identity_providers:
         userinfo_signing_algorithm: none
       - id: outline
         description: Outline
-        secret: "${OUTLINE_OAUTH_CLIENT_SECRET}"
+        secret:
+          valueFrom:
+            secretKeyRef:
+              name: authelia-secret
+              key: OUTLINE_OAUTH_CLIENT_SECRET
         public: false
         authorization_policy: two_factor
         pre_configured_consent_duration: 1y
@@ -77,7 +85,11 @@ identity_providers:
 #         userinfo_signing_algorithm: none
       - id: weave-gitops
         description: Weave GitOps
-        secret: "${WEAVEGITOPS_OAUTH_CLIENT_SECRET}"
+        secret:
+          valueFrom:
+            secretKeyRef:
+              name: authelia-secret
+              key: WEAVEGITOPS_OAUTH_CLIENT_SECRET
         public: false
         authorization_policy: two_factor
         pre_configured_consent_duration: 1y
