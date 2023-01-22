@@ -9,32 +9,6 @@ spec:
     initContainers:
       init-db:
         image: ghcr.io/onedr0p/postgres-initdb:14.6
-        # env:
-        #   - name: POSTGRES_HOST
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: outline-secret
-        #         key: OL_DB_HOST
-        #   - name: POSTGRES_DB
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: outline-secret
-        #         key: OL_DB_NAME
-        #   - name: POSTGRES_SUPER_PASS
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: outline-secret
-        #         key: POSTGRES_SUPER_PASS
-        #   - name: POSTGRES_USER
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: outline-secret
-        #         key: OL_DATABASE_USER
-        #   - name: POSTGRES_PASS
-        #     valueFrom:
-        #       secretKeyRef:
-        #         name: outline-secret
-        #         key: OL_DATABASE_PASS
         envFrom:
           - secretRef:
               name: outline-secret
