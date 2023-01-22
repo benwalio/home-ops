@@ -40,6 +40,14 @@ spec:
       namespaceSelector:
         matchNames:
           - default
+          - flux-system
+          - home-automation
+          - media
+          - monitoring
+          - networking
+          - rook-ceph
+          - security
+          - storage
     ingress:
       main:
         enabled: true
