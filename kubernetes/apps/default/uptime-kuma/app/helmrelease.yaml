@@ -42,20 +42,21 @@ spec:
         ports:
           http:
             port: 3001
-    # persistence:
-    #   config:
-    #     enabled: true
-    #     existingClaim: uptime-kuma-config
-    #     mountPath: /app/data
 
-    volumeClaimTemplates:
-      - name: config
+    persistence:
+      config:
+        enabled: true
+        existingClaim: uptime-kuma-pvc
         mountPath: /app/data
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        storageClass: ceph-block
-        labels:
-          snapshot.home.arpa/enabled: "true"
+
+    # volumeClaimTemplates:
+    #   - name: config
+    #     mountPath: /app/data
+    #     accessMode: ReadWriteOnce
+    #     size: 5Gi
+    #     storageClass: ceph-block
+    #     labels:
+    #       snapshot.home.arpa/enabled: "true"
 
     ingress:
       main:

@@ -28,7 +28,7 @@ metadata:
   name: uptime-kuma
   namespace: default
 spec:
-  sourcePVC: config-uptime-kuma-0
+  sourcePVC: uptime-kuma-pvc
   trigger:
     schedule: "0 0 * * *"
   restic:
