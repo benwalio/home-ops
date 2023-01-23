@@ -5,10 +5,18 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
+    
+permissions:
+  contents: read
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      # write permission is required for autolabeler
+      # otherwise, read permission is required at least
+      pull-requests: write
     steps:
       - uses: release-drafter/release-drafter@cfc5540ebc9d65a8731f02032e3d44db5e449fb6 # v5.22.0
         with:
