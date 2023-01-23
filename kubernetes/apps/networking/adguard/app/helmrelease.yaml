@@ -37,16 +37,20 @@ spec:
     image:
       repository: adguard/adguardhome
       tag: v0.107.21
-    # podAnnotations:
-    #   configmap.reloader.stakater.com/reload: adguard-home-config
+
     env:
       TZ: "${TIMEZONE}"
+
     args:
       - "--config"
       - "/opt/adguardhome/conf/AdGuardHome.yaml"
       - "--work-dir"
       - "/opt/adguardhome/work"
       - "--no-check-update"
+
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: &cm adguard-configmap
+
     service:
       main:
         primary: true
@@ -104,15 +108,23 @@ spec:
     #   data:
     #     enabled: true
     #     type: emptyDir
+
     persistence:
       data:
         enabled: true
         existingClaim: adguard-home-data-pvc
         mountPath: /opt/adguardhome/work
-      conf:
+      # conf:
+      #   enabled: true
+      #   existingClaim: adguard-home-conf-pvc
+      #   mountPath: /opt/adguardhome/conf
+      config:
         enabled: true
-        existingClaim: adguard-home-conf-pvc
+        type: configMap
+        name: *cm
+        subPath: AdGuardHome.yaml
         mountPath: /opt/adguardhome/conf
+        readOnly: false
         # subPath:
         #   - path: conf
         #     mountPath: /opt/adguardhome/conf
