@@ -124,7 +124,7 @@ spec:
               limits:
                 memory: 4Gi
         storageClass:
-          enabled: false
+          enabled: true
           isDefault: false
           name: ceph-filesystem
           pool: data0
