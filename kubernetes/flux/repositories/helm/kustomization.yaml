@@ -22,6 +22,7 @@ resources:
   - ./kyverno.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
+  - ./node-feature-discovery.yaml
   - ./piraeus.yaml
   - ./podinfo.yaml
   - ./prometheus-community.yaml
