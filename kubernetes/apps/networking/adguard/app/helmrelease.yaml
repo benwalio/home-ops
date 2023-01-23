@@ -48,8 +48,8 @@ spec:
       - "/opt/adguardhome/work"
       - "--no-check-update"
 
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: &cm adguard-configmap
+    # podAnnotations:
+    #   configmap.reloader.stakater.com/reload: &cm adguard-configmap
 
     service:
       main:
@@ -114,17 +114,17 @@ spec:
         enabled: true
         existingClaim: adguard-home-data-pvc
         mountPath: /opt/adguardhome/work
-      # conf:
-      #   enabled: true
-      #   existingClaim: adguard-home-conf-pvc
-      #   mountPath: /opt/adguardhome/conf
-      config:
+      conf:
         enabled: true
-        type: configMap
-        name: *cm
-        subPath: AdGuardHome.yaml
+        existingClaim: adguard-home-conf-pvc
         mountPath: /opt/adguardhome/conf
-        readOnly: false
+      # config:
+      #   enabled: true
+      #   type: configMap
+      #   name: *cm
+      #   subPath: AdGuardHome.yaml
+      #   mountPath: /opt/adguardhome/conf
+      #   readOnly: false
         # subPath:
         #   - path: conf
         #     mountPath: /opt/adguardhome/conf
