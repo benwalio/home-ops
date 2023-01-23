@@ -64,17 +64,17 @@ spec:
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${SVC_ADGUARD_ADDR}"
-        ports:
-          dns-tcp:
-            enabled: true
-            port: &dns-port 53
-            protocol: TCP
-            targetPort: &dns-target-port 53
-          dns-udp:
-            enabled: true
-            port: *dns-port
-            protocol: UDP
-            targetPort: *dns-target-port
+        # ports:
+        #   dns-tcp:
+        #     enabled: true
+        #     port: &dns-port 53
+        #     protocol: TCP
+        #     targetPort: &dns-target-port 53
+        #   dns-udp:
+        #     enabled: true
+        #     port: *dns-port
+        #     protocol: UDP
+        #     targetPort: *dns-target-port
 
     ingress:
       main:
