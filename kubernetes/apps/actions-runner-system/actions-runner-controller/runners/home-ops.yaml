@@ -13,6 +13,8 @@ spec:
       ephemeral: true
       repository: benwalio/home-ops
       labels: ["self-hosted"]
+      nodeSelector:
+        node-role.kubernetes.io/worker: "true"
       volumeMounts:
         - name: cache-volume
           mountPath: /cache
@@ -31,11 +33,14 @@ spec:
     name: home-ops
   scaleUpTriggers:
     - githubEvent:
-        workflowJob: {}
+        checkRun:
+          types: ["created"]
+          status: "queued"
       amount: 1
-      duration: 30m
+      duration: 1m
   minReplicas: 1
   maxReplicas: 3
   metrics:
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
-      repositoryNames: ["home-ops"]
+      repositoryNames:
+        - benwalio/home-ops
