@@ -7,3 +7,4 @@ resources:
   - ./cloudnative-pg/ks.yaml
   - ./minio/ks.yaml
   - ./redis/ks.yaml
+  - ./volsync/ks.yaml

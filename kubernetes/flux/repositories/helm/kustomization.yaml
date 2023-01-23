@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./1password.yaml
   - ./actions-runner-controller.yaml
+  - ./backube.yaml
   - ./bitnami.yaml
   - ./bjw-s.yaml
   - ./cloudnative-pg.yaml
