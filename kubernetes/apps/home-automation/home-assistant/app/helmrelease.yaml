@@ -23,6 +23,7 @@ spec:
       retries: 3
   dependsOn:
     - name: cloudnative-pg
+      namespace: storage
     - name: emqx
     - name: rook-ceph-cluster
       namespace: rook-ceph
