@@ -9,6 +9,8 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-ingress-nginx
+    - name: cluster-apps-metallb
+    - name: cluster-apps-metallb-config
   path: ./kubernetes/apps/networking/adguard/app
   prune: true
   targetNamespace: networking
