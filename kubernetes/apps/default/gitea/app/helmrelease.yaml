@@ -72,8 +72,8 @@ spec:
           DEFAULT_BRANCH: main
           DEFAULT_PRIVATE: true
         database:
-          # DB_TYPE: sqlite3
-          DB_TYPE: postgres
+          DB_TYPE: sqlite3
+          # DB_TYPE: postgres
         service:
           DISABLE_REGISTRATION: false
           ALLOW_ONLY_EXTERNAL_REGISTRATION: true
@@ -157,22 +157,22 @@ spec:
       name: gitea-config-secret
       valuesKey: minioEndpoint
 
-    - targetPath: gitea.config.database.HOST
-      kind: Secret
-      name: gitea-config-secret
-      valuesKey: POSTGRES_HOST
-    - targetPath: gitea.config.database.NAME
-      kind: Secret
-      name: gitea-config-secret
-      valuesKey: POSTGRES_DB
-    - targetPath: gitea.config.database.USER
-      kind: Secret
-      name: gitea-config-secret
-      valuesKey: POSTGRES_USER
-    - targetPath: gitea.config.database.PASSWD
-      kind: Secret
-      name: gitea-config-secret
-      valuesKey: POSTGRES_PASS
+    # - targetPath: gitea.config.database.HOST
+    #   kind: Secret
+    #   name: gitea-config-secret
+    #   valuesKey: POSTGRES_HOST
+    # - targetPath: gitea.config.database.NAME
+    #   kind: Secret
+    #   name: gitea-config-secret
+    #   valuesKey: POSTGRES_DB
+    # - targetPath: gitea.config.database.USER
+    #   kind: Secret
+    #   name: gitea-config-secret
+    #   valuesKey: POSTGRES_USER
+    # - targetPath: gitea.config.database.PASSWD
+    #   kind: Secret
+    #   name: gitea-config-secret
+    #   valuesKey: POSTGRES_PASS
 
     - targetPath: gitea.config.mailer.SMTP_ADDR
       kind: Secret
