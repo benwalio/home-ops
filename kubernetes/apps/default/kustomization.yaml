@@ -6,4 +6,5 @@ resources:
   - ./echo-server/ks.yaml
   - ./gitea/ks.yaml
   - ./hajimari/ks.yaml
+  - ./kutt/ks.yaml
   - ./uptime-kuma/ks.yaml
