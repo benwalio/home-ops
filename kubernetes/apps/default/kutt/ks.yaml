@@ -9,9 +9,9 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
-    - name: cluster-apps-cluster-apps-redis-lb
+    - name: cluster-apps-redis-lb
     - name: cluster-apps-external-secrets-stores
-    - name: cluster-apps-cluster-apps-ingress-nginx
+    - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/default/kutt/app
   prune: true
   sourceRef:
