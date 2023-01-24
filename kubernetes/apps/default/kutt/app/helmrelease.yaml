@@ -22,7 +22,7 @@ spec:
 
     image:
       repository: kutt/kutt
-      tag: 2.4.7
+      tag: v2.4.7
 
     service:
       main:
