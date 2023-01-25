@@ -18,3 +18,4 @@ terraform.tfstate*
 infra/
 docs/secret/
 temp/
+.private/
