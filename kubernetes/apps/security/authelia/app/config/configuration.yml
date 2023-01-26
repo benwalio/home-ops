@@ -62,6 +62,15 @@ identity_providers:
         public: false
         authorization_policy: two_factor
         pre_configured_consent_duration: 1y
+        grant_types:
+          - refresh_token
+          - authorization_code
+        response_types:
+          - code
+        response_modes:
+          - form_post
+          - query
+          - fragment
         userinfo_signing_algorithm: none
         scopes: ["openid", "profile", "email", "offline_access"]
         redirect_uris:
