@@ -14,16 +14,20 @@ spec:
         kind: HelmRepository
         name: emqx
         namespace: flux-system
+
   install:
     createNamespace: true
     remediation:
       retries: 3
+
   upgrade:
     remediation:
       retries: 3
+
   dependsOn:
     - name: rook-ceph-cluster
       namespace: rook-ceph
+
   values:
     image:
       repository: public.ecr.aws/emqx/emqx
@@ -51,12 +55,15 @@ spec:
         tls:
           - hosts:
               - *host
+
     metrics:
       enabled: false
+
     persistence:
-      enabled: true
-      storageClass: ceph-block
-      size: 100Mi
+      data:
+        enabled: true
+        existingClaim: emqx-pvc
+
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
