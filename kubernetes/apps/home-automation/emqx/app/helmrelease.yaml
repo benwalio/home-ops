@@ -37,9 +37,11 @@ spec:
       EMQX_ALLOW_ANONYMOUS: "false"
       EMQX_AUTH__MNESIA__PASSWORD_HASH: plain
     service:
-      type: LoadBalancer
-      externalIPs:
-        - ${SVC_EMQX_ADDR}
+      # type: LoadBalancer
+      # externalIPs:
+      #   - ${SVC_EMQX_ADDR}
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: "${SVC_EMQX_ADDR}"
       externalTrafficPolicy: Local
     ingress:
       dashboard:
@@ -63,15 +65,6 @@ spec:
       data:
         enabled: true
         existingClaim: emqx-pvc
-
-    # volumeClaimTemplates:
-    #   - name: data
-    #     # mountPath: /config
-    #     accessMode: ReadWriteOnce
-    #     size: 100Mi
-    #     storageClass: ceph-block
-    #     labels:
-    #       snapshot.home.arpa/enabled: "true"
 
     affinity:
       podAntiAffinity:
