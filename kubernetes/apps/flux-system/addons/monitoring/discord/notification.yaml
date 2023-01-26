@@ -9,7 +9,7 @@ spec:
   # username: Flux
   # channel: home-ops
   secretRef:
-    name: flux-webhook-discord-secret
+    name: flux-discord-secret
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
