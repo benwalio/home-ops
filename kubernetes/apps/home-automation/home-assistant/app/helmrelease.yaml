@@ -48,9 +48,11 @@ spec:
           name: home-assistant-secret
     service:
       main:
-        type: LoadBalancer
-        externalIPs:
-          - ${SVC_HOME_ASSISTANT_ADDR}
+        # type: LoadBalancer
+        # externalIPs:
+        #   - ${SVC_HOME_ASSISTANT_ADDR}
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${SVC_HOME_ASSISTANT_ADDR}"
         externalTrafficPolicy: Local
         ports:
           http:
