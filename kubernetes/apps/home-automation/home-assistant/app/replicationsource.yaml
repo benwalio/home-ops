@@ -1,5 +1,4 @@
 ---
-# TODO: setup restic and volsync
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:

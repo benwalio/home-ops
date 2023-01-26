@@ -59,10 +59,19 @@ spec:
     metrics:
       enabled: false
 
-    persistence:
-      data:
-        enabled: true
-        existingClaim: emqx-pvc
+    # persistence:
+    #   data:
+    #     enabled: true
+    #     existingClaim: emqx-pvc
+
+    volumeClaimTemplates:
+      - name: data
+        # mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 100Mi
+        storageClass: ceph-block
+        labels:
+          snapshot.home.arpa/enabled: "true"
 
     affinity:
       podAntiAffinity:

@@ -28,7 +28,7 @@ metadata:
   name: emqx
   namespace: default
 spec:
-  sourcePVC: emqx-pvc
+  sourcePVC: data-emqx-0
   trigger:
     schedule: "0 0 * * *"
   restic:
