@@ -14,20 +14,24 @@ spec:
         kind: HelmRepository
         name: bjw-s-charts
         namespace: flux-system
+
   install:
     createNamespace: true
     remediation:
       retries: 5
+
   upgrade:
     remediation:
       retries: 5
+
   values:
     serviceAccount:
       name: tailscale-sa
 
     image:
       repository: ghcr.io/tailscale/tailscale
-      tag: v1.36.0@sha256:4b3c5149c22c827351c7daa01c1c1fdd6c3ca7e0ce592ec001f0e07729168442
+      tag: v1.36.0
+
     env:
       TZ: ${TIMEZONE}
       TS_KUBE_SECRET: tailscale-secret
