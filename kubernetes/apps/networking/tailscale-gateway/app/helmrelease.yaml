@@ -27,10 +27,10 @@ spec:
 
     image:
       repository: ghcr.io/tailscale/tailscale
-      tag: v1.34.1
+      tag: v1.36.0@sha256:4b3c5149c22c827351c7daa01c1c1fdd6c3ca7e0ce592ec001f0e07729168442
     env:
       TZ: ${TIMEZONE}
-      TS_KUBE_SECRET: "tailscale-secret"
+      TS_KUBE_SECRET: tailscale-secret
       SA_NAME: tailscale
       TS_USERSPACE: "true"
       TS_ROUTES: "10.42.0.0/16,10.43.0.0/16,10.69.0.0/16"
