@@ -36,9 +36,10 @@ spec:
     service:
       main:
         type: LoadBalancer
-        # externalIPs: ["${SVC_PLEX_ADDR}"]
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
+        externalIPs:
+          - ${SVC_PLEX_ADDR}
+        # annotations:
+        #   metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
         externalTrafficPolicy: Local
         ports:
           http:
@@ -49,7 +50,7 @@ spec:
         ingressClassName: nginx
         annotations:
           external-dns.home.arpa/enabled: "true"
-          # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           hajimari.io/icon: mdi:plex
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
