@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./freshrss/ks.yaml
   - ./outline/ks.yaml
+  - ./plex/ks.yaml
