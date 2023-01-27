@@ -23,7 +23,7 @@ spec:
       retries: 5
   values:
     serviceAccount:
-      name: tailscale
+      name: tailscale-sa
 
     image:
       repository: ghcr.io/tailscale/tailscale
@@ -31,7 +31,7 @@ spec:
     env:
       TZ: ${TIMEZONE}
       TS_KUBE_SECRET: tailscale-secret
-      SA_NAME: tailscale
+      SA_NAME: tailscale-sa
       TS_USERSPACE: "true"
       TS_ROUTES: "10.42.0.0/16,10.43.0.0/16,10.69.0.0/16"
       TS_EXTRA_ARGS: "--advertise-exit-node"
