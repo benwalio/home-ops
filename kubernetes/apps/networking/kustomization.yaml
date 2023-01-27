@@ -9,3 +9,4 @@ resources:
   - ./k8s-gateway/ks.yaml
   - ./metallb/ks.yaml
   - ./adguard/ks.yaml
+  - ./tailscale-gateway/ks.yaml
