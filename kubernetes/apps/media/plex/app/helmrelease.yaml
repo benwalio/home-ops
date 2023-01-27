@@ -33,13 +33,15 @@ spec:
       tag: 1.30.2.6563-3d4dc0cce@sha256:a48f8cd0680791c4102492619c6ac30451bafde9746083e07b65c2cbfc1446ff
     env:
       TZ: ${TIMEZONE}
+      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
+      ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16"
     service:
       main:
         type: LoadBalancer
-        externalIPs:
-          - ${SVC_PLEX_ADDR}
-        # annotations:
-        #   metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
+        # externalIPs:
+        #   - ${SVC_PLEX_ADDR}
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
         externalTrafficPolicy: Local
         ports:
           http:
@@ -51,6 +53,12 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            location = / {
+              if ($http_x_plex_device = ""){
+                return 301 $scheme://$host/web/index.html;
+              }
+            }
           hajimari.io/icon: mdi:plex
         hosts:
           - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
