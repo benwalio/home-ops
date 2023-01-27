@@ -29,8 +29,8 @@ spec:
     controller:
       type: statefulset
     image:
-      repository: ghcr.io/onedr0p/plex
-      tag: 1.30.2.6563-3d4dc0cce@sha256:a48f8cd0680791c4102492619c6ac30451bafde9746083e07b65c2cbfc1446ff
+      repository: plexinc/pms-docker
+      tag: 1.30.2.6563-3d4dc0cce
     env:
       TZ: ${TIMEZONE}
       ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
@@ -40,8 +40,9 @@ spec:
         type: LoadBalancer
         # externalIPs:
         #   - ${SVC_PLEX_ADDR}
-        # annotations:
-        #   metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
+        annotations:
+          # metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
+          metallb.universe.tf/allow-shared-ip: plex
         loadBalancerIP: ${SVC_PLEX_ADDR}
         externalTrafficPolicy: Local
         ports:
@@ -96,6 +97,25 @@ spec:
       transcode:
         enabled: true
         type: emptyDir
+
+    # addons:
+    #   promtail:
+    #     enabled: true
+    #     image:
+    #       repository: grafana/promtail
+    #       tag: 2.7.2
+    #     loki: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
+    #     logs:
+    #     - name: promtail/plex
+    #       path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
+    #     - name: promtail/plex/plugins
+    #       path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
+    #     volumeMounts:
+    #     - name: config
+    #       mountPath: /config
+    #       readOnly: true
+    #     securityContext:
+    #       runAsUser: 0
     nodeSelector:
       # node-role.kubernetes.io/worker: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
@@ -115,4 +135,4 @@ spec:
         memory: 2000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 4000Mi
+        memory: 5000Mi
