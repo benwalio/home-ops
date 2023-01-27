@@ -94,10 +94,13 @@ spec:
     persistence:
       media:
         enabled: true
+        # existingClaim: plex-media-nfs-pvc
         type: nfs
         server: 192.168.2.9
         path: /volume1/media
         mountPath: /media
+        mountOptions:
+          - nfsvers=4.1
         readOnly: true
       transcode:
         enabled: true
