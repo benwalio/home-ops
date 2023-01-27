@@ -85,7 +85,7 @@ spec:
         enabled: true
         type: emptyDir
     nodeSelector:
-      node-role.kubernetes.io/worker: "true"
+      # node-role.kubernetes.io/worker: "true"
       intel.feature.node.kubernetes.io/gpu: "true"
     affinity:
       podAntiAffinity:
