@@ -33,11 +33,11 @@ spec:
       tag: v1.36.0
 
     env:
-      TZ: ${TIMEZONE}
+      TZ: "America/New_York"
       TS_KUBE_SECRET: tailscale-secret
       SA_NAME: tailscale-sa
       TS_USERSPACE: "true"
-      TS_ROUTES: "10.42.0.0/16,10.43.0.0/16,10.69.0.0/16"
+      TS_ROUTES: "10.42.0.0/16,10.43.0.0/16,10.69.10.0/24,192.168.1.0/24,192.168.2.0/24"
       TS_EXTRA_ARGS: "--advertise-exit-node"
     envFrom:
       - secretRef:
