@@ -29,7 +29,7 @@ access_control:
       policy: one_factor
       subject: ["group:admins", "group:users"]
       networks:
-        - private
+        - internal
     # - domain: ["navidrome.${SECRET_DOMAIN}"]
     #   resources: ["^/rest.*$"]
     #   policy: bypass
