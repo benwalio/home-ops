@@ -37,7 +37,7 @@ spec:
     repository: nocodb-restic-secret
     cacheCapacity: 10Gi
     volumeSnapshotClassName: csi-ceph-blockpool
-    storageClassName: ceph-block
+    storageClassName: ceph-filesystem
     retain:
       daily: 10
       within: 3d
