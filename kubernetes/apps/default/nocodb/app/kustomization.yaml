@@ -10,5 +10,5 @@ resources:
   # - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/postgres.yaml
-generatorOptions:
-  disableNameSuffixHash: true
+# generatorOptions:
+#   disableNameSuffixHash: true
