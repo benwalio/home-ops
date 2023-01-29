@@ -8,4 +8,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./shlink/ks.yaml
   - ./uptime-kuma/ks.yaml
-  - ./vikunja/ks.yaml
+  # - ./vikunja/ks.yaml
