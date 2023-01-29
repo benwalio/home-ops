@@ -145,6 +145,11 @@ spec:
               secretKeyRef:
                 name: vikunja-secret
                 key: SMTP_PASS
+          - name: VIKUNJA_MAILER_FROMEMAIL
+            valueFrom:
+              secretKeyRef:
+                name: vikunja-secret
+                key: FROM_EMAIL
 
         volumeMounts:
           - name: files
