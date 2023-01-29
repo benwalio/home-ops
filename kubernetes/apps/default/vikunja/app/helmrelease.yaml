@@ -35,7 +35,7 @@ spec:
       tag: 2.6.2-alpine
     envFrom:
       - secretRef:
-          name: *app
+          name: vikunja-secret
     service:
       main:
         ports:
