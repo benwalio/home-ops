@@ -9,9 +9,9 @@ metadata:
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
-  accessModes:
-    - ReadWriteOnce
   storageClassName: ceph-filesystem
+  accessModes:
+    - ReadWriteMany
   resources:
     requests:
-      storage: 5Gi
+      storage: 8Gi
