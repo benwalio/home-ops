@@ -63,7 +63,7 @@ spec:
         ports:
           http:
             port: 3000
-    # local storage on disk, backups, keys, etc
+    # local storage on disk, backups, keys
     persistence:
       data:
         enabled: true
