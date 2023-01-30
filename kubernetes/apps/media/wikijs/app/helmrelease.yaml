@@ -51,6 +51,11 @@ spec:
         valueFrom:
           secretKeyRef:
             name: wikijs-secret
+            key: POSTGRES_DB
+      DB_PASS:
+        valueFrom:
+          secretKeyRef:
+            name: wikijs-secret
             key: POSTGRES_PASS
       HA_ACTIVE: true
     service:
