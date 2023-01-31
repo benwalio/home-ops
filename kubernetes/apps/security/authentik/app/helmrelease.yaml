@@ -51,6 +51,8 @@ spec:
         host: authentik-redis.security.svc.cluster.local
       outposts:
         docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+      email:
+        port: 25
 
     postgresql:
       enabled: false
@@ -78,11 +80,11 @@ spec:
       valuesKey: SMTP_HOST
       targetPath: authentik.email.host
       optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: SMTP_PORT
-      targetPath: authentik.email.port
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: SMTP_PORT
+    #   targetPath: authentik.email.port
+    #   optional: false
     - kind: Secret
       name: authentik-secret
       valuesKey: SMTP_USER
