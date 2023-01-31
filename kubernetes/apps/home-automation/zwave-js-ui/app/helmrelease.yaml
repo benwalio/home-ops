@@ -75,15 +75,19 @@ spec:
               - *host
     securityContext:
       privileged: true
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /usr/src/app/store
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
-        labels:
-          snapshot.home.arpa/enabled: "true"
+    # volumeClaimTemplates:
+    #   - name: config
+    #     mountPath: /usr/src/app/store
+    #     accessMode: ReadWriteOnce
+    #     size: 1Gi
+    #     storageClass: ceph-block
+    #     labels:
+    #       snapshot.home.arpa/enabled: "true"
     persistence:
+      config:
+        enabled: true
+        existingClaim: zwave-js-ui-pvc
+        mountPath: /usr/src/app/store
       usb:
         enabled: true
         type: hostPath
