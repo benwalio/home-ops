@@ -15,25 +15,21 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-  dependsOn:
-    - name: paperless-gotenberg
-      namespace: media
-    - name: paperless-tika
-      namespace: media
-    - name: paperless-redis
-      namespace: media
   install:
     createNamespace: true
     remediation:
       retries: 5
+
   upgrade:
     remediation:
       retries: 3
+
   values:
     image:
       repository: ghcr.io/paperless-ngx/paperless-ngx
       tag: 1.12.2
     # https://paperless-ngx.readthedocs.io/en/latest/configuration.html
+
     env:
       PAPERLESS_TIME_ZONE: "${TIMEZONE}"
       PAPERLESS_URL: "https://docs.${SECRET_DOMAIN}"
@@ -96,24 +92,19 @@ spec:
             key: PAPERLESS_ADMIN_PASSWORD
       PAPERLESS_OCR_MODE: redo
       PAPERLESS_OCR_CLEAN: clean
-    envFrom:
-      - secretRef:
-          name: *app
+
     service:
       main:
         ports:
           http:
             port: 8000
+
     persistence:
       data:
         enabled: true
         mountPath: /usr/src/paperless/data
         type: nfs
-        server:
-          valueFrom:
-            secretKeyRef:
-              name: paperless-secret
-              key: NFS_SRV_HOST
+        server: 192.168.2.9
         path: /volume1/kubernetes/apps/paperless/data
         mountOptions:
           - nfsvers=4.1
@@ -121,11 +112,7 @@ spec:
         enabled: true
         mountPath: /usr/src/paperless/media
         type: nfs
-        server:
-          valueFrom:
-            secretKeyRef:
-              name: paperless-secret
-              key: NFS_SRV_HOST
+        server: 192.168.2.9
         path: /volume1/kubernetes/apps/paperless/media
         mountOptions:
           - nfsvers=4.1
@@ -133,11 +120,7 @@ spec:
         enabled: true
         mountPath: /usr/src/paperless/consume
         type: nfs
-        server:
-          valueFrom:
-            secretKeyRef:
-              name: paperless-secret
-              key: NFS_SRV_HOST
+        server: 192.168.2.9
         path: /volume1/kubernetes/apps/paperless/incoming
         mountOptions:
           - nfsvers=4.1
@@ -145,11 +128,7 @@ spec:
         enabled: true
         mountPath: /usr/src/paperless/export
         type: nfs
-        server:
-          valueFrom:
-            secretKeyRef:
-              name: paperless-secret
-              key: NFS_SRV_HOST
+        server: 192.168.2.9
         path: /volume1/kubernetes/apps/paperless/export
         mountOptions:
           - nfsvers=4.1
