@@ -35,7 +35,7 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   interval: 10m
-  path: "./kubernetes/apps/security/authentik/redis"
+  path: ./kubernetes/apps/security/authentik/redis
   prune: true
   sourceRef:
     kind: GitRepository

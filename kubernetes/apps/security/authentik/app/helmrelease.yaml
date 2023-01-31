@@ -42,8 +42,8 @@ spec:
           - hosts:
               - *host
 
-    # geoip:
-    #   enabled: true
+    geoip:
+      enabled: true
 
     authentik:
       log_level: debug
@@ -51,8 +51,48 @@ spec:
         host: authentik-redis.security.svc.cluster.local
       outposts:
         docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
-      email:
-        port: 25
+
+    envValueFrom:
+      AUTHENTIK_EMAIL__HOST:
+        secretKeyRef:
+          name: authentik-secret
+          key: SMTP_HOST
+      AUTHENTIK_EMAIL__PORT:
+        secretKeyRef:
+          name: authentik-secret
+          key: SMTP_PORT
+      AUTHENTIK_EMAIL__USERNAME:
+        secretKeyRef:
+          name: authentik-secret
+          key: SMTP_USER
+      AUTHENTIK_EMAIL__PASSWORD:
+        secretKeyRef:
+          name: authentik-secret
+          key: SMTP_PASS
+      AUTHENTIK_EMAIL__FROM:
+        secretKeyRef:
+          name: authentik-secret
+          key: SMTP_FROM
+      AUTHENTIK_SECRET_KEY:
+        secretKeyRef:
+          name: authentik-secret
+          key: AUTHENTIK_SECRET_KEY
+      AUTHENTIK_POSTGRESQL__HOST:
+        secretKeyRef:
+          name: authentik-secret
+          key: POSTGRES_HOST
+      AUTHENTIK_POSTGRESQL__NAME:
+        secretKeyRef:
+          name: authentik-secret
+          key: POSTGRES_DB
+      AUTHENTIK_POSTGRESQL__USER:
+        secretKeyRef:
+          name: authentik-secret
+          key: POSTGRES_USER
+      AUTHENTIK_POSTGRESQL__PASSWORD:
+        secretKeyRef:
+          name: authentik-secret
+          key: POSTGRES_PASS
 
     postgresql:
       enabled: false
@@ -70,71 +110,71 @@ spec:
 
   valuesFrom:
     # SMTP
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: SMTP_FROM
-      targetPath: authentik.email.from
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: SMTP_HOST
-      targetPath: authentik.email.host
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: SMTP_FROM
+    #   targetPath: authentik.email.from
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: SMTP_HOST
+    #   targetPath: authentik.email.host
+    #   optional: false
     # - kind: Secret
     #   name: authentik-secret
     #   valuesKey: SMTP_PORT
     #   targetPath: authentik.email.port
     #   optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: SMTP_USER
-      targetPath: authentik.email.username
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: SMTP_PASS
-      targetPath: authentik.email.password
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: SMTP_USER
+    #   targetPath: authentik.email.username
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: SMTP_PASS
+    #   targetPath: authentik.email.password
+    #   optional: false
     # GEOIP
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: GEOIP_ACCOUNT_ID
-    #   targetPath: geoip.accountId
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: GEOLITE_LICENSE_KEY
-    #   targetPath: geoip.licenseKey
-    #   optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: GEOIP_ACCOUNT_ID
+      targetPath: geoip.accountId
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: GEOLITE_LICENSE_KEY
+      targetPath: geoip.licenseKey
+      optional: false
     # POSTGRES
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: POSTGRES_HOST
-      targetPath: authentik.postgresql.host
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: POSTGRES_DB
-      targetPath: authentik.postgresql.name
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: POSTGRES_PORT
-      targetPath: authentik.postgresql.port
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: POSTGRES_USER
-      targetPath: authentik.postgresql.username
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: POSTGRES_PASS
-      targetPath: authentik.postgresql.password
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: POSTGRES_HOST
+    #   targetPath: authentik.postgresql.host
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: POSTGRES_DB
+    #   targetPath: authentik.postgresql.name
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: POSTGRES_PORT
+    #   targetPath: authentik.postgresql.port
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: POSTGRES_USER
+    #   targetPath: authentik.postgresql.username
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: POSTGRES_PASS
+    #   targetPath: authentik.postgresql.password
+    #   optional: false
     # Authentik
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: AUTHENTIK_SECRET_KEY
-      targetPath: authentik.secret_key
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: AUTHENTIK_SECRET_KEY
+    #   targetPath: authentik.secret_key
+    #   optional: false
