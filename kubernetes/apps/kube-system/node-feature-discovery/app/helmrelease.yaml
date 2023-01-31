@@ -40,7 +40,6 @@ spec:
             - name: "zwave"
               matchOn:
                 - usbId:
-                    class: ["02"]
                     vendor: ["10c4"]
                     device: ["ea60"]
             - name: "zigbee"
