@@ -83,12 +83,12 @@ spec:
         storageClass: ceph-block
         labels:
           snapshot.home.arpa/enabled: "true"
-#     persistence:
-#       usb:
-#         enabled: true
-#         type: hostPath
-#         hostPath: /dev/serial/by-id/usb-0658_0200-if00 #TODO: figure this shiz out
-#         hostPathType: CharDevice
+    persistence:
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_fea810d17d58ea119da1602b5af1e32e-if00-port0 #TODO: figure this shiz out
+        hostPathType: CharDevice
     nodeSelector:
       feature.node.kubernetes.io/custom-zwave: "true"
     resources:
