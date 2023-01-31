@@ -8,7 +8,7 @@ spec:
     - # Silicon Labs Z-Stick
       name: silicon-labs.zwave
       labels:
-        feature.node.kubernetes.io/custom-zwave: "true"
+        slabs.feature.node.kubernetes.io/zwave: "true"
       matchFeatures:
         - feature: usb.device
           matchExpressions:
