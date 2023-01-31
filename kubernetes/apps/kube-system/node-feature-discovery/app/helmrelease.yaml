@@ -48,3 +48,8 @@ spec:
                 - usbId:
                     vendor: ["1cf1"]
                     device: ["0030"]
+            - name: "flirc"
+              matchOn:
+                - usbId:
+                    vendor: ["20a0"]
+                    device: ["0006"]
