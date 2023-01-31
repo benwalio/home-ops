@@ -60,7 +60,7 @@ spec:
         annotations:
           hajimari.io/icon: mdi:zigbee
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - host: &host "zigbee2mqtt.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
@@ -80,6 +80,14 @@ spec:
         storageClass: ceph-block
         labels:
           snapshot.home.arpa/enabled: "true"
+    persistence:
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00 #TODO: figure this shiz out
+        hostPathType: CharDevice
+    nodeSelector:
+      feature.node.kubernetes.io/custom-zigbee: "true"
     resources:
       requests:
         cpu: 10m
