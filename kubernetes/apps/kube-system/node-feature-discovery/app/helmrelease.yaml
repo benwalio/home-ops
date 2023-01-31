@@ -40,15 +40,18 @@ spec:
             - name: "zwave"
               matchOn:
                 - usbId:
+                    class: ["ff"]
                     vendor: ["10c4"]
                     device: ["ea60"]
             - name: "zigbee"
               matchOn:
                 - usbId:
+                    class: ["02"]
                     vendor: ["1cf1"]
                     device: ["0030"]
             - name: "flirc"
               matchOn:
                 - usbId:
+                    class: ["03"]
                     vendor: ["20a0"]
                     device: ["0006"]
