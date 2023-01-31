@@ -55,7 +55,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: paperless-secret
-            key: POSTGRES_HOST
+            key: POSTGRES_PORT
       PAPERLESS_DBNAME:
         valueFrom:
           secretKeyRef:
