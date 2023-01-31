@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./freshrss/ks.yaml
+  - ./paperless/ks.yaml
   - ./plex/ks.yaml
   - ./wikijs/ks.yaml

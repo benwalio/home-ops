@@ -1,0 +1,174 @@
+# https://github.com/paperless-ngx/paperless-ngx/blob/main/docker/compose/docker-compose.postgres-tika.yml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app paperless
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  dependsOn:
+    - name: paperless-gotenberg
+      namespace: media
+    - name: paperless-tika
+      namespace: media
+    - name: paperless-redis
+      namespace: media
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: ghcr.io/paperless-ngx/paperless-ngx
+      tag: 1.12.2
+    # https://paperless-ngx.readthedocs.io/en/latest/configuration.html
+    env:
+      PAPERLESS_TIME_ZONE: "${TIMEZONE}"
+      PAPERLESS_URL: "https://docs.${SECRET_DOMAIN}"
+      PAPERLESS_SECRET_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: SECRET_KEY
+      PAPERLESS_OCR_LANGUAGE: eng
+      PAPERLESS_WEBSERVER_WORKERS: 2
+      # https://paperless-ngx.readthedocs.io/en/latest/advanced_usage.html#advanced-file-name-handling
+      PAPERLESS_FILENAME_FORMAT: "{created_year}/{correspondent}/{title}"
+      # https://github.com/paperless-ngx/paperless-ngx/issues/264
+      PAPERLESS_PORT: 8000
+      # USERMAP_UID: "${SECURITY_CONTEXT_RUN_AS_USER}"
+      USERMAP_GID: 65542
+      PAPERLESS_DBHOST:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: POSTGRES_HOST
+      PAPERLESS_DBPORT:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: POSTGRES_HOST
+      PAPERLESS_DBNAME:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: POSTGRES_DB
+      PAPERLESS_DBUSER:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: POSTGRES_USER
+      PAPERLESS_DBPASS:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: POSTGRES_PASS
+      PAPERLESS_TIKA_ENABLED: 1
+      PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-gotenberg.media.svc.cluster.local:3000
+      PAPERLESS_TIKA_ENDPOINT: http://paperless-tika.media.svc.cluster.local:9998
+      PAPERLESS_REDIS: redis://paperless-redis.media.svc.cluster.local:6379
+      PAPERLESS_ADMIN_MAIL:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: PAPERLESS_ADMIN_MAIL
+      PAPERLESS_ADMIN_USER:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: PAPERLESS_ADMIN_USER
+      PAPERLESS_ADMIN_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: paperless-secret
+            key: PAPERLESS_ADMIN_PASSWORD
+      PAPERLESS_OCR_MODE: redo
+      PAPERLESS_OCR_CLEAN: clean
+    envFrom:
+      - secretRef:
+          name: *app
+    service:
+      main:
+        ports:
+          http:
+            port: 8000
+    persistence:
+      data:
+        enabled: true
+        mountPath: /usr/src/paperless/data
+        type: nfs
+        server:
+          valueFrom:
+            secretKeyRef:
+              name: paperless-secret
+              key: NFS_SRV_HOST
+        path: /volume1/kubernetes/apps/paperless/data
+        mountOptions:
+          - nfsvers=4.1
+      media:
+        enabled: true
+        mountPath: /usr/src/paperless/media
+        type: nfs
+        server:
+          valueFrom:
+            secretKeyRef:
+              name: paperless-secret
+              key: NFS_SRV_HOST
+        path: /volume1/kubernetes/apps/paperless/media
+        mountOptions:
+          - nfsvers=4.1
+      consume:
+        enabled: true
+        mountPath: /usr/src/paperless/consume
+        type: nfs
+        server:
+          valueFrom:
+            secretKeyRef:
+              name: paperless-secret
+              key: NFS_SRV_HOST
+        path: /volume1/kubernetes/apps/paperless/incoming
+        mountOptions:
+          - nfsvers=4.1
+      export:
+        enabled: true
+        mountPath: /usr/src/paperless/export
+        type: nfs
+        server:
+          valueFrom:
+            secretKeyRef:
+              name: paperless-secret
+              key: NFS_SRV_HOST
+        path: /volume1/kubernetes/apps/paperless/export
+        mountOptions:
+          - nfsvers=4.1
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: file-multiple
+        hosts:
+          - host: &host "docs.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+
+    podAnnotations:
+      secret.reloader.stakater.com/reload: paperless-secret
