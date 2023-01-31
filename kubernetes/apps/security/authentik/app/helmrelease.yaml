@@ -22,11 +22,11 @@ spec:
       repository: ghcr.io/goauthentik/server
       tag: 2023.1.2
 
-    service:
-      main:
-        ports:
-          http:
-            port: &port 80
+    # service:
+    #   main:
+    #     ports:
+    #       http:
+    #         port: &port 80
 
     ingress:
       main:
@@ -109,32 +109,6 @@ spec:
       secret.reloader.stakater.com/reload: authentik-secret
 
   valuesFrom:
-    # SMTP
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: SMTP_FROM
-    #   targetPath: authentik.email.from
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: SMTP_HOST
-    #   targetPath: authentik.email.host
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: SMTP_PORT
-    #   targetPath: authentik.email.port
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: SMTP_USER
-    #   targetPath: authentik.email.username
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: SMTP_PASS
-    #   targetPath: authentik.email.password
-    #   optional: false
     # GEOIP
     - kind: Secret
       name: authentik-secret
@@ -146,35 +120,3 @@ spec:
       valuesKey: GEOLITE_LICENSE_KEY
       targetPath: geoip.licenseKey
       optional: false
-    # POSTGRES
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: POSTGRES_HOST
-    #   targetPath: authentik.postgresql.host
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: POSTGRES_DB
-    #   targetPath: authentik.postgresql.name
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: POSTGRES_PORT
-    #   targetPath: authentik.postgresql.port
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: POSTGRES_USER
-    #   targetPath: authentik.postgresql.username
-    #   optional: false
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: POSTGRES_PASS
-    #   targetPath: authentik.postgresql.password
-    #   optional: false
-    # Authentik
-    # - kind: Secret
-    #   name: authentik-secret
-    #   valuesKey: AUTHENTIK_SECRET_KEY
-    #   targetPath: authentik.secret_key
-    #   optional: false
