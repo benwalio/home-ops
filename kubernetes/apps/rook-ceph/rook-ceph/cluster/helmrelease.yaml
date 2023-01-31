@@ -81,6 +81,9 @@ spec:
           - name: in-nuc-3-main
             devices:
               - name: sda
+          - name: hp-e800-1-node
+            devices:
+              - name: sda
     cephBlockPools:
       - name: ceph-blockpool
         spec:
