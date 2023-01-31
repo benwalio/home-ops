@@ -92,12 +92,12 @@ spec:
         enabled: true
         existingClaim: zigbee2mqtt-pvc
         mountPath: /data
-      usb:
-        enabled: true
-        type: hostPath
-        # mountPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
-        hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
-        hostPathType: CharDevice
+      # usb:
+      #   enabled: true
+      #   type: hostPath
+      #   # mountPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
+      #   hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
+      #   hostPathType: CharDevice
 
     nodeSelector:
       feature.node.kubernetes.io/custom-zigbee: "true"
