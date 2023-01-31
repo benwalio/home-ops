@@ -22,22 +22,17 @@ spec:
       repository: ghcr.io/goauthentik/server
       tag: 2023.1.2
 
-    # service:
-    #   main:
-    #     ports:
-    #       http:
-    #         port: &port 80
-
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: nginx
         annotations:
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host "id.${SECRET_DOMAIN}"
+          - host: &host authentik.${SECRET_DOMAIN}
             paths:
               - path: /
+                pathType: Prefix
         tls:
           - hosts:
               - *host

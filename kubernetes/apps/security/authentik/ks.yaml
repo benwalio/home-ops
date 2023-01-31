@@ -9,7 +9,6 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg
-    - name: cluster-apps-glauth
     - name: cluster-apps-external-secrets-stores
     - name: cluster-apps-authentik-redis
   path: ./kubernetes/apps/security/authentik/app
