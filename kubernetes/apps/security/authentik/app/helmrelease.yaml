@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: ghcr.io/goauthentik/server
-      tag: "2023.1.2"
+      tag: 2023.1.2
 
     service:
       main:
@@ -42,8 +42,8 @@ spec:
           - hosts:
               - *host
 
-    geoip:
-      enabled: true
+    # geoip:
+    #   enabled: true
 
     authentik:
       log_level: debug
@@ -94,16 +94,16 @@ spec:
       targetPath: authentik.email.password
       optional: false
     # GEOIP
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: GEOIP_ACCOUNT_ID
-      targetPath: geoip.accountId
-      optional: false
-    - kind: Secret
-      name: authentik-secret
-      valuesKey: GEOLITE_LICENSE_KEY
-      targetPath: geoip.licenseKey
-      optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: GEOIP_ACCOUNT_ID
+    #   targetPath: geoip.accountId
+    #   optional: false
+    # - kind: Secret
+    #   name: authentik-secret
+    #   valuesKey: GEOLITE_LICENSE_KEY
+    #   targetPath: geoip.licenseKey
+    #   optional: false
     # POSTGRES
     - kind: Secret
       name: authentik-secret
