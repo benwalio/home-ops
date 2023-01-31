@@ -35,7 +35,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
         hosts:
-          - host: &host id.${SECRET_DOMAIN}
+          - host: &host "id.${SECRET_DOMAIN}"
             paths:
               - path: /
         tls:
