@@ -69,7 +69,7 @@ spec:
           secretKeyRef:
             name: nocodb-secret
             key: NOCODB_JWT_SECRET
-      NC_REDIS_URL: nocodb-redis.default.svc.cluster.local:6379/0
+      NC_REDIS_URL: nocodb-redis.default.svc.cluster.local:6379
       NC_ADMIN_EMAIL:
         valueFrom:
           secretKeyRef:
