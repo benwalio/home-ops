@@ -74,15 +74,19 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
-        labels:
-          snapshot.home.arpa/enabled: "true"
+    # volumeClaimTemplates:
+    #   - name: config
+    #     mountPath: /data
+    #     accessMode: ReadWriteOnce
+    #     size: 1Gi
+    #     storageClass: ceph-block
+    #     labels:
+    #       snapshot.home.arpa/enabled: "true"
     persistence:
+      config:
+        enabled: true
+        existingClaim: zigbee2mqtt-pvc
+        mountPath: /data
       usb:
         enabled: true
         mountPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
