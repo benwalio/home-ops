@@ -1,0 +1,138 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: security
+spec:
+  interval: 15m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.goauthentik.io
+      chart: authentik
+      version: 2023.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: authentik
+        namespace: flux-system
+      interval: 15m
+
+  values:
+    image:
+      repository: ghcr.io/goauthentik/server
+      tag: 2023.1.2
+
+    service:
+      main:
+        ports:
+          http:
+            port: &port 80
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host id.${SECRET_DOMAIN}
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    geoip:
+      enabled: true
+
+    authentik:
+      log_level: debug
+      redis:
+        host: authentik-redis.security.svc.cluster.local
+      outposts:
+        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+
+    postgresql:
+      enabled: false
+    redis:
+      enabled: false
+
+    prometheus:
+      rules:
+        create: true
+      serviceMonitor:
+        create: true
+
+    podAnnotations:
+      secret.reloader.stakater.com/reload: authentik-secret
+
+  valuesFrom:
+    # SMTP
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: SMTP_FROM
+      targetPath: authentik.email.from
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: SMTP_HOST
+      targetPath: authentik.email.host
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: SMTP_PORT
+      targetPath: authentik.email.port
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: SMTP_USER
+      targetPath: authentik.email.username
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: SMTP_PASS
+      targetPath: authentik.email.password
+      optional: false
+    # GEOIP
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: GEOIP_ACCOUNT_ID
+      targetPath: geoip.accountId
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: GEOLITE_LICENSE_KEY
+      targetPath: geoip.licenseKey
+      optional: false
+    # POSTGRES
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: POSTGRES_HOST
+      targetPath: authentik.postgresql.host
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: POSTGRES_DB
+      targetPath: authentik.postgresql.name
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: POSTGRES_PORT
+      targetPath: authentik.postgresql.port
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: POSTGRES_USER
+      targetPath: authentik.postgresql.username
+      optional: false
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: POSTGRES_PASS
+      targetPath: authentik.postgresql.password
+      optional: false
+    # Authentik
+    - kind: Secret
+      name: authentik-secret
+      valuesKey: AUTHENTIK_SECRET_KEY
+      targetPath: authentik.secret_key
+      optional: false
