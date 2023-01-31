@@ -94,8 +94,9 @@ spec:
         mountPath: /data
       usb:
         enabled: true
-        mountPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
-        hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00 #TODO: figure this shiz out
+        type: hostPath
+        # mountPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
+        hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2465043-if00
         hostPathType: CharDevice
 
     nodeSelector:
