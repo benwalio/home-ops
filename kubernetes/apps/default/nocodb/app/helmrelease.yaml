@@ -136,8 +136,8 @@ spec:
     controller:
       strategy: RollingUpdate
     image:
-      repository: docker.io/library/redis
-      tag: 7
+      repository: public.ecr.aws/docker/library/redis
+      tag: 7.0.8
     command: redis-server
     env:
       REDIS_REPLICATION_MODE: master
