@@ -35,7 +35,7 @@ spec:
       - "-plugins-dir=/headlamp/plugins"
     env:
       HEADLAMP_CONFIG_OIDC_CLIENT_ID: headlamp
-      HEADLAMP_CONFIG_OIDC_IDP_ISSUER_URL: https://auth.${SECRET_DOMAIN}/api/oidc/authorization
+      HEADLAMP_CONFIG_OIDC_IDP_ISSUER_URL: https://authentik.${SECRET_DOMAIN}/application/o/authorize/
       HEADLAMP_CONFIG_OIDC_CLIENT_SECRET:
         valueFrom:
           secretKeyRef:

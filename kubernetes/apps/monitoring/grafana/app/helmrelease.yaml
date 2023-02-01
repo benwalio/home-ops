@@ -47,7 +47,7 @@ spec:
         oauth_auto_login: false
       auth.generic_oauth:
         enabled: true
-        name: Authelia
+        name: Authentik
         client_id: # Set by env vars
         client_secret: # Set by env vars secret
         auth_url: # Set by env vars
