@@ -1,13 +1,27 @@
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarr-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sonarr-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.2.9
+    path: /volume1/media
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sonarr-nfs-pvc
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: sabnzbd-nfs
+  storageClassName: sonarr-nfs
   resources:
     requests:
       storage: 1Mi
-# see sabnzbd for PV
