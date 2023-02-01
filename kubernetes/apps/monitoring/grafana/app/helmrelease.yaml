@@ -43,7 +43,7 @@ spec:
       - name: op-grafana-secret
     grafana.ini:
       auth:
-        signout_redirect_url: https://auth.${SECRET_DOMAIN}/logout
+        signout_redirect_url: https://authentik.${SECRET_DOMAIN}/application/o/grafana/end-session/
         oauth_auto_login: false
       auth.generic_oauth:
         enabled: true
