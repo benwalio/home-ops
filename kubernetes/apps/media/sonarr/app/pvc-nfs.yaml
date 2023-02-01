@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sabnzbd-nfs
+  resources:
+    requests:
+      storage: 1Mi
+# see sabnzbd for PV
