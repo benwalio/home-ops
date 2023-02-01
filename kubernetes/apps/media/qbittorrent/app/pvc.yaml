@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qbittorrent-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: qbittorrent-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.2.9
+    path: /volume1/media
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrent-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: qbittorrent-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrent-config-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name qbittorrent
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ceph-block
+  resources:
+    requests:
+      storage: 1Gi
