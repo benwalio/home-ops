@@ -23,7 +23,7 @@ spec:
       TZ: ${TIMEZONE}
       url: "http://ghost.${SECRET_DOMAIN}"
       database__client: mysql
-      database__connection__host: ghost-db.default.svc.cluster.local
+      database__connection__host: ghost-db-mariadb.default.svc.cluster.local
       database__connection__user:
         valueFrom:
           secretKeyRef:
