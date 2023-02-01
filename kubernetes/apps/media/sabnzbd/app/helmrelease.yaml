@@ -80,14 +80,12 @@ spec:
         - 100
         - 10000
         - 65542
-    volumeClaimTemplates:
-      - name: config
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
     # Note: If downloading very large nzbs it might be worth using NFS for your download directory.
     persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        existingClaim: sabnzbd-config-pvc
       media:
         enabled: true
         existingClaim: sabnzbd-nfs-pvc
