@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-media-rw-pv
+  name: minio-nfs-pv
 spec:
   capacity:
     storage: 1Mi
   accessModes: ["ReadWriteMany"]
-  storageClassName: nfs-media-rw
+  storageClassName: minio-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 192.168.2.9
@@ -17,11 +17,11 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sabnzbd-media-nfs-pvc
+  name: sabnzbd-nfs-pvc
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: nfs-media-rw
+  storageClassName: minio-nfs
   resources:
     requests:
       storage: 1Mi
