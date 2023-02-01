@@ -72,13 +72,14 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1036
+      runAsGroup: 65542
+      fsGroup: 65542
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
+        - 100
         - 10000
-        - 65542
+        - 568
     volumeClaimTemplates:
       - name: config
         mountPath: /config
