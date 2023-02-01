@@ -40,22 +40,22 @@ spec:
             key: GHOST_EMAIL
       # database__client: mysql
       GHOST_DATABASE_HOST: ghost-db-mariadb.default.svc.cluster.local
-      MYSQL_USER:
+      GHOST_DATABASE_USER:
         valueFrom:
           secretKeyRef:
             name: ghost-secret
             key: GHOST_DB_USER
-      MYSQL_PASSWORD:
+      GHOST_DATABASE_PASSWORD:
         valueFrom:
           secretKeyRef:
             name: ghost-secret
             key: GHOST_DB_PASS
-      MYSQL_DATABASE:
+      GHOST_DATABASE_NAME:
         valueFrom:
           secretKeyRef:
             name: ghost-secret
             key: GHOST_DB_DB
-      NODE_ENV: production
+      # NODE_ENV: production
       GHOST_SMTP_HOST:
         valueFrom:
           secretKeyRef:
