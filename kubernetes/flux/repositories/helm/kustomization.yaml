@@ -22,6 +22,7 @@ resources:
   - ./jetstack.yaml
   - ./k8s-at-home.yaml
   - ./k8s-gateway.yaml
+  - ./kubereboot.yaml
   - ./kubernetes-dashboard.yaml
   - ./kyverno.yaml
   - ./metallb.yaml
