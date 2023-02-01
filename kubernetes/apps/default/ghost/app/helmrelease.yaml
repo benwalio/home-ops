@@ -21,7 +21,7 @@ spec:
       tag: 5.33.2
       pullPolicy: IfNotPresent
     env:
-      TZ: ${TIMEZONE}
+      # TZ: ${TIMEZONE}
       GHOST_HOST: "https://ghost.${SECRET_DOMAIN}"
       GHOST_USERNAME:
         valueFrom:
