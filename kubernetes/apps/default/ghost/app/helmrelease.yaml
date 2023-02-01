@@ -1,0 +1,71 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ghost
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 15m
+  values:
+    image:
+      repository: ghost
+      tag: 5.33.2
+    env:
+      TZ: ${TIMEZONE}
+      url: "http://ghost.${SECRET_DOMAIN}"
+      database__client: mysql
+      database__connection__host: ghost-mariadb.media.svc.cluster.local
+      database__connection__user:
+        valueFrom:
+          secretKeyRef:
+            name: ghost-secret
+            key: GHOST_DB_USER
+      database__connection__password:
+        valueFrom:
+          secretKeyRef:
+            name: ghost-secret
+            key: GHOST_DB_PASS
+      database__connection__database:
+        valueFrom:
+          secretKeyRef:
+            name: ghost-secret
+            key: GHOST_DB_DB
+      NODE_ENV: production
+
+    service:
+      main:
+        ports:
+          http:
+            port: 2368
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/appName: "ghost"
+          hajimari.io/icon: "image-multiple"
+        hosts:
+          - host: &host ghost.${SECRET_DOMAIN}
+            paths:
+              - path: "/"
+                pathType: "Prefix"
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      content:
+        enabled: true
+        mountPath: /var/lib/ghost/content
+        existingClaim: ghost-pvc
