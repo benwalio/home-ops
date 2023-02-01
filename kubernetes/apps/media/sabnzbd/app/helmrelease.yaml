@@ -89,14 +89,8 @@ spec:
     persistence:
       media:
         enabled: true
-        # type: nfs
-        # server: 192.168.2.9
-        # path: /volume1/media
         existingClaim: sabnzbd-nfs-pvc
         mountPath: /media
-        # mountOptions:
-        #   - nfsvers=4.1
-        # readOnly: false
       incomplete:
         enabled: true
         type: emptyDir
