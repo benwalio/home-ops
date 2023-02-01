@@ -17,8 +17,9 @@ spec:
       interval: 15m
   values:
     image:
-      repository: ghost
+      repository: bitnami/ghost
       tag: 5.33.2
+      pullPolicy: IfNotPresent
     env:
       TZ: ${TIMEZONE}
       url: "http://ghost.${SECRET_DOMAIN}"
