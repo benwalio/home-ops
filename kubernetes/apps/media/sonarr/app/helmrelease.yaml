@@ -43,11 +43,13 @@ spec:
     envFrom:
       - secretRef:
           name: sonarr-secret
+
     service:
       main:
         ports:
           http:
             port: *port
+
     ingress:
       main:
         enabled: true
@@ -66,6 +68,7 @@ spec:
         tls:
           - hosts:
               - *host
+
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
@@ -75,6 +78,7 @@ spec:
         - 100
         - 10000
         - 65542
+
     volumeClaimTemplates:
       - name: config
         mountPath: /config
