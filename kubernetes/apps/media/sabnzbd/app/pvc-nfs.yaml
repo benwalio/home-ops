@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-media-rw-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: nfs-media-rw
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.2.9
+    path: /volume1/media
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sabnzbd-media-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: nfs-media-rw
+  resources:
+    requests:
+      storage: 1Mi

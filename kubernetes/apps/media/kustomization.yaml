@@ -6,4 +6,5 @@ resources:
   - ./freshrss/ks.yaml
   - ./paperless/ks.yaml
   - ./plex/ks.yaml
+  - ./sabnzbd/ks.yaml
   - ./wikijs/ks.yaml
