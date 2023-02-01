@@ -89,8 +89,14 @@ spec:
     persistence:
       media:
         enabled: true
-        existingClaim: sabnzbd-nfs-pvc
+        # existingClaim: plex-media-nfs-pvc
+        type: nfs
+        server: 192.168.2.9
+        path: /volume1/media
         mountPath: /media
+        mountOptions:
+          - nfsvers=4.1
+        readOnly: false
       incomplete:
         enabled: true
         type: emptyDir
