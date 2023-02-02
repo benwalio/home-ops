@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./1password.yaml
   - ./actions-runner-controller.yaml
+  - ./angelnu.yaml
   - ./authentik.yaml
   - ./backube.yaml
   - ./bitnami.yaml
