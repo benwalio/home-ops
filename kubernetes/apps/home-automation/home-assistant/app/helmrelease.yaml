@@ -71,6 +71,16 @@ spec:
             port: 5353
             protocol: UDP
             targetPort: 5353
+          ssdp-tcp:
+            enabled: true
+            port: 1900
+            protocol: TCP
+            targetPort: 1900
+          ssdp-udp:
+            enabled: true
+            port: 1900
+            protocol: UDP
+            targetPort: 1900
 
     ingress:
       main:
