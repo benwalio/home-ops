@@ -22,6 +22,7 @@ includes:
   fx: .taskfiles/flux/fluxTasks.yaml
   clus: .taskfiles/cluster/clusterTasks.yaml
   terraform: .taskfiles/TerraformTasks.yml
+  ans: .taskfiles/ansible/Taskfile.yaml
 
 tasks:
 
