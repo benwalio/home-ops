@@ -5,7 +5,7 @@ namespace: home-automation
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ./netattach.yaml
+  # - ./netattach.yaml
   - ./replicationsource.yaml
 patchesStrategicMerge:
   - ./patches/addons.yaml
