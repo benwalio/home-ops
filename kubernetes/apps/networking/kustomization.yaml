@@ -8,5 +8,6 @@ resources:
   - ./ingress-nginx/ks.yaml
   - ./k8s-gateway/ks.yaml
   - ./metallb/ks.yaml
+  - ./multus/ks.yaml
   - ./adguard/ks.yaml
   - ./tailscale-relay/ks.yaml
