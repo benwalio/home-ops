@@ -7,6 +7,6 @@ resources:
   - ./helmrelease.yaml
   # - ./netattach.yaml
   - ./pvc.yaml
-  - ./replicationsource.yaml
+  - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/addons.yaml
