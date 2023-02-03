@@ -120,6 +120,11 @@ spec:
         storageClass: ceph-block
         labels:
           snapshot.home.arpa/enabled: "true"
+
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+      node.benwal.casa/instance-type: "bare-metal"
+
     resources:
       requests:
         cpu: 10m
