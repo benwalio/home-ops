@@ -34,3 +34,4 @@ ubuntu:
     - python3-kubernetes
     - python3-yaml
     - open-iscsi # longhorn
+    - net-tools
