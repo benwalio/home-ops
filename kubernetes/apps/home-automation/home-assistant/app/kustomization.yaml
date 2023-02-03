@@ -6,6 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   # - ./netattach.yaml
+  - ./pvc.yaml
   - ./replicationsource.yaml
 patchesStrategicMerge:
   - ./patches/addons.yaml

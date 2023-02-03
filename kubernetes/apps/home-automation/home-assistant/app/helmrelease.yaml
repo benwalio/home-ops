@@ -112,14 +112,20 @@ spec:
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 100
-    volumeClaimTemplates:
-      - name: config
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: home-assistant-config-pvc
         mountPath: /config
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        storageClass: ceph-block
-        labels:
-          snapshot.home.arpa/enabled: "true"
+    # volumeClaimTemplates:
+    #   - name: config
+    #     mountPath: /config
+    #     accessMode: ReadWriteOnce
+    #     size: 5Gi
+    #     storageClass: ceph-block
+    #     labels:
+    #       snapshot.home.arpa/enabled: "true"
 
     nodeSelector:
       node-role.kubernetes.io/worker: "true"
