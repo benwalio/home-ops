@@ -3,3 +3,4 @@ version: "3"
 
 includes:
   get: crud/retreive.yaml
+  node: crud/node.yaml

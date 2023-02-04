@@ -1,0 +1,30 @@
+---
+version: "3"
+
+x-task-vars: &task-vars
+  node: '{{.node}}'
+
+tasks:
+  cordon:
+    desc: cordon node (node=<node-name>)
+    cmds:
+      - kubectl cordon {{.node}}
+    vars:
+      node: '{{ or .node (fail "Node `node` is required") }}'
+    env: *task-vars
+
+  uncordon:
+    desc: uncordon node (node=<node-name>)
+    cmds:
+      - kubectl uncordon {{.node}}
+    vars:
+      node: '{{ or .node (fail "Node `node` is required") }}'
+    env: *task-vars
+
+  drain:
+    desc: drain node (node=<node-name>)
+    cmds:
+      - kubectl drain {{.node}} --delete-emptydir-data --ignore-daemonsets
+    vars:
+      node: '{{ or .node (fail "Node `node` is required") }}'
+    env: *task-vars
