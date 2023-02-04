@@ -43,6 +43,19 @@ spec:
           ldap:
             enabled: true
             port: 389
+
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - host: &host glauth.${SECRET_DOMAIN}
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts:
+            - *host
+
     serviceMonitor:
       main:
         enabled: true
