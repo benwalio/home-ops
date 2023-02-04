@@ -23,7 +23,7 @@ includes:
   clus: .taskfiles/cluster/clusterTasks.yaml
   terraform: .taskfiles/TerraformTasks.yml
   ans: .taskfiles/ansible/Taskfile.yaml
-  vol: .taskfiles/volsync/Taskfile.yaml
+  vol: .taskfiles/volsync/Task.yaml
 
 tasks:
 
