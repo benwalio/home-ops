@@ -5,7 +5,7 @@ resources:
   - ./namespace.yaml
   - ./echo-server/ks.yaml
   # - ./ghost/ks.yaml
-  - ./gitea/ks.yaml
+  # - ./gitea/ks.yaml
   - ./hajimari/ks.yaml
   - ./nocodb/ks.yaml
   - ./shlink/ks.yaml
