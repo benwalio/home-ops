@@ -8,6 +8,8 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   path: ./kubernetes/apps/kube-system/kured/app
+  dependsOn:
+    - name: cluster-apps-external-secrets
   prune: true
   sourceRef:
     kind: GitRepository

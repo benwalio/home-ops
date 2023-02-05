@@ -8,6 +8,8 @@ metadata:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   path: ./kubernetes/apps/flux-system/weave-gitops/app
+  dependsOn:
+    - name: cluster-apps-external-secrets
   prune: true
   sourceRef:
     kind: GitRepository
