@@ -89,6 +89,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/icon: mdi:home-assistant
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: &host hass.${SECRET_DOMAIN}
             paths:
@@ -97,6 +98,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: home-assistant-tls
 
     probes:
       liveness:
