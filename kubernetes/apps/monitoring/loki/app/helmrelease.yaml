@@ -55,6 +55,7 @@ spec:
               index:
                 prefix: loki_index_
                 period: 24h
+
         common:
           path_prefix: /var/loki
           replication_factor: 3
@@ -66,6 +67,7 @@ spec:
           ring:
             kvstore:
               store: memberlist
+
         ruler:
           enable_api: true
           enable_alertmanager_v2: true
@@ -78,10 +80,12 @@ spec:
           ring:
             kvstore:
               store: memberlist
+
         distributor:
           ring:
             kvstore:
               store: memberlist
+
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
           shared_store: s3
