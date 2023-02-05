@@ -35,7 +35,7 @@ spec:
       tag: 2.6.2-alpine
     envFrom:
       - secretRef:
-          name: vikunja-secret
+          name: &secret vikunja-secret
     service:
       main:
         ports:
@@ -68,7 +68,7 @@ spec:
         mountPath: "-"
         volumeSpec:
           configMap:
-            name: vikunja-cm
+            name: &cm vikunja-cm
       caddy-config:
         enabled: true
         mountPath: /etc/caddy/Caddyfile
@@ -76,10 +76,10 @@ spec:
         type: "custom"
         volumeSpec:
           configMap:
-            name: vikunja-cm
+            name: *cm
     podAnnotations:
-      configMap.reloader.stakater.com/reload: *app
-      secret.reloader.stakater.com/reload: &secret vikunja-secret
+      configMap.reloader.stakater.com/reload: *cm
+      secret.reloader.stakater.com/reload: *secret
     resources:
       requests:
         cpu: 5m
@@ -104,51 +104,51 @@ spec:
           - name: VIKUNJA_DATABASE_HOST
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: POSTGRES_HOST
           - name: VIKUNJA_DATABASE_DATABASE
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: POSTGRES_DB
           - name: VIKUNJA_DATABASE_USER
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: POSTGRES_USER
           - name: VIKUNJA_DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: POSTGRES_PASS
           - name: VIKUNJA_MAILER_ENABLED
             value: true
           - name: VIKUNJA_MAILER_HOST
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: SMTP_HOST
           - name: VIKUNJA_MAILER_PORT
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: SMTP_PORT
           - name: VIKUNJA_MAILER_AUTHTYPE
             value: login
           - name: VIKUNJA_MAILER_USERNAME
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: SMTP_USER
           - name: VIKUNJA_MAILER_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: SMTP_PASS
           - name: VIKUNJA_MAILER_FROMEMAIL
             valueFrom:
               secretKeyRef:
-                name: vikunja-secret
+                name: *secret
                 key: FROM_EMAIL
 
         volumeMounts:
