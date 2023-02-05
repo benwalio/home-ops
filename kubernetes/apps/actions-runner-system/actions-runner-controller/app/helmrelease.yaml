@@ -48,6 +48,7 @@ spec:
         annotations:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/enable: "false"
+          cert-manager.io/cluster-issuer: letsencrypt-production
         ingressClassName: nginx
         hosts:
           - host: &host arc-webhook.${SECRET_DOMAIN}
@@ -57,6 +58,7 @@ spec:
         tls:
           - hosts:
               - *host
+            secretName: actions-runner-controller-tls
     metrics:
       serviceMonitor: true
       port: 8080
