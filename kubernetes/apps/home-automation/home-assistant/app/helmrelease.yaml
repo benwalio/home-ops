@@ -43,7 +43,7 @@ spec:
       tag: 2023.2.1@sha256:a3723267cc9ac0fdc169e7a0fd57475ee531a67480583d93051f6b27e75ca59c
 
     podAnnotations:
-      k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass
+      k8s.v1.cni.cncf.io/networks: macvlan-static-iot-hass, macvlan-static-lan-hass
 
     env:
       TZ: ${TIMEZONE}
