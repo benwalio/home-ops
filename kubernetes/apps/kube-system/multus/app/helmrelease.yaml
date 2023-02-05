@@ -15,6 +15,7 @@ spec:
         name: angelnu
         namespace: flux-system
       interval: 30m
+
   values:
     image:
       repository: ghcr.io/k8snetworkplumbingwg/multus-cni
