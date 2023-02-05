@@ -36,10 +36,10 @@ spec:
     service:
       main:
         type: LoadBalancer
-        # externalIPs:
-        #   - ${SVC_ZWAVE_JS_ADDR}
-        annotations:
-          metallb.universe.tf/loadBalancerIPs: "${SVC_ZWAVE_JS_ADDR}"
+        externalIPs:
+          - ${SVC_ZWAVE_JS_ADDR}
+        # annotations:
+        #   metallb.universe.tf/loadBalancerIPs: "${SVC_ZWAVE_JS_ADDR}"
         externalTrafficPolicy: Local
         ports:
           http:
