@@ -39,9 +39,9 @@ subjects:
   - kind: ServiceAccount
     name: multus
     namespace: kube-system
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: multus
-  namespace: kube-system
+# ---
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: multus
+#   namespace: kube-system
