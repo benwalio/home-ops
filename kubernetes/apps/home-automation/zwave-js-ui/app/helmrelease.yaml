@@ -35,12 +35,18 @@ spec:
       TZ: ${TIMEZONE}
     service:
       main:
+        type: LoadBalancer
+        # externalIPs:
+        #   - ${SVC_ZWAVE_JS_ADDR}
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${SVC_ZWAVE_JS_ADDR}"
+        externalTrafficPolicy: Local
         ports:
           http:
             port: &port 8091
           websocket:
-            enabled: true
             port: 3000
+
     serviceMonitor:
       main:
         enabled: true
