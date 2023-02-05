@@ -21,6 +21,12 @@ spec:
       repository: ghcr.io/k8snetworkplumbingwg/multus-cni
       tag: v3.9.3
 
+    tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
+
     cni:
       image:
         repository: ghcr.io/angelnu/cni-plugins
