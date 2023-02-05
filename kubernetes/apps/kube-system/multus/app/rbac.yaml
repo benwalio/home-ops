@@ -53,7 +53,7 @@ kind: ServiceAccount
 metadata:
   name: multus
   namespace: kube-system
-  labels:
-    app.kubernetes.io/managed-by: Helm
-    meta.helm.sh/release-name: multus
-    meta.helm.sh/release-namespace: kube-system
+  # labels:
+  #   app.kubernetes.io/managed-by: Helm
+  #   meta.helm.sh/release-name: multus
+  #   meta.helm.sh/release-namespace: kube-system
