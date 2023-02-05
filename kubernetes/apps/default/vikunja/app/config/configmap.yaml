@@ -31,7 +31,8 @@ data:
           # The name of the provider as it will appear in the frontend.
           - name: authelia
             # The auth url to send users to if they want to authenticate using OpenID Connect.
-            authurl: https://auth.${SECRET_DOMAIN}
+            authurl: https://authentik.${SECRET_DOMAIN}/application/o/authorize/
+            logouturl: https://authentik.${SECRET_DOMAIN}/application/o/vikunja/end-session/
             # The client ID used to authenticate Vikunja at the OpenID Connect provider.
             clientid: vikunja
             # The client secret used to authenticate Vikunja at the OpenID Connect provider.
