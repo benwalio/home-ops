@@ -29,8 +29,6 @@ spec:
     controller:
       type: statefulset
     image:
-      # repository: plexinc/pms-docker
-      # tag: 1.30.2.6563-3d4dc0cce
       repository: ghcr.io/onedr0p/plex
       tag: 1.30.2.6563-3d4dc0cce@sha256:a48f8cd0680791c4102492619c6ac30451bafde9746083e07b65c2cbfc1446ff
     env:

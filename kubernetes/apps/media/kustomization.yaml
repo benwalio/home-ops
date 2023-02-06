@@ -3,8 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
+  - ./bazarr/ks.yaml
   - ./freshrss/ks.yaml
-  - ./ombi/ks.yaml
+  # - ./ombi/ks.yaml
   - ./overseerr/ks.yaml
   - ./paperless/ks.yaml
   - ./plex/ks.yaml
