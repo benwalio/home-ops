@@ -39,7 +39,7 @@ spec:
       TZ: ${TIMEZONE}
       N8N_HOST: &host n8n.${SECRET_DOMAIN}
       N8N_EDITOR_BASE_URL: https://n8n.${SECRET_DOMAIN}
-      # N8N_PORT: &port 80
+      N8N_PORT: &port 80
       N8N_PROTOCOL: https
       N8N_EMAIL_MODE: smtp
       N8N_SMTP_HOST:
@@ -100,7 +100,7 @@ spec:
       main:
         ports:
           http:
-            port: 5678
+            port: *port
     ingress:
       main:
         enabled: true
