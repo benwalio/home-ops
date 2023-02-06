@@ -27,7 +27,7 @@ spec:
 
     image:
       repository: lscr.io/linuxserver/ombi
-      tag: 4.22.5
+      tag: latest
 
     service:
       main:
