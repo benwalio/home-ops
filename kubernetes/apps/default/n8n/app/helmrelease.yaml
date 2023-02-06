@@ -38,7 +38,8 @@ spec:
       GENERIC_TIMEZONE: ${TIMEZONE}
       TZ: ${TIMEZONE}
       N8N_HOST: &host n8n.${SECRET_DOMAIN}
-      N8N_EDITOR_BASE_URL: "https://n8n.${SECRET_DOMAIN}"
+      N8N_EDITOR_BASE_URL: "https://n8n.${SECRET_DOMAIN}/"
+      WEBHOOK_URL: "https://n8n.${SECRET_DOMAIN}/"
       N8N_PORT: &port 80
       N8N_PROTOCOL: https
       N8N_EMAIL_MODE: smtp
