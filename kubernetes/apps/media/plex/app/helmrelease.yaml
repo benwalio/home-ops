@@ -35,20 +35,17 @@ spec:
       tag: 1.30.2.6563-3d4dc0cce@sha256:a48f8cd0680791c4102492619c6ac30451bafde9746083e07b65c2cbfc1446ff
     env:
       TZ: ${TIMEZONE}
-      ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
-      ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16,192.168.1.0/24,192.168.2.0/24"
+      # ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
+      # ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16,192.168.1.0/24,192.168.2.0/24"
     envFrom:
       - secretRef:
           name: plex-secret
     service:
       main:
         type: LoadBalancer
-        externalIPs:
-          - ${SVC_PLEX_ADDR}
-        # annotations:
-          # metallb.universe.tf/loadBalancerIPs: "${SVC_PLEX_ADDR}"
-          # metallb.universe.tf/allow-shared-ip: plex
-        # loadBalancerIP: ${SVC_PLEX_ADDR}
+        # externalIPs:
+        #   - ${SVC_PLEX_ADDR}
+        loadBalancerIP: ${SVC_PLEX_ADDR}
         externalTrafficPolicy: Local
         ports:
           http:
