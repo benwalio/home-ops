@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ombi-pvc
+  name: ombi-config-pvc
   namespace: media
   labels:
     app.kubernetes.io/name: &name ombi
