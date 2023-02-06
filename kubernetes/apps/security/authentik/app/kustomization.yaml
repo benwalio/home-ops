@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ./addons/domain-outpost.yaml
 patchesStrategicMerge:
   - ./patches/postgres.yaml
 commonLabels:
