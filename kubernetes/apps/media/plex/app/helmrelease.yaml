@@ -36,15 +36,13 @@ spec:
     env:
       TZ: ${TIMEZONE}
       # ADVERTISE_IP: "http://${SVC_PLEX_ADDR}:32400/"
-      # ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16,192.168.1.0/24,192.168.2.0/24"
+      ALLOWED_NETWORKS: "10.0.0.0/8,172.16.0.0/16,192.168.1.0/24,192.168.2.0/24"
     envFrom:
       - secretRef:
           name: plex-secret
     service:
       main:
         type: LoadBalancer
-        # externalIPs:
-        #   - ${SVC_PLEX_ADDR}
         loadBalancerIP: ${SVC_PLEX_ADDR}
         externalTrafficPolicy: Local
         ports:

@@ -5,6 +5,7 @@ resources:
   - ./namespace.yaml
   - ./freshrss/ks.yaml
   - ./ombi/ks.yaml
+  - ./overseerr/ks.yaml
   - ./paperless/ks.yaml
   - ./plex/ks.yaml
   - ./prowlarr/ks.yaml
