@@ -37,7 +37,9 @@ spec:
     env:
       GENERIC_TIMEZONE: ${TIMEZONE}
       TZ: ${TIMEZONE}
+      N8N_HOST: &host n8n.${SECRET_DOMAIN}
       N8N_PORT: &port 80
+      N8N_PROTOCOL: https
       N8N_EMAIL_MODE: smtp
       N8N_SMTP_HOST:
         valueFrom:
@@ -108,7 +110,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/icon: mdi:workflow
         hosts:
-          - host: &host n8n.${SECRET_DOMAIN}
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
