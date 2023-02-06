@@ -105,6 +105,7 @@ spec:
         annotations:
           # nginx.ingress.kubernetes.io/whitelist-source-range: |
           #   10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+          external-dns.home.arpa/enabled: "true"
           hajimari.io/icon: mdi:workflow
         hosts:
           - host: &host n8n.${SECRET_DOMAIN}
@@ -114,8 +115,9 @@ spec:
         tls:
           - hosts:
               - *host
-    volumeClaimTemplates:
-      - name: config
+    persistence:
+      config:
+        enabled: true
         mountPath: /home/node/.n8n
         existingClaim: n8n-config-pvc
     resources:
