@@ -10,5 +10,6 @@ resources:
   - ./n8n/ks.yaml
   - ./nocodb/ks.yaml
   - ./shlink/ks.yaml
+  - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml
   - ./vikunja/ks.yaml
