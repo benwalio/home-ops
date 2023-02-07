@@ -54,7 +54,7 @@ spec:
       secrets:
         enabled: true
         type: secret
-        name: esphome-secrets
+        name: esphome-secret
         mountPath: /config/secrets.yaml
         subPath: secrets.yaml
       esphome-cache:
