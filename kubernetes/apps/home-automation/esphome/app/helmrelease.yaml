@@ -70,6 +70,10 @@ spec:
           - path: id_ed25519
             mountPath: /root/.ssh/id_ed25519
 
+    nodeSelector:
+      node-role.kubernetes.io/worker: "true"
+      node.benwal.casa/instance-type: "bare-metal"
+
     resources:
       requests:
         cpu: 300m
