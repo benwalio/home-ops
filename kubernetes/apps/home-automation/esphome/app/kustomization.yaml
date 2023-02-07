@@ -4,6 +4,7 @@ namespace: home-automation
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ./netattach.yaml
   - ./pvc.yaml
   # - ./volsync.yaml
 labels:
