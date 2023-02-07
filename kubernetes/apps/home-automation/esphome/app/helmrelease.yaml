@@ -38,6 +38,10 @@ spec:
       main:
         enabled: true
         ingressClassName: "nginx"
+        annotations:
+          hajimari.io/appName: *app
+          hajimari.io/enable: "true"
+          hajimari.io/icon: simple-icons:esphome
         hosts:
           - host: &host "esphome.${SECRET_DOMAIN}"
             paths:
@@ -80,3 +84,34 @@ spec:
         memory: 512M
       limits:
         memory: 2048M
+
+    addons:
+      codeserver:
+        image:
+          repository: ghcr.io/coder/code-server
+          tag: 4.9.1@sha256:5dde906cc87764691e582d774a039e2169b44d2379af6f2a33ad98a761cc8f4a
+        enabled: true
+        volumeMounts:
+          - name: config
+            mountPath: /config
+        git:
+          # -- Existing secret containing SSH private key
+          # The chart expects it to be present under the `id_rsa` key.
+          deployKeySecret: esphome-code-deploykey
+        ingress:
+          enabled: true
+          annotations:
+            hajimari.io/enable: "true"
+            hajimari.io/icon: vscode-icons:file-type-vscode
+            hajimari.io/info: Esphome editor
+            hajimari.io/group: automation
+            # nginx.ingress.kubernetes.io/configuration-snippet: |
+            #   auth_request_set $required_groups 'casa_editors';
+          hosts:
+            - host: &host-code esphome-code.${SECRET_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - *host-code
