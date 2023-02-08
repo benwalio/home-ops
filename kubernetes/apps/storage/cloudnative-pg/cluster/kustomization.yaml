@@ -7,3 +7,7 @@ resources:
   - ./cluster.yaml
   - ./externalsecret.yaml
   - ./scheduledbackup.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: cloudnative-pg
+      app.kubernetes.io/instance: cloudnative-pg-cluster

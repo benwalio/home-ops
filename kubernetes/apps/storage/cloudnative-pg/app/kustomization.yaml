@@ -16,3 +16,7 @@ generatorOptions:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
     grafana_dashboard: "true"
+labels:
+  - pairs:
+      app.kubernetes.io/name: cloudnative-pg
+      app.kubernetes.io/instance: cloudnative-pg
