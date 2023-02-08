@@ -102,8 +102,8 @@ spec:
       #   hostPath: /dev/ttyACM0
       #   hostPathType: CharDevice
 
-    nodeSelector:
-      feature.node.kubernetes.io/custom-zigbee: "true"
+    # nodeSelector:
+    #   feature.node.kubernetes.io/custom-zigbee: "true"
 
     resources:
       requests:
