@@ -112,5 +112,5 @@ spec:
       limits:
         memory: 500Mi
 
-    securityContext:
-      privileged: true
+    # securityContext:
+    #   privileged: true
