@@ -13,6 +13,11 @@ spec:
   storage:
     size: 20Gi
     storageClass: ceph-block
+
+  affinity:
+    nodeSelector:
+      node.benwal.casa/instance-type: "bare-metal"
+
   superuserSecret:
     name: cloudnative-pg-superuser
   # bootstrap:
