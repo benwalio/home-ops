@@ -9,6 +9,7 @@ resources:
   - ./hajimari/ks.yaml
   - ./n8n/ks.yaml
   - ./nocodb/ks.yaml
+  - ./photoprism/ks.yaml
   - ./shlink/ks.yaml
   - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml

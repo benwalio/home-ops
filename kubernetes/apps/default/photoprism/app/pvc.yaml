@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photoprism-originals-nfs
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: photoprism-originals-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /ingot/hydra/media/photos/originals
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: photoprism-originals-nfs-pvc
+  namespace: default
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: photoprism-originals-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photoprism-storage-nfs
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: photoprism-storage-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /ingot/hydra/media/photos/storage
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: photoprism-storage-nfs-pvc
+  namespace: default
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: photoprism-storage-nfs
+  resources:
+    requests:
+      storage: 1Mi
