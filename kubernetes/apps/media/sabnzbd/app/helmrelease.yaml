@@ -77,8 +77,8 @@ spec:
       fsGroup: 1100
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
-        - 568
-        - 1111
+        # - 568
+        # - 1111
         # - 65542
     # Note: If downloading very large nzbs it might be worth using NFS for your download directory.
     persistence:
