@@ -3,11 +3,9 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ./externalsecret.yaml
+  # - ./externalsecret.yaml
   - ./pvc.yaml
-  - ./volsync.yaml
-patchesStrategicMerge:
-  - ./patches/postgres.yaml
+  # - ./volsync.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: calibre
