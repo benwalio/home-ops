@@ -64,8 +64,8 @@ spec:
   storageClassName: sabnzbd-downloads-incomplete-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: ${SECRET_NFS_SERVER}
-    path: ${SECRET_NFS_BASE_PATH}/swap/downloads/incomplete
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/swap/downloads/incomplete
   mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
