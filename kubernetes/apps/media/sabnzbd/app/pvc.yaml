@@ -2,26 +2,80 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sabnzbd-nfs-pv
+  name: sabnzbd-blackhole-nfs-pv
 spec:
   capacity:
     storage: 1Mi
   accessModes: ["ReadWriteMany"]
-  storageClassName: sabnzbd-nfs
+  storageClassName: sabnzbd-blackhole-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: pelican.grz.bear
-    path: /mnt/ingot/hydra/swap
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/blackhole/nzbd
   mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sabnzbd-nfs-pvc
+  name: sabnzbd-blackhole-nfs-pvc
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: sabnzbd-nfs
+  storageClassName: sabnzbd-blackhole-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sabnzbd-downloads-complete-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sabnzbd-downloads-complete-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/downloads/completed
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sabnzbd-downloads-complete-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sabnzbd-downloads-complete-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sabnzbd-downloads-incomplete-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sabnzbd-downloads-incomplete-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/downloads/incomplete
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sabnzbd-downloads-incomplete-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sabnzbd-downloads-incomplete-nfs
   resources:
     requests:
       storage: 1Mi
