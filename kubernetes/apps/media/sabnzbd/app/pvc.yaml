@@ -10,8 +10,8 @@ spec:
   storageClassName: sabnzbd-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 192.168.2.9
-    path: /volume1/media
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/swap
   mountOptions: ["nfsvers=4.1"]
 ---
 apiVersion: v1
