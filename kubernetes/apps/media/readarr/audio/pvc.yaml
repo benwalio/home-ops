@@ -1,30 +1,30 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: readarr-books-swap-nfs
+  name: readarr-audio-swap-nfs
 spec:
-  storageClassName: readarr-books-swap-nfs
+  storageClassName: readarr-audio-swap-nfs
   capacity:
     storage: 1Mi
   accessModes: ["ReadWriteMany"]
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: pelican.grz.bear
-    path: /mnt/ingot/hydra/swap/downloads/completed/readarr-books
+    path: /mnt/ingot/hydra/swap/downloads/completed/readarr-audio
   # Note: The first two options are strictly for NFSv4.2
   mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: readarr-books-swap-nfs-pvc
+  name: readarr-audio-swap-nfs-pvc
   namespace: media
   labels:
-    app.kubernetes.io/name: &name readarr-books
+    app.kubernetes.io/name: &name readarr-audio
     app.kubernetes.io/instance: *name
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: readarr-books-swap-nfs
+  storageClassName: readarr-audio-swap-nfs
   resources:
     requests:
       storage: 1Mi
@@ -32,30 +32,30 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: readarr-books-nfs
+  name: readarr-audio-nfs
 spec:
-  storageClassName: readarr-books-nfs
+  storageClassName: readarr-audio-nfs
   capacity:
     storage: 1Mi
   accessModes: ["ReadWriteMany"]
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: pelican.grz.bear
-    path: /mnt/ingot/hydra/media/documents/books
+    path: /mnt/ingot/hydra/media/audio/audiobooks
   # Note: The first two options are strictly for NFSv4.2
   mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: readarr-books-nfs-pvc
+  name: readarr-audio-nfs-pvc
   namespace: media
   labels:
-    app.kubernetes.io/name: &name readarr-books
+    app.kubernetes.io/name: &name readarr-audio
     app.kubernetes.io/instance: *name
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: readarr-books-nfs
+  storageClassName: readarr-audio-nfs
   resources:
     requests:
       storage: 1Mi
@@ -63,10 +63,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: readarr-books-config-pvc
+  name: readarr-audio-config-pvc
   namespace: media
   labels:
-    app.kubernetes.io/name: &name readarr-books
+    app.kubernetes.io/name: &name readarr-audio
     app.kubernetes.io/instance: *name
     snapshot.home.arpa/enabled: "true"
 spec:
