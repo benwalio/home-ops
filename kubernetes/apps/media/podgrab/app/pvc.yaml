@@ -22,7 +22,6 @@ metadata:
   labels:
     app.kubernetes.io/name: &name podgrab
     app.kubernetes.io/instance: *name
-    snapshot.home.arpa/enabled: "true"
 spec:
   accessModes: ["ReadWriteMany"]
   storageClassName: podgrab-nfs
