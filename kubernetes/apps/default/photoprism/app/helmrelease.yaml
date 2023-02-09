@@ -37,7 +37,7 @@ spec:
       PHOTOPRISM_SITE_URL: "https://photos.${SECRET_DOMAIN}/"  # Canonical / public site URL
       PHOTOPRISM_SITE_TITLE: "Photoprism"
       PHOTOPRISM_SITE_CAPTION: "Casa"
-      PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
+      # PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
       # PHOTOPRISM_SITE_AUTHOR: ""
       # # You may optionally set user, group and/or file permissions using environment variables:
       UID: 33
