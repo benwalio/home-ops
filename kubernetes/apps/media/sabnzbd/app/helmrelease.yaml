@@ -76,7 +76,7 @@ spec:
       runAsGroup: 1100
       fsGroup: 1100
       fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
+      # supplementalGroups:
         # - 568
         # - 1111
         # - 65542
