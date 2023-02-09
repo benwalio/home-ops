@@ -72,14 +72,12 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1100
+      runAsGroup: 1100
+      fsGroup: 1100
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
-        # - 100
-        # - 10000
-        - 1100
+        - 568
         - 1111
         # - 65542
     # Note: If downloading very large nzbs it might be worth using NFS for your download directory.
