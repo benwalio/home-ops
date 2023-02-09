@@ -70,7 +70,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: readarr-books-config
+        existingClaim: readarr-books-config-pvc
         mountPath: /config
 
       media:
