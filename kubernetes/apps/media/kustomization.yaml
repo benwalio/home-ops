@@ -6,7 +6,6 @@ resources:
   - ./audiobookshelf/ks.yaml
   - ./bazarr/ks.yaml
   - ./freshrss/ks.yaml
-  # - ./ombi/ks.yaml
   - ./overseerr/ks.yaml
   - ./paperless/ks.yaml
   - ./plex/ks.yaml

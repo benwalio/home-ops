@@ -74,10 +74,15 @@ spec:
         size: 5Gi
         storageClass: ceph-block
     persistence:
-      media:
+      audiobooks:
         enabled: true
-        existingClaim: audiobookshelf-nfs-pvc
-        mountPath: /media
+        existingClaim: audiobookshelf-books-nfs-pvc
+        mountPath: /audiobooks
+        readOnly: true
+      podcasts:
+        enabled: true
+        existingClaim: audiobookshelf-podcasts-nfs-pvc
+        mountPath: /podcasts
         readOnly: true
       cache:
         enabled: true

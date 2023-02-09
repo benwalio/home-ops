@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: audiobookshelf-nfs
 spec:
-  storageClassName: audiobookshelf-nfs
+  storageClassName: audiobookshelf-books-nfs
   capacity:
     storage: 1Mi
   accessModes: ["ReadOnlyMany"]
@@ -18,11 +18,39 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: audiobookshelf-nfs-pvc
+  name: audiobookshelf-books-nfs-pvc
   namespace: media
 spec:
   accessModes: ["ReadOnlyMany"]
-  storageClassName: audiobookshelf-nfs
+  storageClassName: audiobookshelf-books-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: audiobookshelf-nfs
+spec:
+  storageClassName: audiobookshelf-podcasts-nfs
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadOnlyMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/media/audio/podcasts
+  # Note: The first two options are strictly for NFSv4.2
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audiobookshelf-podcasts-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadOnlyMany"]
+  storageClassName: audiobookshelf-podcasts-nfs
   resources:
     requests:
       storage: 1Mi
