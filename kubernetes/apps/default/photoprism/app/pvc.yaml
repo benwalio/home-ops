@@ -75,7 +75,7 @@ metadata:
   namespace: default
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: photoprism-storage-nfs
+  storageClassName: photoprism-ingress-nfs
   resources:
     requests:
       storage: 1Mi
