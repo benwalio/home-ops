@@ -30,8 +30,8 @@ spec:
       tag: version-0.6.18
     env:
       TZ: "${TIMEZONE}"
-      PUID: 1111
-      PGID: 1111
+      PUID: "1111"
+      PGID: "1111"
       DOCKER_MODS: "linuxserver/mods:universal-calibre"
     service:
       main:
