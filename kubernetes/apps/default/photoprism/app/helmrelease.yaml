@@ -71,6 +71,7 @@ spec:
           hajimari.io/icon: arcticons:photoprism
           hajimari.io/info: Manage Photos
           nginx.ingress.kubernetes.io/proxy-body-size: 4G
+          external-dns.home.arpa/enabled: "true"
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
             paths:
