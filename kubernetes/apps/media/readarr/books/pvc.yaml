@@ -12,7 +12,7 @@ spec:
     server: ${SECRET_NFS_SERVER}
     path: ${SECRET_NFS_BASE_PATH}/swap/downloads/completed
   # Note: The first two options are strictly for NFSv4.2
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -43,7 +43,7 @@ spec:
     server: ${SECRET_NFS_SERVER}
     path: ${SECRET_NFS_BASE_PATH}/media/documents/books
   # Note: The first two options are strictly for NFSv4.2
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
