@@ -89,15 +89,15 @@ spec:
       blackhole:
         enabled: true
         existingClaim: sabnzbd-blackhole-nfs-pvc
-        mountPath: /blackhole
+        mountPath: /nfs/blackhole
       complete:
         enabled: true
         existingClaim: sabnzbd-downloads-complete-nfs-pvc
-        mountPath: /complete
+        mountPath: /nfs/complete
       incomplete:
         enabled: true
         existingClaim: sabnzbd-downloads-incomplete-nfs-pvc
-        mountPath: /incomplete
+        mountPath: /nfs/incomplete
     nodeSelector:
       node-role.kubernetes.io/worker: "true"
     resources:
