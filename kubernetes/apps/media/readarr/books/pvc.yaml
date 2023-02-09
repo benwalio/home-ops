@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: readarr-books-nfs
+spec:
+  storageClassName: readarr-books-nfs
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/apps/readarr
+  # Note: The first two options are strictly for NFSv4.2
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readarr-books-nfs-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name readarr-books
+    app.kubernetes.io/instance: *name
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: readarr-books-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readarr-books-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name readarr-books
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ceph-block
+  resources:
+    requests:
+      storage: 5Gi
