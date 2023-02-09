@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: app_name
-  namespace: namespace_name
+  name: immich
+  namespace: default
 spec:
   values:
     initContainers:
@@ -11,4 +11,4 @@ spec:
         image: ghcr.io/onedr0p/postgres-initdb:14.6@sha256:ae3b33db2ebf7b06c0244ecc49711bcc02e89d8cebea5379ed20b59344c48372
         envFrom:
           - secretRef:
-              name: app_name-secret
+              name: immich-secret
