@@ -92,7 +92,7 @@ spec:
         mountPath: /blackhole
       complete:
         enabled: true
-        existingClaim: sabnzbd-downloads-completed-nfs-pvc
+        existingClaim: sabnzbd-downloads-complete-nfs-pvc
         mountPath: /complete
       incomplete:
         enabled: true
