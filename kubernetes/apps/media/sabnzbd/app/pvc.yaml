@@ -12,7 +12,7 @@ spec:
   nfs:
     server: ${SECRET_NFS_SERVER}
     path: ${SECRET_NFS_BASE_PATH}/swap/blackhole/nzbd
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
