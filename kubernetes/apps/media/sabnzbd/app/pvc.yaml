@@ -10,9 +10,9 @@ spec:
   storageClassName: sabnzbd-blackhole-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: pelican.grz.bear
-    path: /mnt/ingot/hydra/swap/blackhole/nzbd
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard"]
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/blackhole/nzbd
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -37,9 +37,9 @@ spec:
   storageClassName: sabnzbd-downloads-complete-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: pelican.grz.bear
-    path: /mnt/ingot/hydra/swap/downloads/completed
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/downloads/completed
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -64,9 +64,9 @@ spec:
   storageClassName: sabnzbd-downloads-incomplete-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: pelican.grz.bear
-    path: /mnt/ingot/hydra/swap/downloads/incomplete
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/swap/downloads/incomplete
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
