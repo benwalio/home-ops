@@ -40,8 +40,8 @@ spec:
       PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
       # PHOTOPRISM_SITE_AUTHOR: ""
       # # You may optionally set user, group and/or file permissions using environment variables:
-      UID: 3002
-      GID: 3005
+      UID: 33
+      GID: 33
       # UMASK: 0000
       PHOTOPRISM_ORIGINALS_LIMIT: 4000 # in MB (default 1000)
 
