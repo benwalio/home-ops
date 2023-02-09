@@ -90,8 +90,8 @@ spec:
         mountPath: /media
       swap:
         enabled: true
-        existingClaim: sonarr-swap-nfs-pvc
-        mountPath: /swap
+        existingClaim: sonarr-complete-nfs-pvc
+        mountPath: /nfs/complete
       scripts:
         enabled: true
         type: configMap
