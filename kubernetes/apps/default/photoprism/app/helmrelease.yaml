@@ -70,7 +70,6 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/icon: arcticons:photoprism
           hajimari.io/info: Manage Photos
-          hajimari.io/group: media
           nginx.ingress.kubernetes.io/proxy-body-size: 4G
         hosts:
           - host: &host photos.${SECRET_DOMAIN}
