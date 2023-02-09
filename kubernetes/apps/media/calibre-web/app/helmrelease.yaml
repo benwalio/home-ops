@@ -26,13 +26,13 @@ spec:
     global:
       nameOverride: *app
     image:
-      repository: ghcr.io/linuxserver/calibre-web
+      repository: ghcr.io/bjw-s/calibre-web
       tag: 0.6.19
     env:
       TZ: "${TIMEZONE}"
-      PUID: "1111"
-      PGID: "1111"
-      DOCKER_MODS: "linuxserver/mods:universal-calibre"
+      # PUID: 1111
+      # PGID: 1111
+      # DOCKER_MODS: "linuxserver/mods:universal-calibre"
     service:
       main:
         ports:
@@ -60,12 +60,12 @@ spec:
               - *host
 
     podSecurityContext:
-      runAsUser: 1111
-      runAsGroup: 1111
-      fsGroup: 1111
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
-        - 5600
+        - 1111
     persistence:
       config:
         enabled: true
