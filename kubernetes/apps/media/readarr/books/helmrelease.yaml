@@ -82,7 +82,7 @@ spec:
 
       ingress:
         enabled: true
-        existingClaim: readarr-books-swap-nfs-pvc
+        existingClaim: readarr-books-download-nfs-pvc
         mountPath: /data/ingress
 
     resources:

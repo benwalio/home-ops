@@ -82,7 +82,7 @@ spec:
 
       ingress:
         enabled: true
-        existingClaim: readarr-audio-swap-nfs-pvc
+        existingClaim: readarr-audio-download-nfs-pvc
         mountPath: /data/ingress
 
     resources:
