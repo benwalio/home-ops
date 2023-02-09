@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: podgrab-nfs
+spec:
+  storageClassName: podgrab-nfs
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/media/audio/podcasts
+  # Note: The first two options are strictly for NFSv4.2
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: podgrab-nfs-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name podgrab
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: podgrab-nfs
+  resources:
+    requests:
+      storage: 1Mi

@@ -2,14 +2,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-app_name
+  name: cluster-apps-podgrab
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
-    - name: cluster-apps-dependency_name
-  path: ./kubernetes/apps/namespace_name/app_name/app
+    - name: cluster-apps-rook-ceph-cluster
+  path: ./kubernetes/apps/media/podgrab/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -17,8 +17,8 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: app_name
-      namespace: namespace_name
+      name: podgrab
+      namespace: media
   interval: 30m
   retryInterval: 1m
   timeout: 3m
