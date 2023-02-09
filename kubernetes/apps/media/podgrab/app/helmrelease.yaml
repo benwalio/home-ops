@@ -35,13 +35,13 @@ spec:
           http:
             port: 8080
 
-    podSecurityContext:
-      runAsUser: 1111
-      runAsGroup: 1111
-      fsGroup: 1111
-      fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 10000
+    # podSecurityContext:
+    #   runAsUser: 1111
+    #   runAsGroup: 1111
+    #   fsGroup: 1111
+    #   fsGroupChangePolicy: "OnRootMismatch"
+    #   supplementalGroups:
+    #     - 10000
 
     volumeClaimTemplates:
       - name: config
