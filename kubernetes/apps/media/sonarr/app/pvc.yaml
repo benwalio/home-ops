@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: sonarr-nfs-pv
+  name: sonarr-swap-nfs-pv
 spec:
   capacity:
     storage: 1Mi
   accessModes: ["ReadWriteMany"]
-  storageClassName: sonarr-nfs
+  storageClassName: sonarr-swap-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: pelican.grz.bear
@@ -17,11 +17,38 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarr-nfs-pvc
+  name: sonarr-swap-nfs-pvc
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
-  storageClassName: sonarr-nfs
+  storageClassName: sonarr-swap-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarr-media-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sonarr-media-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/media/video/tv
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-media-nfs-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: sonarr-media-nfs
   resources:
     requests:
       storage: 1Mi
