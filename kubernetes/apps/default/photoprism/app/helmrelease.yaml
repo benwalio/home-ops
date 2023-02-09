@@ -35,7 +35,7 @@ spec:
       # PHOTOPRISM_READONLY: "false"                   # Don't modify originals directory (reduced functionality)
       # PHOTOPRISM_EXPERIMENTAL: "false"               # Enable experimental features
       PHOTOPRISM_SITE_URL: "https://photos.${SECRET_DOMAIN}/"  # Canonical / public site URL
-      PHOTOPRISM_SITE_TITLE: "Nunez Gregoire"
+      PHOTOPRISM_SITE_TITLE: "Photoprism"
       PHOTOPRISM_SITE_CAPTION: "Casa"
       PHOTOPRISM_SITE_DESCRIPTION: "una descripcion"
       # PHOTOPRISM_SITE_AUTHOR: ""
