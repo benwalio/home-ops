@@ -114,7 +114,7 @@ spec:
     #   valuesKey: POSTGRES_PASS
     - targetPath: mail.smtp.host
       kind: Secret
-      name: *secret
+      name: &secret nextcloud-secret
       valuesKey: SMTP_HOST
     - targetPath: mail.smtp.port
       kind: Secret
