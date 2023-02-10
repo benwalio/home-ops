@@ -53,6 +53,20 @@ spec:
       # podSecurityContext:
       #   runAsUser: 1100
       #   runAsGroup: 1100
+      configs:
+        proxy.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' =>
+            array(
+               0 => '10.42.0.0/24',
+               1 => '10.43.0.0/24',
+            ),
+            'forwarded_for_headers' =>
+            array (
+              0 => 'HTTP_X_FORWARDED_FOR',
+            ),
+          );
 
     internalDatabase:
       enabled: false
