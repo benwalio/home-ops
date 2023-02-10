@@ -71,16 +71,13 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1111
+      runAsGroup: 1111
+      fsGroup: 1111
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
-        - 44
-        - 109
-        - 10000
-        - 65542
-        - 100
+        - 1100
+
     volumeClaimTemplates:
       - name: config
         mountPath: /config
@@ -90,16 +87,14 @@ spec:
         labels:
           snapshot.home.arpa/enabled: "true"
     persistence:
-      media:
+      tv:
         enabled: true
-        # existingClaim: plex-media-nfs-pvc
-        type: nfs
-        server: 192.168.2.9
-        path: /volume1/media
-        mountPath: /media
-        mountOptions:
-          - nfsvers=4.1
-        readOnly: true
+        existingClaim: plex-tv-nfs-pvc
+        mountPath: /nfs/tv
+      movie:
+        enabled: true
+        existingClaim: plex-movie-nfs-pvc
+        mountPath: /nfs/movie
       transcode:
         enabled: true
         type: emptyDir
