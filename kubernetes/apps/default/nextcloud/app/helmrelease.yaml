@@ -41,12 +41,12 @@ spec:
         enabled: true
         secretName: nextcloud-secret
       host: &host cloud.${SECRET_DOMAIN}
-      mail:
-        enabled: true
-        fromAddress: hello
-        domain: ${SECRET_PUBLIC_DOMAIN}
-        smtp:
-          authtype: NONE
+      # mail:
+      #   enabled: true
+      #   fromAddress: hello
+      #   domain: ${SECRET_PUBLIC_DOMAIN}
+      #   smtp:
+      #     authtype: NONE
       securityContext:
         runAsUser: 1100
         runAsGroup: 1100
@@ -112,14 +112,14 @@ spec:
     #   kind: Secret
     #   name: *secret
     #   valuesKey: POSTGRES_PASS
-    - targetPath: mail.smtp.host
-      kind: Secret
-      name: &secret nextcloud-secret
-      valuesKey: SMTP_HOST
-    - targetPath: mail.smtp.port
-      kind: Secret
-      name: *secret
-      valuesKey: SMTP_PORT
+    # - targetPath: mail.smtp.host
+    #   kind: Secret
+    #   name: &secret nextcloud-secret
+    #   valuesKey: SMTP_HOST
+    # - targetPath: mail.smtp.port
+    #   kind: Secret
+    #   name: *secret
+    #   valuesKey: SMTP_PORT
     # - targetPath: mail.smtp.name
     #   kind: Secret
     #   name: *secret
