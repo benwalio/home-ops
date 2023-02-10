@@ -52,3 +52,20 @@ spec:
   resources:
     requests:
       storage: 1Mi
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: plex-config-pvc
+#   namespace: media
+#   labels:
+#     app.kubernetes.io/name: &name plex
+#     app.kubernetes.io/instance: *name
+#     snapshot.home.arpa/enabled: "true"
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   storageClassName: ceph-block
+#   resources:
+#     requests:
+#       storage: 50Gi
