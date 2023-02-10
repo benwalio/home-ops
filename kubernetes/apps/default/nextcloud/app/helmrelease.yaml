@@ -37,9 +37,9 @@ spec:
           value: redis-lb.storage.svc.cluster.local
         - name: REDIS_HOST_PORT
           value: "6379"
-      existingSecret:
-        enabled: true
-        secretName: nextcloud-secret
+      # existingSecret:
+      #   enabled: true
+      #   secretName: nextcloud-secret
       host: &host cloud.${SECRET_DOMAIN}
       mail:
         enabled: true
@@ -76,9 +76,17 @@ spec:
         accessMode: ReadWriteMany
 
   valuesFrom:
-    - targetPath: externalDatabase.database
+    - targetPath: nextcloud.username
       kind: Secret
       name: &secret nextcloud-secret
+      valuesKey: NEXTCLOUD_USER
+    - targetPath: nextcloud.password
+      kind: Secret
+      name: *secret
+      valuesKey: NEXTCLOUD_PASS
+    - targetPath: externalDatabase.database
+      kind: Secret
+      name: *secret
       valuesKey: POSTGRES_DB
     - targetPath: externalDatabase.host
       kind: Secret
