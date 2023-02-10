@@ -67,11 +67,11 @@ spec:
               0 => 'HTTP_X_FORWARDED_FOR',
             ),
           );
-        bulkupload.config.php: |-
-          <?php
-          $CONFIG = array (
-            'bulkupload.enabled' => false,
-          );
+        # bulkupload.config.php: |-
+        #   <?php
+        #   $CONFIG = array (
+        #     'bulkupload.enabled' => false,
+        #   );
 
     internalDatabase:
       enabled: false
