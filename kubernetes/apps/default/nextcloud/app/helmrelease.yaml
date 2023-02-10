@@ -48,8 +48,8 @@ spec:
       #   smtp:
       #     authtype: NONE
       securityContext:
-        runAsUser: 33
-        runAsGroup: 33
+        runAsUser: 1100
+        runAsGroup: 1100
       # podSecurityContext:
       #   runAsUser: 1100
       #   runAsGroup: 1100
