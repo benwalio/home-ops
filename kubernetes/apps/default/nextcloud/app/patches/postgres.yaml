@@ -7,8 +7,8 @@ metadata:
 spec:
   values:
     nextcloud:
-      initContainers:
-        init-db:
+      extraInitContainers:
+        - name: init-db
           image: ghcr.io/onedr0p/postgres-initdb:14.6
           imagePullPolicy: IfNotPresent
           envFrom:
