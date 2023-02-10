@@ -47,12 +47,12 @@ spec:
       #   domain: ${SECRET_PUBLIC_DOMAIN}
       #   smtp:
       #     authtype: NONE
-      # securityContext:
-      #   runAsUser: 1100
-      #   runAsGroup: 1100
-      podSecurityContext:
+      securityContext:
         runAsUser: 1100
         runAsGroup: 1100
+      # podSecurityContext:
+      #   runAsUser: 1100
+      #   runAsGroup: 1100
 
     internalDatabase:
       enabled: false
