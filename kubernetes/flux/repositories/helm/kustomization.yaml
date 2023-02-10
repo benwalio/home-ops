@@ -30,6 +30,7 @@ resources:
   - ./metallb.yaml
   - ./metrics-server.yaml
   - ./mvisonneau.yaml
+  - ./nextcloud.yaml
   - ./node-feature-discovery.yaml
   - ./piraeus.yaml
   - ./podinfo.yaml
