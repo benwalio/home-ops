@@ -8,7 +8,7 @@ resources:
   - ./hajimari/ks.yaml
   - ./immich/ks.yaml
   - ./n8n/ks.yaml
-  # - ./nextcloud/ks.yaml
+  - ./nextcloud/ks.yaml
   - ./nocodb/ks.yaml
   - ./shlink/ks.yaml
   - ./theme-park/ks.yaml
