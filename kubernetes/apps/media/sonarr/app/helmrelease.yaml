@@ -92,14 +92,14 @@ spec:
         enabled: true
         existingClaim: sonarr-complete-nfs-pvc
         mountPath: /nfs/complete
-      scripts:
-        enabled: true
-        type: configMap
-        name: sonarr-configmap
-        subPath: pushover-notify.sh
-        mountPath: /scripts/pushover-notify.sh
-        defaultMode: 0775
-        readOnly: true
+      # scripts:
+      #   enabled: true
+      #   type: configMap
+      #   name: sonarr-configmap
+      #   subPath: pushover-notify.sh
+      #   mountPath: /scripts/pushover-notify.sh
+      #   defaultMode: 0775
+      #   readOnly: true
     resources:
       requests:
         cpu: 10m
