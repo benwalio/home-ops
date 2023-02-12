@@ -8,11 +8,11 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
   - ./volsync.yaml
-configMapGenerator:
-  - name: sonarr-configmap
-    files:
-      - ./scripts/pushover-notify.sh
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+# configMapGenerator:
+#   - name: sonarr-configmap
+#     files:
+#       - ./scripts/pushover-notify.sh
+# generatorOptions:
+#   disableNameSuffixHash: true
+#   annotations:
+#     kustomize.toolkit.fluxcd.io/substitute: disabled
