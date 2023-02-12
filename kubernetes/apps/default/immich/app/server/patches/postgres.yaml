@@ -8,7 +8,7 @@ spec:
   values:
     initContainers:
       init-db:
-        image: ghcr.io/onedr0p/postgres-initdb:14.6@sha256:ae3b33db2ebf7b06c0244ecc49711bcc02e89d8cebea5379ed20b59344c48372
+        image: ghcr.io/onedr0p/postgres-initdb:14.7@sha256:63d3321053b2033bd5dff909959513939795f7ec7d66b473b457f933325c4c5a
         envFrom:
           - secretRef:
               name: immich-secret
