@@ -26,14 +26,17 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+
   values:
     controller:
       type: statefulset
       annotations:
         reloader.stakater.com/auto: "true"
+
     image:
       repository: ghcr.io/onedr0p/sonarr
       tag: 3.0.9.1549
+
     env:
       TZ: ${TIMEZONE}
       PUSHOVER_DEBUG: "false"
