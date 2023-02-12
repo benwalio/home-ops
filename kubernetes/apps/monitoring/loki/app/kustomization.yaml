@@ -6,5 +6,4 @@ namespace: monitoring
 resources:
   - ./configmap.yaml
   - ./externalsecret.yaml
-  # - ./objectbucketclaim.yaml
   - ./helmrelease.yaml
