@@ -64,20 +64,19 @@ spec:
       startup:
         enabled: false
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1100
+      runAsGroup: 1100
+      fsGroup: 1100
       fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups: [10000]
+      supplementalGroups:
+        - 1111
     podAnnotations:
       secret.reloader.stakater.com/reload: |-
         lidarr-secret,radarr-secret,sonarr-secret
     persistence:
       complete:
         enabled: true
-        type: nfs
-        server: expanse.turbo.ac
-        path: /eros/Media/Downloads/qbittorrent/complete
+        existingClaim: unpackerr-complete-nfs-pvc
         mountPath: /complete
     resources:
       requests:
