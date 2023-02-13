@@ -78,12 +78,12 @@ spec:
       media:
         enabled: true
         existingClaim: readarr-audio-nfs-pvc
-        mountPath: /data/media
+        mountPath: /nfs/media
 
       ingress:
         enabled: true
         existingClaim: readarr-audio-download-nfs-pvc
-        mountPath: /data/ingress
+        mountPath: /nfs/complete
 
     resources:
       requests:

@@ -87,7 +87,7 @@ spec:
       media:
         enabled: true
         existingClaim: radarr-media-nfs-pvc
-        mountPath: /media
+        mountPath: /nfs/media
       swap:
         enabled: true
         existingClaim: radarr-complete-nfs-pvc

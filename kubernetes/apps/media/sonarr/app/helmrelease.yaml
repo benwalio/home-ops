@@ -90,7 +90,7 @@ spec:
       media:
         enabled: true
         existingClaim: sonarr-media-nfs-pvc
-        mountPath: /media
+        mountPath: /nfs/media
       swap:
         enabled: true
         existingClaim: sonarr-complete-nfs-pvc

@@ -45,7 +45,7 @@ spec:
       books:
         enabled: true
         existingClaim: calibre-nfs-pvc
-        mountPath: /books
+        mountPath: /nfs/media
     service:
       main:
         ports:

@@ -78,12 +78,12 @@ spec:
       media:
         enabled: true
         existingClaim: readarr-books-nfs-pvc
-        mountPath: /data/media
+        mountPath: /nfs/media
 
       ingress:
         enabled: true
         existingClaim: readarr-books-download-nfs-pvc
-        mountPath: /data/ingress
+        mountPath: /nfs/complete
 
     resources:
       requests:
