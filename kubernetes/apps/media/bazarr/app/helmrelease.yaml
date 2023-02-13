@@ -75,11 +75,11 @@ spec:
       tv:
         enabled: true
         existingClaim: bazarr-tv-nfs-pvc
-        mountPath: /tv
+        mountPath: /nfs/tv
       movie:
         enabled: true
         existingClaim: bazarr-movie-nfs-pvc
-        mountPath: /movie
+        mountPath: /nfs/movie
       add-ons:
         enabled: true
         type: emptyDir
