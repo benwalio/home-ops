@@ -15,11 +15,12 @@ x-task-vars: &task-vars
   claim: '{{.claim}}'
   ts: '{{.ts}}'
   kustomization: '{{.kustomization}}'
+  rasof: '{{.rasof}}'
 
 tasks:
 
   list:
-    desc: List all snapshots taken by restic for a given ReplicationSource (ex. task vs:list rsrc=plex [namespace=default])
+    desc: List all snapshots taken by restic for a given ReplicationSource (ex. task vs:list rsrc=plex ns=default)
     silent: true
     cmds:
       - envsubst < <(cat {{.listJobTemplate}}) | kubectl apply -f -
@@ -59,7 +60,7 @@ tasks:
   #   - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=2 -l bash -c 'task vs:restore rsrc=$0 namespace=$1'
   #
   restore:
-    desc: Trigger a Restic ReplicationSource restore (ex. task vs:restore rsrc=plex [ns=default])
+    desc: Trigger a Restic ReplicationSource restore (ex. task vol:restore rsrc=plex ns=default [rasof=2])
     cmds:
       - task: restore-suspend-app
         vars: *task-vars
@@ -72,6 +73,7 @@ tasks:
     vars:
       rsrc: '{{ or .rsrc (fail "Variable `rsrc` is required") }}'
       namespace: '{{.ns | default "default"}}'
+      rasof: '{{.rasof | default 2}}'
       # 1) Query to find the Flux Kustomization associated with the ReplicationSource (rsrc)
       kustomization:
         sh: |
