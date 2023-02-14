@@ -43,7 +43,7 @@ spec:
     server: pelican.grz.bear
     path: /mnt/ingot/hydra/swap/ingress/seedbox/books
   # Note: The first two options are strictly for NFSv4.2
-  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
