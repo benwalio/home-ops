@@ -30,6 +30,37 @@ spec:
       storage: 1Mi
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: calibre-ingress-nfs
+spec:
+  storageClassName: calibre-ingress-nfs
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: pelican.grz.bear
+    path: /mnt/ingot/hydra/swap/ingress/seedbox/books
+  # Note: The first two options are strictly for NFSv4.2
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-ingress-nfs-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name calibre
+    app.kubernetes.io/instance: *name
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: calibre-ingress-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: calibre-config-pvc

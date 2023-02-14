@@ -46,6 +46,11 @@ spec:
         enabled: true
         existingClaim: calibre-nfs-pvc
         mountPath: /nfs/media
+      ingress:
+        enabled: true
+        existingClaim: calibre-ingress-nfs-pvc
+        mountPath: /nfs/ingress
+
     service:
       main:
         ports:
