@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: docker.io/mvisonneau/tailscale
-      tag: 'v1.34.2'
+      tag: 'v1.36.1'
     config:
       variables:
         TAILSCALE_ADVERTISE_ROUTES: "10.42.0.0/16,10.43.0.0/16,10.69.10.0/24,192.168.1.0/24,192.168.2.0/24"
