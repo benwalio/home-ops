@@ -20,7 +20,7 @@ x-task-vars: &task-vars
 tasks:
 
   list:
-    desc: List all snapshots taken by restic for a given ReplicationSource (ex. task vs:list rsrc=plex ns=default)
+    desc: List all snapshots taken by restic for a given ReplicationSource (ex. task vol:list rsrc=plex ns=default)
     silent: true
     cmds:
       - envsubst < <(cat {{.listJobTemplate}}) | kubectl apply -f -
@@ -37,10 +37,10 @@ tasks:
       - sh: test -f {{.listJobTemplate}}
 
   # To run backup jobs in parallel for all replicationsources:
-  #  - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=4 -l bash -c 'task vs:snapshot rsrc=$0 namespace=$1'
+  #  - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=4 -l bash -c 'task vol:snapshot rsrc=$0 namespace=$1'
   #
   snapshot:
-    desc: Trigger a Restic ReplicationSource snapshot (ex. task vs:snapshot rsrc=plex [ns=default])
+    desc: Trigger a Restic ReplicationSource snapshot (ex. task vol:snapshot rsrc=plex [ns=default])
     cmds:
       - kubectl -n {{.namespace}} patch replicationsources {{.rsrc}} --type merge -p '{"spec":{"trigger":{"manual":"{{.ts}}"}}}'
       - bash {{.waitForJobScript}} volsync-src-{{.rsrc}} {{.namespace}}
@@ -57,7 +57,7 @@ tasks:
         msg: "ReplicationSource '{{.rsrc}}' not found in namespace '{{.namespace}}'"
 
   # To run restore jobs in parallel for all replicationdestinations:
-  #   - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=2 -l bash -c 'task vs:restore rsrc=$0 namespace=$1'
+  #   - kubectl get replicationsources --all-namespaces --no-headers | awk '{print $2, $1}' | xargs --max-procs=2 -l bash -c 'task vol:restore rsrc=$0 namespace=$1'
   #
   restore:
     desc: Trigger a Restic ReplicationSource restore (ex. task vol:restore rsrc=plex ns=default [rasof=2])

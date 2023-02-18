@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./netattach.yaml
   - ./pvc.yaml
-  - ./volsync.yaml
+  # - ./volsync.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: esphome

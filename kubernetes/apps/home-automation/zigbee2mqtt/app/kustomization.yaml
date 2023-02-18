@@ -7,7 +7,6 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
-  # - ./nodefeaturerule.yaml
   - ./pvc.yaml
   - ./volsync.yaml
 patchesStrategicMerge:
