@@ -13,4 +13,4 @@ resources:
   - ./shlink/ks.yaml
   - ./theme-park/ks.yaml
   - ./uptime-kuma/ks.yaml
-  - ./vikunja/ks.yaml
+  # - ./vikunja/ks.yaml
