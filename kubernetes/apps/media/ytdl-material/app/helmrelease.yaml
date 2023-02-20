@@ -57,10 +57,10 @@ spec:
             mountPath: /app/subscriptions
           - path: app/users
             mountPath: /app/users
-    podSecurityContext:
-      runAsUser: ${SECRET_NFS_2_UID}
-      runAsGroup: ${SECRET_NFS_2_GID}
-      fsGroup: ${SECRET_NFS_2_GID}
+    # podSecurityContext:
+    #   runAsUser: ${SECRET_NFS_2_UID}
+    #   runAsGroup: ${SECRET_NFS_2_GID}
+    #   fsGroup: ${SECRET_NFS_2_GID}
     service:
       main:
         ports:
