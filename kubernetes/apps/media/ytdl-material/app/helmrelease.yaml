@@ -44,18 +44,18 @@ spec:
         enabled: true
         existingClaim: ytdl-material-nfs-pvc
         mountPath: /app/appdata
-        subPath: app/data
+        subPath: data
       media:
         enabled: true
         existingClaim: ytdl-material-nfs-pvc
         subPath:
-          - path: app/audio
+          - path: audio
             mountPath: /app/audio
-          - path: app/video
+          - path: video
             mountPath: /app/video
-          - path: app/subscriptions
+          - path: ubscriptions
             mountPath: /app/subscriptions
-          - path: app/users
+          - path: users
             mountPath: /app/users
     podSecurityContext:
       runAsUser: ${SECRET_NFS_2_UID}
