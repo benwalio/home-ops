@@ -43,25 +43,34 @@ spec:
       data:
         enabled: true
         existingClaim: ytdl-material-nfs-pvc
-        mountPath: /app/appdata
-        subPath: data
-      media:
-        enabled: true
-        existingClaim: ytdl-material-nfs-pvc
         subPath:
+          - path: data
+            mountPath: /app/appdata
           - path: audio
             mountPath: /app/audio
           - path: video
             mountPath: /app/video
-          - path: ubscriptions
+          - path: subscriptions
             mountPath: /app/subscriptions
           - path: users
             mountPath: /app/users
+      # media:
+      #   enabled: true
+      #   existingClaim: ytdl-material-nfs-pvc
+      #   subPath:
+      #     - path: audio
+      #       mountPath: /app/audio
+      #     - path: video
+      #       mountPath: /app/video
+      #     - path: subscriptions
+      #       mountPath: /app/subscriptions
+      #     - path: users
+      #       mountPath: /app/users
 
-    # podSecurityContext:
-    #   runAsUser: ${SECRET_NFS_2_UID}
-    #   runAsGroup: ${SECRET_NFS_2_GID}
-    #   fsGroup: ${SECRET_NFS_2_GID}
+    podSecurityContext:
+      runAsUser: ${SECRET_NFS_2_UID}
+      runAsGroup: ${SECRET_NFS_2_GID}
+      fsGroup: ${SECRET_NFS_2_GID}
 
     podAnnotations:
       secret.reloader.stakater.com/reload: *secret
