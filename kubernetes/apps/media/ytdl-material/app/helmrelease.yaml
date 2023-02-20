@@ -37,7 +37,7 @@ spec:
       ytdl_mongodb_connection_string:
         valueFrom:
           secretKeyRef:
-            name: ytdl-material-secret
+            name: &secret ytdl-material-secret
             key: MONGO_CONNECTION
     persistence:
       data:
@@ -61,6 +61,10 @@ spec:
       runAsUser: ${SECRET_NFS_2_UID}
       runAsGroup: ${SECRET_NFS_2_GID}
       fsGroup: ${SECRET_NFS_2_GID}
+
+    podAnnotations:
+      secret.reloader.stakater.com/reload: *secret
+
     service:
       main:
         ports:
