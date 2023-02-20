@@ -30,6 +30,8 @@ spec:
       tag: nightly-2023-01-31
     env:
       TZ: "${TIMEZONE}"
+      UID: "${SECRET_NFS_2_UID}"
+      GID: "${SECRET_NFS_2_GID}"
       ytdl_use_local_db: "false"
       write_ytdl_config: "true"
       ytdl_mongodb_connection_string:
