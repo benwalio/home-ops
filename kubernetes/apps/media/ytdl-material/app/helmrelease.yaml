@@ -27,7 +27,7 @@ spec:
   values:
     image:
       repository: ghcr.io/tzahi12345/youtubedl-material
-      tag: 4.3
+      tag: nightly-2023-01-31
     env:
       TZ: "${TIMEZONE}"
       ytdl_use_local_db: "false"
