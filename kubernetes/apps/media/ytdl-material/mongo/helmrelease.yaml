@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ytdl-material-mongo
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.0
+      interval: 15m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controller:
+      strategy: RollingUpdate
+    image:
+      repository: docker.io/library/mongo
+      tag: latest
+    env:
+      MONGO_INITDB_ROOT_USERNAME:
+        valueFrom:
+          secretKeyRef:
+            name: ytdl-material-mongo-secret
+            key: MONGO_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: ytdl-material-mongo-secret
+            key: MONGO_PASSWORD
+    podSecurityContext:
+      runAsUser: ${SECRET_NFS_2_UID}
+      runAsGroup: ${SECRET_NFS_2_GID}
+      fsGroup: ${SECRET_NFS_2_GID}
+      # fsGroupChangePolicy: "OnRootMismatch"
+    persistence:
+      data:
+        enabled: true
+        mountPath: /data/db
+        existingClaim: ytdl-material-mongo-nfs-pvc
+        subPath: mongo
+    service:
+      main:
+        ports:
+          http:
+            port: 27017

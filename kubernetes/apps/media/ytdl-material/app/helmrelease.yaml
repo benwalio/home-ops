@@ -1,0 +1,81 @@
+# https://github.com/Tzahi12345/YoutubeDL-Material/blob/master/docker-compose.yml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ytdl-material
+  namespace: media
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.2.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      interval: 15m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+
+  values:
+    image:
+      repository: ghcr.io/tzahi12345/youtubedl-material
+      tag: 4.3
+    env:
+      TZ: "${TIMEZONE}"
+      ytdl_use_local_db: "false"
+      write_ytdl_config: "true"
+      ytdl_mongodb_connection_string:
+        valueFrom:
+          secretKeyRef:
+            name: ytdl-material-secret
+            key: MONGO_CONNECTION
+    persistence:
+      data:
+        enabled: true
+        existingClaim: ytdl-material-nfs-pvc
+        mountPath: /app
+        subPath: app
+      # media:
+      #   enabled: true
+      #   existingClaim: ytdl-material-nfs-pvc
+      #   subPath:
+      #     - path: app/audio
+      #       mountPath: /app/audio
+      #     - path: app/video
+      #       mountPath: /app/video
+      #     - path: app/subscriptions
+      #       mountPath: /app/subscriptions
+      #     - path: app/users
+      #       mountPath: /app/users
+    podSecurityContext:
+      runAsUser: ${SECRET_NFS_2_UID}
+      runAsGroup: ${SECRET_NFS_2_GID}
+      fsGroup: ${SECRET_NFS_2_GID}
+    service:
+      main:
+        ports:
+          http:
+            port: 17442
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: youtube
+        hosts:
+          - host: &host "ytdl.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host

@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ytdl-material-nfs-pv
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  storageClassName: ytdl-material-nfs
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: ${SECRET_NFS_2_SERVER}
+    path: ${SECRET_NFS_2_BASE_PATH}/kubernetes/apps/ytdl
+  mountOptions: ["nfsvers=4.1"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ytdl-material-nfs-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: ytdl-material
+    app.kubernetes.io/instance: ytdl-material
+    snapshot.home.arpa/enabled: "true"
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: ytdl-material-nfs
+  resources:
+    requests:
+      storage: 1Mi

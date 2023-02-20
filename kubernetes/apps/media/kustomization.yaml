@@ -22,3 +22,4 @@ resources:
   # - ./tautulli/ks.yaml
   # - ./unpackerr/ks.yaml
   - ./wikijs/ks.yaml
+  - ./ytdl-material/ks.yaml
