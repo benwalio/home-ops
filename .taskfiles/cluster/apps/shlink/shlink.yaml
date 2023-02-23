@@ -22,7 +22,7 @@ tasks:
       - kubectl exec {{.apiPod}} -c shlink-api -- shlink api-key:list
 
   disable-api-key:
-    desc: list api keys
+    desc: list api keys [apiKey=API_KEY]
     cmds:
       - kubectl exec {{.apiPod}} -c shlink-api -- shlink api-key:disable {{.apiKey}}
     vars:
