@@ -35,6 +35,7 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-shlink-api
+    - name: cluster-apps-ingress-nginx
   path: ./kubernetes/apps/default/shlink/web
   prune: true
   sourceRef:
