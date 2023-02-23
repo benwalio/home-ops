@@ -4,12 +4,11 @@ metadata:
   name: home-assistant
   namespace: external-services
 spec:
-  selector:
-    app.kubernetes.io/name: home-assistant
+  # selector:
+  #   app.kubernetes.io/name: home-assistant
   ports:
     - name: http
       # protocol: HTTP
-      port: 80
-      targetPort: 8123
-  externalIPs:
-    - 10.69.10.12
+      port: 8123
+      # targetPort:
+  type: ClusterIP

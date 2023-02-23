@@ -6,6 +6,7 @@ metadata:
   namespace: external-services
   annotations:
     external-dns.home.arpa/enabled: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 
 spec:
   ingressClassName: nginx
