@@ -6,3 +6,9 @@ namespace: default
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+patchesStrategicMerge:
+  - ./patches/postgres.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: shlink-api
+      app.kubernetes.io/instance: shlink
