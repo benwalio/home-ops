@@ -9,7 +9,7 @@ spec:
   ports:
     - name: http
       # protocol: HTTP
-      port: 443
+      port: 80
       targetPort: 8123
   externalIPs:
     - 10.69.10.12
