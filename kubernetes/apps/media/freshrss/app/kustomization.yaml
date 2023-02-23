@@ -6,5 +6,6 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./pvc.yaml
+  - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/postgres.yaml
