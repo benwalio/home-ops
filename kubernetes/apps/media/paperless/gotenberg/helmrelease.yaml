@@ -21,7 +21,7 @@ spec:
     image:
       # https://hub.docker.com/r/gotenberg/gotenberg
       repository: docker.io/gotenberg/gotenberg
-      tag: 7.8.0
+      tag: 7.8.1
     command: [gotenberg]
     args: [--chromium-disable-routes=true]
     service:
