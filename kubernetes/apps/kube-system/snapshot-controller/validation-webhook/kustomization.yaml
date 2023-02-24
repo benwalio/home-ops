@@ -6,6 +6,6 @@ resources:
   - ./helmrelease.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: snapshot-controller
-      app.kubernetes.io/instance: snapshot-controller
+      app.kubernetes.io/name: snapshot-validation-webhook
+      app.kubernetes.io/instance: snapshot-validation-webhook
       app.kubernetes.io/part-of: snapshot-controller
