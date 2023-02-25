@@ -4,7 +4,6 @@ kind: HelmRelease
 metadata:
   name: volsync
   namespace: storage
-
 spec:
   interval: 15m
 
