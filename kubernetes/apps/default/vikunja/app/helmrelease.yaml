@@ -160,5 +160,5 @@ spec:
             readOnly: true
       frontend:
         name: frontend
-        image: vikunja/frontend:0.20.3
+        image: vikunja/frontend:0.20.5
     imagePullPolicy: IfNotPresent
