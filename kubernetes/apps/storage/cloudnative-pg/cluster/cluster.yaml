@@ -11,7 +11,7 @@ spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:14.6
   primaryUpdateStrategy: unsupervised
   storage:
-    size: 40Gi
+    size: 50Gi
     storageClass: ceph-block
 
   affinity:
