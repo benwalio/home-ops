@@ -82,14 +82,14 @@ spec:
           - hosts:
               - *host
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
+      runAsUser: 1100
+      runAsGroup: 1100
+      fsGroup: 1100
       fsGroupChangePolicy: "OnRootMismatch"
-      supplementalGroups:
-        - 100
-        - 10000
-        - 65542
+      # supplementalGroups:
+      #   - 100
+      #   - 10000
+      #   - 65542
 
     # Note: If downloading very large torrents it might be worth using NFS for your download directory.
     # Beware if you are downloading torrents directly to a ZFS dataset that dataset will accrue fragmentation.
@@ -98,10 +98,18 @@ spec:
         enabled: true
         mountPath: /config
         existingClaim: qbittorrent-config-pvc
-      media:
+      complete:
         enabled: true
-        existingClaim: qbittorrent-nfs-pvc
-        mountPath: /media
+        existingClaim: qbittorrent-downloads-complete-nfs-pvc
+        mountPath: /nfs/complete
+      seeding:
+        enabled: true
+        existingClaim: qbittorrent-seeding-nfs-pvc
+        mountPath: /nfs/seeding
+      blackhole:
+        enabled: true
+        existingClaim: qbittorrent-blackhole-nfs-pvc
+        mountPath: /nfs/blackhole
       incomplete:
         enabled: true
         type: emptyDir
