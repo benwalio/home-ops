@@ -31,7 +31,12 @@ tasks:
       - flux reconcile -n flux-system source git home-kubernetes
       - flux reconcile -n flux-system kustomization cluster
 
-  upgrade:
-    desc: upgrade flux version
+  # upgrade:
+  #   desc: upgrade flux version
+  #   cmds:
+  #     - kustomize build 'https://github.com/fluxcd/flux2/manifests/install?ref=v0.41.1' | kubectl apply -f-
+
+  uninstall:
+    desc: uninstall flux
     cmds:
-      - kustomize build 'https://github.com/fluxcd/flux2/manifests/install?ref=main' | kubectl apply -f-
+      - flux uninstall --namespace=flux-system --keep-namespace
