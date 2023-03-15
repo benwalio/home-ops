@@ -40,10 +40,12 @@ spec:
       replicaCount: 2
       podAntiAffinityPreset: hard
       replicaLabel: ["__replica__"] # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.replicaExternalLabelName`
+
     bucketweb:
       enabled: true
       replicaCount: 2
       podAntiAffinityPreset: hard
+
     compactor:
       enabled: true
       extraFlags:
@@ -51,19 +53,33 @@ spec:
         - --delete-delay=30m
       retentionResolutionRaw: 14d
       retentionResolution5m: 14d
-      retentionResolution1h: 14d
+      retentionResolution1h: 30d
+      resources:
+        requests:
+          cpu: 15m
+          memory: 204M
+        limits:
+          memory: 270M
       persistence:
         enabled: true
-        storageClass: local-path
+        storageClass: ceph-block
         size: 20Gi
+
     storegateway:
       enabled: true
       replicaCount: 2
       podAntiAffinityPreset: hard
+      resources:
+        requests:
+          cpu: 23m
+          memory: 272M
+        limits:
+          memory: 536M
       persistence:
         enabled: true
-        storageClass: local-path
-        size: 20Gi
+        storageClass: ceph-block
+        size: 10Gi
+
     ruler:
       enabled: true
       replicaCount: 2
@@ -71,7 +87,8 @@ spec:
       podAntiAffinityPreset: hard
       dnsDiscovery:
         enabled: true
-      alertmanagers: ["http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093"]
+      alertmanagers:
+        - http://kube-prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093
       # Breaks any metric that has an existing "cluster" label on a metric
       # clusterName: home # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.externalLabels.cluster`
       extraFlags: ["--web.prefix-header=X-Forwarded-Prefix"]
@@ -81,10 +98,17 @@ spec:
             rules:
               - alert: "PrometheusDown"
                 expr: absent(up{job="kube-prometheus-stack-prometheus"})
+      resources:
+        requests:
+          cpu: 23m
+          memory: 94M
+        limits:
+          memory: 113M
       persistence:
         enabled: true
-        storageClass: local-path
-        size: 20Gi
+        storageClass: ceph-block
+        size: 10Gi
+
     receive:
       enabled: true
       replicaCount: 2
@@ -95,12 +119,14 @@ spec:
         - --tsdb.wal-compression
       persistence:
         enabled: true
-        storageClass: local-path
+        storageClass: ceph-block
         size: 20Gi
+
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
+
   valuesFrom:
     - targetPath: objstoreConfig.config.bucket
       kind: ConfigMap
