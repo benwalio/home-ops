@@ -6,9 +6,8 @@
       "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
-      "ignoreTests": true,
-      "matchUpdateTypes": ["digest", "minor", "patch"],
-      "matchPackagePattern": ["ghcr.io/onedr0p"]
+      // "ignoreTests": true,
+      "matchUpdateTypes": ["digest", "minor", "patch"]
     },
     {
       "description": "Auto merge GitHub Actions",
@@ -17,6 +16,30 @@
       "automergeType": "branch",
       "ignoreTests": true,
       "matchUpdateTypes": ["minor", "patch", "digest"]
-    }
+    },
+    {
+      "description": "Auto Merge Pre-Commit",
+      "matchManagers": ["pre-commit"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch"],
+    },
+    {
+      "description": "Auto Merge Helm",
+      "matchDatasources": ["helm"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch"],
+    },
+    {
+      "description": "Auto Merge Flux",
+      "matchManagers": ["flux"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["patch"],
+    },
   ]
 }
