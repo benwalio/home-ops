@@ -28,8 +28,7 @@ spec:
     keepHistory: false
   values:
     initContainers:
-      init-geoip:
-        # https://github.com/maxmind/geoipupdate/issues/202
+      01-init-geoip:
         image: ghcr.io/maxmind/geoipupdate:v4.11.0
         imagePullPolicy: IfNotPresent
         env:
@@ -58,6 +57,7 @@ spec:
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${SVC_SYSLOG_ADDR}"
           metallb.universe.tf/allow-shared-ip: vector-aggregator
+          coredns.io/hostname: vector.${SECRET_DOMAIN}
         externalTrafficPolicy: Local
         ports:
           http:
