@@ -107,7 +107,7 @@ sinks:
       k8s_namespace: '{{ kubernetes.pod_namespace }}'
       k8s_node: '{{ kubernetes.pod_node_name }}'
       k8s_pod: '{{ kubernetes.pod_name }}'
-    out_of_order_action: accept
+    out_of_order_action: rewrite_timestamp
     remove_label_fields: true
     remove_timestamp: true
   # opnsense:
