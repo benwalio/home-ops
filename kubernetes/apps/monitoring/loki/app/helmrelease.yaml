@@ -117,13 +117,13 @@ spec:
               - *host
 
     write:
-      replicas: 1
+      replicas: 3
       persistence:
         size: 10Gi
         storageClass: ceph-block
 
     read:
-      replicas: 1
+      replicas: 3
       extraVolumeMounts:
         - name: rules
           mountPath: /rules
