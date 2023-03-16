@@ -89,7 +89,7 @@ spec:
       codeserver:
         image:
           repository: ghcr.io/coder/code-server
-          tag: 4.10.0@sha256:dc6c87ae76edccb63b64aaf6149ec4f80f6a7e527a22a5feb1d5ec4572ad1644
+          tag: 4.11.0@sha256:1e2cc688008ea2b575053e270668cf075a337425b9e93bf15b5b2692743b602f
         enabled: true
         volumeMounts:
           - name: config
