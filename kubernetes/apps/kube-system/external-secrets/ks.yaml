@@ -29,8 +29,8 @@ metadata:
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
-  dependsOn:
-    - name: cluster-apps-external-secrets
+  # dependsOn:
+  #   - name: cluster-apps-external-secrets
   path: ./kubernetes/apps/kube-system/external-secrets/stores
   prune: true
   sourceRef:
