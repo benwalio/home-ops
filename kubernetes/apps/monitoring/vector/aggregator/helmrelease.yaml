@@ -54,9 +54,10 @@ spec:
       main:
         type: LoadBalancer
         # externalIPs: ["${SVC_SYSLOG_ADDR}"]
+        loadBalancerIP: ${SVC_SYSLOG_ADDR}
         annotations:
-          metallb.universe.tf/loadBalancerIPs: "${SVC_SYSLOG_ADDR}"
-          metallb.universe.tf/allow-shared-ip: vector-aggregator
+          # metallb.universe.tf/loadBalancerIPs: "${SVC_SYSLOG_ADDR}"
+          # metallb.universe.tf/allow-shared-ip: vector-aggregator
           coredns.io/hostname: vector.${SECRET_DOMAIN}
         externalTrafficPolicy: Local
         ports:
