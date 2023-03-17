@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./descheduler/ks.yaml
-  - ./external-secrets/ks.yaml
+  # - ./external-secrets/ks.yaml
   - ./intel-device-plugin/ks.yaml
   - ./kube-vip/ks.yaml
   - ./kured/ks.yaml
