@@ -14,18 +14,12 @@ spec:
         kind: HelmRepository
         name: kubernetes-dashboard
         namespace: flux-system
-  maxHistory: 3
-  install:
-    createNamespace: true
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      retries: 3
-  uninstall:
-    keepHistory: false
   values:
+    image:
+      name: kubernetesui/dashboard
+      tag: v2.3.0
+      pullPolicy: IfNotPresent
+
     env:
       TZ: "${TIMEZONE}"
     extraArgs:
@@ -33,18 +27,19 @@ spec:
       - --disable-settings-authorizer
       - --enable-insecure-login
       - --token-ttl=43200
+
     ingress:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
+        # cert-manager.io/cluster-issuer: letsencrypt-production
         hajimari.io/icon: mdi:kubernetes
       hosts:
         - &host "kubernetes.${SECRET_DOMAIN}"
       tls:
         - hosts:
             - *host
-          secretName: kubernetes-dashboard-tls
+          # secretName: kubernetes-dashboard-tls
     metricsScraper:
       enabled: true
     serviceMonitor:
