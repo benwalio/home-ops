@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: n8n-conf-pvc
+  name: nate-conf-pvc
   namespace: default
   labels:
     app.kubernetes.io/name: &name n8n
