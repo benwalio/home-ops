@@ -34,6 +34,9 @@ spec:
     image:
       repository: ghcr.io/n8n-io/n8n
       tag: 0.220.0
+
+    command: ["n8n"]
+
     env:
       GENERIC_TIMEZONE: ${TIMEZONE}
       TZ: ${TIMEZONE}
@@ -119,11 +122,19 @@ spec:
         tls:
           - hosts:
               - *host
+
     persistence:
       config:
         enabled: true
         mountPath: /home/node/.n8n
         existingClaim: n8n-config-pvc
+
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+
     resources:
       requests:
         cpu: 10m
