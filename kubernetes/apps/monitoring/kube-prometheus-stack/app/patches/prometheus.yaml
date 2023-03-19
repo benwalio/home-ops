@@ -26,6 +26,13 @@ spec:
       prometheusSpec:
         replicas: 3
         replicaExternalLabelName: __replica__ # must match with thanos value `.query.replicaLabel[0]`
+        scrapeInterval: 1m
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        walCompression: true
         # Breaks any metric that has an existing "cluster" label on a metric
         # externalLabels:
         #   cluster: home # must match with thanos value `.ruler.clusterName`
@@ -36,15 +43,8 @@ spec:
           objectStorageConfig:
             name: thanos-objstore-secret
             key: objstore.yml
-        podAntiAffinity: hard
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
-        probeSelectorNilUsesHelmValues: false
         retention: 2d
-        retentionSize: 6GB
-        enableAdminAPI: true
-        walCompression: true
+        retentionSize: 15GB
         storageSpec:
           volumeClaimTemplate:
             spec:

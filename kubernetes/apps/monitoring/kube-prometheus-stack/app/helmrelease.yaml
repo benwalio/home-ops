@@ -71,14 +71,17 @@ spec:
         - 10.69.10.22
     kubeProxy:
       enabled: false # Enable if not using eBPF
-      # endpoints: ["10.69.10.10", "10.69.10.20", "10.69.10.21"]
+      endpoints:
+        - 10.69.10.20
+        - 10.69.10.21
+        - 10.69.10.22
     kubeEtcd:
       enabled: true
       endpoints:
         - 10.69.10.20
         - 10.69.10.21
         - 10.69.10.22
-      service:
-        enabled: true
-        port: 2381
-        targetPort: 2381
+      # service:
+      #   enabled: true
+      #   port: 2381
+      #   targetPort: 2381
