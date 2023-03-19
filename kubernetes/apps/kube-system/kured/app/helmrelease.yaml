@@ -45,6 +45,8 @@ spec:
       endTime: "4:00"
       timeZone: ${TIMEZONE}
       rebootCommand: "/usr/bin/systemctl reboot"
+      blockingPodSelector:
+        app.kubernetes.io/created-by: "volsync"
     tolerations:
       - key: "arm"
         operator: "Exists"

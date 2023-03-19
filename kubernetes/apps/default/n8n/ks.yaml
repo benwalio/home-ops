@@ -10,6 +10,7 @@ spec:
   dependsOn:
     - name: cluster-apps-n8n-redis
     - name: cluster-apps-cloudnative-pg
+    - name: cluster-apps-external-secrets-stores
   path: ./kubernetes/apps/default/n8n/app
   prune: true
   sourceRef:
