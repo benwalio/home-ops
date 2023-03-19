@@ -28,7 +28,7 @@ metadata:
   name: n8n
   namespace: default
 spec:
-  sourcePVC: n8n-config-pvc
+  sourcePVC: n8n-config
   trigger:
     schedule: "0 0 * * *"
   restic:

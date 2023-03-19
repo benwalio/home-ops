@@ -127,7 +127,7 @@ spec:
       config:
         enabled: true
         mountPath: /home/node/.n8n
-        existingClaim: n8n-config-pvc
+        existingClaim: n8n-config
 
     podSecurityContext:
       runAsUser: 568
