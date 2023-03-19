@@ -129,11 +129,11 @@ spec:
         mountPath: /home/node/.n8n
         existingClaim: n8n-config-pvc
 
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+    # podSecurityContext:
+    #   runAsUser: 568
+    #   runAsGroup: 568
+    #   fsGroup: 568
+    #   fsGroupChangePolicy: "OnRootMismatch"
 
     resources:
       requests:
