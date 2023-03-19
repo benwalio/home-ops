@@ -4,4 +4,4 @@ resources:
   # - ./cronjobs
   - ./helmrelease.yaml
   - ./pvc.yaml
-  # - ./volsync.yaml
+  - ./volsync.yaml

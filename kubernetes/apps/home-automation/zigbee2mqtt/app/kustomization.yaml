@@ -8,7 +8,7 @@ resources:
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
   - ./pvc.yaml
-  # - ./volsync.yaml
+  - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/env.yaml
   - ./patches/exporter.yaml
