@@ -38,6 +38,9 @@ spec:
           secretKeyRef:
             name: paperless-secret
             key: SECRET_KEY
+      PAPERLESS_DATA_DIR: "/config"
+      PAPERLESS_MEDIA_ROOT: "/nfs/media"
+      PAPERLESS_CONSUMPTION_DIR: "/nfs/consume"
       PAPERLESS_OCR_LANGUAGE: eng
       PAPERLESS_WEBSERVER_WORKERS: 2
       # https://paperless-ngx.readthedocs.io/en/latest/advanced_usage.html#advanced-file-name-handling
@@ -45,7 +48,8 @@ spec:
       # https://github.com/paperless-ngx/paperless-ngx/issues/264
       PAPERLESS_PORT: 8000
       # USERMAP_UID: "${SECURITY_CONTEXT_RUN_AS_USER}"
-      USERMAP_GID: 65542
+      USERMAP_UID: 1111
+      USERMAP_GID: 1111
       PAPERLESS_DBHOST:
         valueFrom:
           secretKeyRef:
@@ -102,36 +106,20 @@ spec:
     persistence:
       data:
         enabled: true
-        mountPath: /usr/src/paperless/data
-        type: nfs
-        server: 192.168.2.9
-        path: /volume1/kubernetes/apps/paperless/data
-        mountOptions:
-          - nfsvers=4.1
+        mountPath: /config
+        existingClaim: paperless-config-pvc
       media:
         enabled: true
-        mountPath: /usr/src/paperless/media
-        type: nfs
-        server: 192.168.2.9
-        path: /volume1/kubernetes/apps/paperless/media
-        mountOptions:
-          - nfsvers=4.1
+        mountPath: /nfs/media
+        existingClaim: paperless-media-nfs-pvc
       consume:
         enabled: true
-        mountPath: /usr/src/paperless/consume
-        type: nfs
-        server: 192.168.2.9
-        path: /volume1/kubernetes/apps/paperless/incoming
-        mountOptions:
-          - nfsvers=4.1
+        mountPath: /nfs/consume
+        existingClaim: paperless-consume-nfs-pvc
       export:
         enabled: true
         mountPath: /usr/src/paperless/export
-        type: nfs
-        server: 192.168.2.9
-        path: /volume1/kubernetes/apps/paperless/export
-        mountOptions:
-          - nfsvers=4.1
+        existingClaim: paperless-consume-nfs-pvc
 
     ingress:
       main:
