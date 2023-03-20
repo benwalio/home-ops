@@ -48,7 +48,7 @@ spec:
       # https://github.com/paperless-ngx/paperless-ngx/issues/264
       PAPERLESS_PORT: 8000
       # USERMAP_UID: "${SECURITY_CONTEXT_RUN_AS_USER}"
-      USERMAP_UID: 1111
+      # USERMAP_UID: 1111
       USERMAP_GID: 1111
       PAPERLESS_DBHOST:
         valueFrom:
