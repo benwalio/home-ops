@@ -49,7 +49,7 @@ spec:
       PAPERLESS_PORT: 8000
       # USERMAP_UID: "${SECURITY_CONTEXT_RUN_AS_USER}"
       # USERMAP_UID: 1111
-      USERMAP_GID: 1111
+      # USERMAP_GID: 1111
       PAPERLESS_DBHOST:
         valueFrom:
           secretKeyRef:
@@ -96,6 +96,14 @@ spec:
             key: PAPERLESS_ADMIN_PASSWORD
       PAPERLESS_OCR_MODE: redo
       PAPERLESS_OCR_CLEAN: clean
+
+    podSecurityContext:
+      runAsUser: 1111
+      runAsGroup: 1111
+      fsGroup: 1111
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 1100
 
     service:
       main:
