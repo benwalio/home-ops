@@ -119,7 +119,7 @@ spec:
       export:
         enabled: true
         mountPath: /usr/src/paperless/export
-        existingClaim: paperless-consume-nfs-pvc
+        existingClaim: paperless-export-nfs-pvc
 
     ingress:
       main:
