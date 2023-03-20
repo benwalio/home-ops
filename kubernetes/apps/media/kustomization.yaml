@@ -9,7 +9,7 @@ resources:
   - ./calibre-web/ks.yaml
   - ./freshrss/ks.yaml
   - ./overseerr/ks.yaml
-  - ./paperless/ks.yaml
+  # - ./paperless/ks.yaml
   - ./plex/ks.yaml
   - ./prowlarr/ks.yaml
   - ./podgrab/ks.yaml
