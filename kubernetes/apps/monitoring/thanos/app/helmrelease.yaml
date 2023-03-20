@@ -44,13 +44,15 @@ spec:
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
-        hostname: "thanos-cluster-0.bjw-s.dev"
+        hostname: "thanos-cluster-0.${SECRET_DOMAIN}"
         ingressClassName: "nginx"
         annotations:
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         tls: true
+
       replicaLabels:
         - "__replica__" # must match with kube-prometheus-stack value `.prometheus.prometheusSpec.replicaExternalLabelName`
+
       resources:
         requests:
           cpu: 15m
