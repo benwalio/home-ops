@@ -16,7 +16,7 @@ spec:
         - "docs.${SECRET_DOMAIN}"
 
   rules:
-    - host: hass.${SECRET_DOMAIN}
+    - host: docs.${SECRET_DOMAIN}
       http:
         paths:
           - path: /
