@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: paperless
+  namespace: external-services
+spec:
+  # selector:
+  #   app.kubernetes.io/name: home-assistant
+  ports:
+    - name: http
+      # protocol: HTTP
+      port: 10140
+      # targetPort:
+  type: ClusterIP
