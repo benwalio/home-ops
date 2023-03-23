@@ -10,7 +10,6 @@ spec:
   dependsOn:
     - name: cluster-apps-cloudnative-pg-cluster
     - name: cluster-apps-rook-ceph-cluster
-    - name: cluster-apps-volsync
   path: ./kubernetes/apps/default/nocodb/app
   prune: true
   sourceRef:
