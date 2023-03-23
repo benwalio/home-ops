@@ -9,7 +9,6 @@ metadata:
 spec:
   dependsOn:
     - name: cluster-apps-rook-ceph-cluster
-    - name: cluster-apps-volsync
   path: ./kubernetes/apps/media/podgrab/app
   prune: true
   sourceRef:
