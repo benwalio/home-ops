@@ -5,12 +5,12 @@ resources:
   - ./namespace.yaml
   - ./audiobookshelf/ks.yaml
   - ./bazarr/ks.yaml
-  # - ./calibre/ks.yaml
+  - ./calibre/ks.yaml
   - ./calibre-web/ks.yaml
   - ./freshrss/ks.yaml
   - ./overseerr/ks.yaml
   - ./plex/ks.yaml
-  - ./prowlarr/ks.yaml
+  # - ./prowlarr/ks.yaml
   - ./podgrab/ks.yaml
   - ./qbittorrent/ks.yaml
   - ./radarr/ks.yaml
