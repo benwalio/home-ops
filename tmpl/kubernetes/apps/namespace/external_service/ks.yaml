@@ -2,14 +2,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-apps-paperless
+  name: cluster-apps-external_service
   namespace: flux-system
   labels:
     substitution.flux.home.arpa/enabled: "true"
 spec:
   dependsOn:
     - name: cluster-apps-ingress-nginx
-  path: ./kubernetes/apps/external-services/paperless/app
+  path: ./kubernetes/apps/external-services/external_service/app
   prune: true
   sourceRef:
     kind: GitRepository
