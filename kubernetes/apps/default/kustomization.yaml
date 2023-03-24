@@ -5,7 +5,7 @@ resources:
   - ./namespace.yaml
   - ./changedetection/ks.yaml
   - ./hajimari/ks.yaml
-  # - ./immich/ks.yaml
+  - ./immich/ks.yaml
   # - ./n8n/ks.yaml
   # - ./nextcloud/ks.yaml
   - ./nocodb/ks.yaml
