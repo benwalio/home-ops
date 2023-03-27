@@ -5,7 +5,7 @@ resources:
   - ./namespace.yaml
   - ./audiobookshelf/ks.yaml
   - ./bazarr/ks.yaml
-  # - ./calibre/ks.yaml
+  - ./calibre/ks.yaml
   # - ./calibre-web/ks.yaml
   - ./freshrss/ks.yaml
   - ./overseerr/ks.yaml
