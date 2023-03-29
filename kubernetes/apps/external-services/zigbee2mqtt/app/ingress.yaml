@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zigbee2mqtt
+  namespace: external-services
+  annotations:
+    external-dns.home.arpa/enabled: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: tls.zigbee2mqtt
+      hosts:
+        - "zigbee.${SECRET_DOMAIN}"
+
+  rules:
+    - host: zigbee.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zigbee2mqtt
+                port:
+                  name: http

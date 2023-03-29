@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: zigbee2mqtt
+  namespace: external-services
+subsets:
+  - addresses:
+      - ip: 192.168.250.106
+    ports:
+      - name: http
+        port: 8080
+        protocol: TCP
