@@ -4,4 +4,4 @@ resources:
   - ./namespace.yaml
   - ./emqx/ks.yaml
   - ./esphome/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
+  # - ./zigbee2mqtt/ks.yaml
