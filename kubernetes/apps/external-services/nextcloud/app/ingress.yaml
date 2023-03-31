@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nextcloud
+  namespace: external-services
+  annotations:
+    external-dns.home.arpa/enabled: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: tls.nextcloud
+      hosts:
+        - "nextcloud.${SECRET_DOMAIN}"
+
+  rules:
+    - host: nextcloud.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nextcloud
+                port:
+                  name: http
