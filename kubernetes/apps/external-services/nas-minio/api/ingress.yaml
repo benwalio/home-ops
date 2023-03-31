@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nas-minio
+  name: nas-s3
   namespace: external-services
   annotations:
     external-dns.home.arpa/enabled: "true"
@@ -11,18 +11,18 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-    - secretName: tls.nas-minio
+    - secretName: tls.nas-s3
       hosts:
-        - "nas-minio.${SECRET_DOMAIN}"
+        - "nas-s3.${SECRET_DOMAIN}"
 
   rules:
-    - host: nas-minio.${SECRET_DOMAIN}
+    - host: nas-s3.${SECRET_DOMAIN}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: nas-minio
+                name: nas-s3
                 port:
-                  name: http
+                  name: api
