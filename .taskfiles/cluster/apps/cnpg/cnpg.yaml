@@ -1,0 +1,14 @@
+---
+version: "3"
+
+vars:
+  cnpgPodPV:
+    sh: |
+      kubectl get pv -o json | jq -r '.items[]|select(.spec.claimRef.name=='\"$PODNAME\"')|.metadata.name'
+
+x-task-vars: &task-vars
+  apiKey: '{{.apiKey}}'
+
+tasks:
+  # https://shlink.io/documentation/api-docs/authentication/
+  new-api-key:
