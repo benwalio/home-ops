@@ -62,9 +62,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: plex-audiobook-nfs-pvc
   namespace: media
-  labels:
-    app.kubernetes.io/name: &name plex-audiobook
-    app.kubernetes.io/instance: *name
+  # labels:
+  #   app.kubernetes.io/name: &name plex
+  #   app.kubernetes.io/instance: *name
 spec:
   accessModes: ["ReadWriteMany"]
   storageClassName: plex-audiobook-nfs
