@@ -60,7 +60,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: plex-audio-nfs-pvc
+  name: plex-audiobook-nfs-pvc
   namespace: media
   labels:
     app.kubernetes.io/name: &name plex-audiobook
