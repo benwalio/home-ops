@@ -21,7 +21,7 @@ spec:
 
   rules:
     - host: nas-s3.${SECRET_DOMAIN}
-      api:
+      http:
         paths:
           - path: /
             pathType: Prefix
