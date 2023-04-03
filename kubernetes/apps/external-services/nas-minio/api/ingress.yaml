@@ -6,7 +6,11 @@ metadata:
   namespace: external-services
   annotations:
     external-dns.home.arpa/enabled: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "180"
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      chunked_transfer_encoding off;
 
 spec:
   ingressClassName: nginx
@@ -17,7 +21,7 @@ spec:
 
   rules:
     - host: nas-s3.${SECRET_DOMAIN}
-      http:
+      api:
         paths:
           - path: /
             pathType: Prefix
