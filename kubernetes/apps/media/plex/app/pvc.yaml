@@ -42,6 +42,37 @@ spec:
   mountOptions: ["nfsvers=3", "hard", "noatime"]
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: plex-audiobook-nfs
+spec:
+  storageClassName: plex-audiobook-nfs
+  capacity:
+    storage: 1Mi
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/media/audio/audiobooks
+  # Note: The first two options are strictly for NFSv4.2
+  mountOptions: ["nfsvers=3", "hard", "noatime"]
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-audio-nfs-pvc
+  namespace: media
+  labels:
+    app.kubernetes.io/name: &name plex-audiobook
+    app.kubernetes.io/instance: *name
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: plex-audiobook-nfs
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: plex-movie-nfs-pvc

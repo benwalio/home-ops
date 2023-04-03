@@ -96,6 +96,10 @@ spec:
         enabled: true
         existingClaim: plex-movie-nfs-pvc
         mountPath: /nfs/movie
+      audiobook:
+        enabled: true
+        existingClaim: plex-audiobook-nfs-pvc
+        mountPath: /nfs/audiobook
       transcode:
         enabled: true
         type: emptyDir
