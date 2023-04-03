@@ -26,8 +26,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    interval: 2m
-    # logLevel: debug
+    interval: 5m
+    logLevel: debug
     provider: cloudflare
     env:
       - name: CF_API_EMAIL
