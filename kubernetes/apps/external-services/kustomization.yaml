@@ -7,4 +7,5 @@ resources:
   - ./nas-minio/ks.yaml
   - ./nextcloud/ks.yaml
   - ./paperless/ks.yaml
+  - ./qbittorrent/ks.yaml
   - ./zigbee2mqtt/ks.yaml
