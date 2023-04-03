@@ -6,5 +6,5 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 10020
+      port: 9001
   type: ClusterIP

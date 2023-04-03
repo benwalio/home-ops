@@ -9,5 +9,5 @@ subsets:
       - ip: 10.69.10.11
     ports:
       - name: http
-        port: 10020
+        port: 9001
         protocol: TCP
