@@ -10,9 +10,9 @@ spec:
   storageClassName: minio-nfs
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    server: 192.168.2.9
-    path: /volume1/kubernetes/apps/minio
-  mountOptions: ["nfsvers=4.1"]
+    server: ${SECRET_NFS_SERVER}
+    path: ${SECRET_NFS_BASE_PATH}/apps/minio-kube
+  mountOptions: ["nfsvers=4.2", "nconnect=8", "hard", "noatime"]
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
