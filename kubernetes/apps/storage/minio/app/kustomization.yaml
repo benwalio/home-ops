@@ -6,3 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./nfs-pvc.yaml
   - ./helmrelease.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app minio
+      app.kubernetes.io/instance: *app

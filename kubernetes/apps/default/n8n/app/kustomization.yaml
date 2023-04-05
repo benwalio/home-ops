@@ -8,3 +8,7 @@ resources:
   - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/postgres.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app n8n
+      app.kubernetes.io/instance: *app

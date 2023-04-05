@@ -6,3 +6,7 @@ namespace: storage
 resources:
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app volsync
+      app.kubernetes.io/instance: *app

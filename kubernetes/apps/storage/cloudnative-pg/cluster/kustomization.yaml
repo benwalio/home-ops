@@ -9,5 +9,6 @@ resources:
   - ./scheduledbackup.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: cloudnative-pg
-      app.kubernetes.io/instance: cloudnative-pg-cluster
+      app.kubernetes.io/name: &app cloudnative-pg-cluster
+      app.kubernetes.io/instance: *app
+      app.kubernetes.io/part-of: cloudnative-pg

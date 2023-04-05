@@ -5,3 +5,7 @@ kind: Kustomization
 namespace: storage
 resources:
   - ./helmrelease.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app redis
+      app.kubernetes.io/instance: *app

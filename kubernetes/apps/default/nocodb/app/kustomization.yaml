@@ -10,3 +10,7 @@ resources:
   - ./volsync.yaml
 patchesStrategicMerge:
   - ./patches/postgres.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app nocodb
+      app.kubernetes.io/instance: *app

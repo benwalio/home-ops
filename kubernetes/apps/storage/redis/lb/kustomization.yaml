@@ -11,3 +11,8 @@ configMapGenerator:
       - haproxy.cfg=./config/haproxy.cfg
 configurations:
   - ./patches/kustomizeconfig.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: &app redis-lb
+      app.kubernetes.io/instance: *app
+      app.kubernetes.io/part-of: redis
