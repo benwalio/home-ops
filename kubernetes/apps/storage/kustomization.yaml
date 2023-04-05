@@ -6,5 +6,5 @@ resources:
   - ./namespace.yaml
   - ./cloudnative-pg/ks.yaml
   - ./minio/ks.yaml
-  - ./redis/ks.yaml
+  # - ./redis/ks.yaml
   - ./volsync/ks.yaml
