@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: audiobookshelf-books-nfs
+  name: audiobookshelf-books-nfs-pv
 spec:
   storageClassName: audiobookshelf-books-nfs
   capacity:
@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: audiobookshelf-podcasts-nfs
+  name: audiobookshelf-podcasts-nfs-pv
 spec:
   storageClassName: audiobookshelf-podcasts-nfs
   capacity:
