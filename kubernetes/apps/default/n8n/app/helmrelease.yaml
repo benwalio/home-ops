@@ -33,7 +33,7 @@ spec:
         reloader.stakater.com/auto: "true"
     image:
       repository: ghcr.io/n8n-io/n8n
-      tag: 0.224.0
+      tag: 0.226.0
 
     command: ["n8n"]
 
