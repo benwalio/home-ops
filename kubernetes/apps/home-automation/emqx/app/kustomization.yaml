@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./pvc.yaml
-  - ./volsync.yaml
+  # - ./volsync.yaml
 labels:
   - pairs:
       app.kubernetes.io/name: &app emqx
