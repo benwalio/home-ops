@@ -1,46 +1,47 @@
 {
-    "files.associations": {
-        "*.json5": "jsonc",
-        "**/ansible/**/*.yml": "ansible",
-        "**/ansible/**/*.sops.yml": "yaml",
-        "**/ansible/**/inventory/**/*.yml": "yaml",
-        "**/terraform/**/*.tf": "terraform",
-        "**/kubernetes/**/*.sops.toml": "plaintext"
-    },
-    "yaml.schemas": {
-        "file:///Users/ben/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
-        "ansible": "ansible/*.yml",
-        "Kubernetes": "kubernetes/*.yaml",
-        "https://json.schemastore.org/helmfile.json": "file:///Users/ben/local/code/home-ops/kubernetes/flux/repositories/helm/traefik.yaml",
-        "https://json.schemastore.org/prometheus.json": "file:///Users/ben/local/code/home-ops/kubernetes/apps/monitoring/kube-prometheus-stack/app/patches/prometheus.yaml"
-    },
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "editor.guides.bracketPairsHorizontal": true,
-    "editor.guides.highlightActiveBracketPair": true,
-    "editor.hover.delay": 1500,
-    "files.trimTrailingWhitespace": true,
-    "sops.defaults.ageKeyFile": "/Users/ben/.config/sops/age/keys.txt",
-    "sops.binPath": "/opt/homebrew/bin/sops",
-    "vs-kubernetes": {
-      "vs-kubernetes.crd-code-completion": "enabled",
-      "vs-kubernetes.namespace": "",
-      "vs-kubernetes.kubectl-path": "",
-      "vs-kubernetes.helm-path": "",
-      "vs-kubernetes.minikube-path": "",
-      "vs-kubernetes.kubectlVersioning": "user-provided",
-      "vs-kubernetes.outputFormat": "yaml",
-      "vs-kubernetes.kubeconfig": "",
-      "vs-kubernetes.knownKubeconfigs": [
-        "/Users/ben/local/code/home-ops/kubeconfig"
-      ],
-      "vs-kubernetes.autoCleanupOnDebugTerminate": false,
-      "vs-kubernetes.nodejs-autodetect-remote-root": true,
-      "vs-kubernetes.nodejs-remote-root": "",
-      "vs-kubernetes.nodejs-debug-port": 9229,
-      "vs-kubernetes.dotnet-vsdbg-path": "~/vsdbg/vsdbg",
-      "vs-kubernetes.local-tunnel-debug-provider": "",
-      "checkForMinikubeUpgrade": true,
-      "imageBuildTool": "Docker"
-    },
+  "files.associations": {
+    "*.json5": "jsonc",
+    "**/ansible/**/*.yml": "ansible",
+    "**/ansible/**/*.sops.yml": "yaml",
+    "**/ansible/**/inventory/**/*.yml": "yaml",
+    "**/terraform/**/*.tf": "terraform",
+    "**/kubernetes/**/*.sops.toml": "plaintext"
+  },
+  "yaml.schemas": {
+    "file:///Users/ben/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "ansible": "ansible/*.yml",
+    "Kubernetes": "kubernetes/*.yaml",
+    "https://json.schemastore.org/helmfile.json": "file:///Users/ben/local/code/home-ops/kubernetes/flux/repositories/helm/traefik.yaml",
+    "https://json.schemastore.org/prometheus.json": "file:///Users/ben/local/code/home-ops/kubernetes/apps/monitoring/kube-prometheus-stack/app/patches/prometheus.yaml"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": true,
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.hover.delay": 1500,
+  "files.trimTrailingWhitespace": true,
+  "sops.defaults.ageKeyFile": "/Users/ben/.config/sops/age/keys.txt",
+  "sops.binPath": "/opt/homebrew/bin/sops",
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "enabled",
+    "vs-kubernetes.namespace": "",
+    "vs-kubernetes.kubectl-path": "",
+    "vs-kubernetes.helm-path": "",
+    "vs-kubernetes.minikube-path": "",
+    "vs-kubernetes.kubectlVersioning": "user-provided",
+    "vs-kubernetes.outputFormat": "yaml",
+    "vs-kubernetes.kubeconfig": "",
+    "vs-kubernetes.knownKubeconfigs": [
+      "/Users/ben/local/code/home-ops/kubeconfig"
+    ],
+    "vs-kubernetes.autoCleanupOnDebugTerminate": false,
+    "vs-kubernetes.nodejs-autodetect-remote-root": true,
+    "vs-kubernetes.nodejs-remote-root": "",
+    "vs-kubernetes.nodejs-debug-port": 9229,
+    "vs-kubernetes.dotnet-vsdbg-path": "~/vsdbg/vsdbg",
+    "vs-kubernetes.local-tunnel-debug-provider": "",
+    "checkForMinikubeUpgrade": true,
+    "imageBuildTool": "Docker"
+  },
+  "ansible.python.interpreterPath": "/opt/homebrew/bin/python3"
 }
