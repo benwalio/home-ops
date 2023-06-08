@@ -10,7 +10,7 @@ resources:
   - ./freshrss/ks.yaml
   - ./overseerr/ks.yaml
   # - ./plex/ks.yaml
-  - ./prowlarr/ks.yaml
+  # - ./prowlarr/ks.yaml
   - ./podgrab/ks.yaml
   - ./radarr/ks.yaml
   - ./readarr/ks.yaml
