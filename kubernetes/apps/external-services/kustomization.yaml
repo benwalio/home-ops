@@ -10,5 +10,5 @@ resources:
   - ./nextcloud/ks.yaml
   - ./paperless/ks.yaml
   - ./plex/ks.yaml
-  - ./qbittorrent/ks.yaml
+  # - ./qbittorrent/ks.yaml
   - ./zigbee2mqtt/ks.yaml
