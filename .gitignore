@@ -19,3 +19,4 @@ infra/
 docs/secret/
 temp/
 .private/
+.vscode/
