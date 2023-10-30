@@ -31,7 +31,7 @@ spec:
   values:
     image:
       repository: freshrss/freshrss
-      tag: 1.21.0
+      tag: 1.22.1
       pullPolicy: IfNotPresent
     strategy:
       type: Recreate
