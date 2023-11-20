@@ -27,7 +27,7 @@ spec:
       nameOverride: *app
     image:
       repository: nocodb/nocodb
-      tag: 0.104.2
+      tag: 0.202.8
     service:
       main:
         ports:
