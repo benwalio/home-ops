@@ -34,7 +34,7 @@ spec:
 
     image:
       repository: ghcr.io/onedr0p/prowlarr-develop
-      tag: 1.5.2.3484
+      tag: 1.10.4.4088
 
     podAnnotations:
       setGateway: "true"
